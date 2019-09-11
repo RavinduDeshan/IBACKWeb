@@ -1,30 +1,33 @@
 package com.eventmgr.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "Supplier")
 public class Supplier {
-		
+	@Id
 	private String sId;
+	
 	private String companyName;
-	private String website;
-	private String address;
-	private String companyPhneNo;
-	private String fName;
-	private String lName;
+	private String compWebsite;
+	private String compAddress;
+	private String compPhneNo;
+	private String supPassword;
 	private String email;
-	private String nic;
+
 	
 	
 	
-	public Supplier(String companyName, String website, String address, String companyPhneNo, String fName, String lName,
-			String email, String nic) {
+	public Supplier(String sID,String companyName, String compWebsite, String compAddress, String compPhneNo, String supPassword,
+			String email) {
 		super();
+		this.sId = sID;
 		this.companyName = companyName;
-		this.website = website;
-		this.address = address;
-		this.companyPhneNo = companyPhneNo;
-		this.fName = fName;
-		this.lName = lName;
+		this.compWebsite = compWebsite;
+		this.compAddress = compAddress;
+		this.compPhneNo = compPhneNo;
+		this.supPassword = supPassword;
 		this.email = email;
-		this.nic = nic;
 	}
 	public String getsId() {
 		return sId;
@@ -39,48 +42,37 @@ public class Supplier {
 		this.companyName = companyName;
 	}
 	public String getWebsite() {
-		return website;
+		return compWebsite;
 	}
 	public void setWebsite(String website) {
-		this.website = website;
+		this.compWebsite = website;
 	}
 	public String getAddress() {
-		return address;
+		return compAddress;
 	}
 	public void setAddress(String address) {
-		this.address = address;
+		this.compAddress = address;
 	}
 	public String  getCompanyPhneNo() {
-		return companyPhneNo;
+		return compPhneNo;
 	}
 	public void setCompanyPhneNo(String companyPhneNo) {
-		this.companyPhneNo = companyPhneNo;
+		this.compPhneNo = companyPhneNo;
 	}
-	public String getfName() {
-		return fName;
+	public String getPassword() {
+		return supPassword;
 	}
-	public void setfName(String fName) {
-		this.fName = fName;
+	public void setPassword(String password) {
+		this.supPassword = password;
 	}
-	public String getlName() {
-		return lName;
-	}
-	public void setlName(String lName) {
-		this.lName = lName;
-	}
+	
 	public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getNic() {
-		return nic;
-	}
-	public void setNic(String nic) {
-		this.nic = nic;
-	}
-	
+
 	
 	
 	

@@ -17,7 +17,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <title>
-    IBACK Events Dashboard
+    IBACK Supplier Manager Dashboard
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
@@ -51,10 +51,10 @@
       <div class="sidebar-wrapper">
         <div class="logo">
           <a href="javascript:void(0)" class="simple-text logo-mini">
-            EO
+            SM
           </a>
           <a href="javascript:void(0)" class="simple-text logo-normal">
-           Event Organizer
+           SUPPLIER MANAGER
           </a>
         </div>
         <ul class="nav">
@@ -88,6 +88,12 @@
               <p>Users</p>
             </a>
           </li>
+		  <li>
+		  	<a href="#">
+				<i class="tim-icons icon icon-single-02"></i>
+				<p>Services</p>
+			</a>
+		  </li>
           <li>
             <a href="./notifications.html">
               <i class="tim-icons icon-bell-55"></i>
@@ -97,7 +103,7 @@
           <li>
             <a href="./user.html">
               <i class="tim-icons icon-email-85"></i>
-              <p>Payemnts</p>
+              <p>Payments</p>
             </a>
           </li>
           <li>
@@ -111,23 +117,11 @@
               <i class="tim-icons icon-notes "></i>
               <p>Event Calender</p>
             </a>
-          </li>
-          <li>
-            <a href="./Remove Customer.html">
-              <i class="tim-icons icon-notes "></i>
-              <p>Suspend Accounts</p>
-            </a>
-          </li>
-          <li>
-            <a href="./Customer Inquery.html">
-              <i class="tim-icons icon-notes "></i>
-              <p>Customer Inqueries</p>
-            </a>
-          </li>
-         
+			</li>   
         </ul>
       </div>
     </div>
+	  
     <div class="main-panel">
       <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
@@ -196,7 +190,7 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="SEARCH">
+              <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="SEARCH SUPPLIERS">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <i class="tim-icons icon-simple-remove"></i>
               </button>
@@ -223,9 +217,8 @@
                       </div>
                       <div class="col-7 col-md-8">
                         <div class="numbers">
-                          <p class="card-category">Total Customers</p>
-                          <p class="card-title">150
-                            <p>
+                          <p class="card-category">Total Suppliers</p>
+                          <p class="card-title">150</p>
                         </div>
                       </div>
                     </div>
@@ -250,8 +243,7 @@
                       <div class="col-7 col-md-8">
                         <div class="numbers">
                           <p class="card-category">Total Events Created</p>
-                          <p class="card-title">1,345
-                            <p>
+                          <p class="card-title">1,345</p>
                         </div>
                       </div>
                     </div>
@@ -275,9 +267,8 @@
                       </div>
                       <div class="col-7 col-md-8">
                         <div class="numbers">
-                          <p class="card-category">Idle Customers</p>
-                          <p class="card-title">23
-                            <p>
+                          <p class="card-category">Requests Pending</p>
+                          <p class="card-title">23</p>
                         </div>
                       </div>
                     </div>
@@ -285,7 +276,7 @@
                   <div class="card-footer ">
                     <hr>
                     <div class="stats">
-                      <i class="fa fa-clock-o"></i> <a href="" class="alink">Show Details</a>
+                      <i class="fa fa-clock-o"></i> <a href="/retrieveSuppliers" class="alink">Show Details</a>
                     </div>
                   </div>
                 </div>
@@ -326,35 +317,9 @@
                           <div class="card-header ">
                             <div class="row">
                               <div class="col-sm-6 text-left">
-                                <h5 class="card-category">Graphical Representation of</h5>
-                                <h2 class="card-title">Supplier Statistics</h2>
+                                <h2 class="card-title">Pending Supplier Requests</h2>
                               </div>
-                              <div class="col-sm-6">
-                                <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
-                                  <label class="btn btn-sm btn-primary btn-simple active" id="0">
-                                    <input type="radio" name="options" checked>
-                                    <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">New Accounts</span>
-                                    <span class="d-block d-sm-none">
-                                      <i class="tim-icons icon-single-02"></i>
-                                    </span>
-                                  </label>
-                                  <label class="btn btn-sm btn-primary btn-simple" id="1">
-                                    <input type="radio" class="d-none d-sm-none" name="options">
-                                    <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Event Creation</span>
-                                    <span class="d-block d-sm-none">
-                                      <i class="tim-icons icon-gift-2"></i>
-                                    </span>
-                                  </label>
-                                  <label class="btn btn-sm btn-primary btn-simple" id="2">
-                                    <input type="radio" class="d-none" name="options">
-                                    <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Idleness</span>
-                                    <span class="d-block d-sm-none">
-                                      <i class="tim-icons icon-tap-02"></i>
-                                    </span>
-                                  </label>
-                                </div>
-                              </div>
-                            </div>
+</div>
                           </div>
                           <div class="card-body">
                             <div class="chart-area">
@@ -365,13 +330,13 @@
                       </div>
                     </div>
 
-            <!--Customer Table-->
+            <!--Recently Added Suppliers Table-->
             <div class="content">
                     <div class="row">
                       <div class="col-md-12">
                         <div class="card ">
                           <div class="card-header">
-                            <h4 class="card-title"> Simple Table</h4>
+                            <h4 class="card-title"> Recently Registered Suppliers</h4>
                           </div>
                           <div class="card-body">
                             <div class="table-responsive">
@@ -382,13 +347,13 @@
                                       Name
                                     </th>
                                     <th>
-                                      Country
+                                      Company
                                     </th>
                                     <th>
-                                      City
+                                      Service
                                     </th>
                                     <th class="text-center">
-                                      Salary
+                                      Payment
                                     </th>
                                   </tr>
                                 </thead>
@@ -499,7 +464,7 @@
                       </div>
 
                       <!--Event Table-->
-
+					<!--								   
                       <div class="col-md-12">
                             <div class="card  card-plain">
                               <div class="card-header">
@@ -632,7 +597,7 @@
                           </div>
                         </div>
                       </div>
-
+	-->
                       <!--End of Event Table-->
     </div>
 

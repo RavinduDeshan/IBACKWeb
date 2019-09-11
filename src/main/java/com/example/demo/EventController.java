@@ -6,6 +6,7 @@ package com.example.demo;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,21 +16,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
-import com.eventmgr.controller.CustomerController;
-import com.eventmgr.controller.EveeentController;
-import com.eventmgr.model.Customer;
-import com.eventmgr.model.Event;
-import com.eventmgr.repositaries.EventRepositary;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import com.eventmgr.controller.*;
+import com.eventmgr.model.*;
+import com.eventmgr.repositaries.*;
 import com.google.gson.Gson;
 
 
-@RestController
 @Controller
 public class EventController {
 	
-    
+    private MongoTemplate mongoTemplate;
 	
 	@RequestMapping("/index")
 	public String home() {
@@ -118,4 +116,28 @@ public class EventController {
 		return evlst;
 		
 	}
+	
+	@RequestMapping("/addSupplier")
+	public String addSupplier(Supplier supplier) {
+		
+		System.out.println("Hiii");
+		System.out.println(supplier.getCompanyName());
+		
+		SupplierController ev= new SupplierController();
+		ev.createSupplier(supplier);
+		return "index.html";
+	}
+	
+	@GetMapping("/retrieveSuppliers")
+	public List<Supplier> selectSupplier(HttpServletRequest request) {
+		System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAa");
+		SupplierController sc= new SupplierController();
+		List<Supplier> sclst = new ArrayList<Supplier>();
+		sclst=sc.getAllSupplier();
+		System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAa");
+		return sclst;
+	}
+	
+	
+	
 }
