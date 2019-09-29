@@ -162,4 +162,16 @@ public class EventController {
 		evlst=ev.geteventDetails(ename);
 		return evlst;
 	}
+	
+	@RequestMapping("/confirmEvent/{ename}")
+	public RedirectView  confirmEvent(@PathVariable String ename) {
+		System.out.println("Divvvvv");
+		EveeentController ev= new EveeentController();
+		System.out.println(ename);
+		
+		ename=(ename.replaceAll("\\p{P}",""));
+		ev.confirmEvent(ename);
+		return new RedirectView("/eventManagements");
+		
+	}
 }

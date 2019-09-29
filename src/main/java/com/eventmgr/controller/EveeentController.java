@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 import com.mongodb.client.MongoCollection; 
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
 
 import org.bson.Document;
 
@@ -227,7 +228,31 @@ public class EveeentController {
 		   }
 		return evlst;
 		 }
-
+	public void confirmEvent(String ename) {
+		MongoClient mongo = new MongoClient( "localhost" , 27017 );
+		   MongoCredential credential;
+		   credential = MongoCredential.createCredential("EventManagement",    "eventManagementDb", 
+		   "password".toCharArray()); 
+		   System.out.println("Connected to the database successfully");  
+		   MongoDatabase database = mongo.getDatabase("eventManagementDb");  
+		   MongoCollection<Document> collection =    database.getCollection("eventCollection");
+		   System.out.println("Collection examplesCollection selected successfully");
+		   
+		   
+	      collection.updateOne(Filters.eq("ename", ename), Updates.set("estatus","pending")); 
+	      System.out.println("Document update successfully..."); 
+	      
+	      /*FindIterable<Document> iterDoc = collection.find(); 
+	      int i = 1;
+	      // Getting the iterator 
+	      Iterator it = iterDoc.iterator();
+	      while (it.hasNext()) { 
+	      System.out.println(it.next()); 
+	      i++; 
+	      } */
+	   
+	}
+	
 }
 	
 	

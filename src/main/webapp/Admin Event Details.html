@@ -11,6 +11,7 @@
          align: center;
          width: 400px;
         }
+      
 
         
     </style>
@@ -31,6 +32,8 @@
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
   
+ 
+  
   <style>
 .footer {
   position: fixed;
@@ -38,6 +41,8 @@
   bottom: 0;
   width: 100%;
   text-align: center;
+  
+
 }
 </style>
 </head>
@@ -292,8 +297,9 @@
                   
                 </div>
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-fill btn-primary" id="save" hidden="true">Save</button></form>
-                  <button type="submit" class="btn btn-fill btn-danger" onclick="toggleStatusDisable()" id="cancel" hidden="true">Cancel</button></form>
+                  <button type="submit"  class="btn btn-fill btn-primary" id="save" hidden="true"><a href="" ><font color="white">Update Details</font></a></button></form>
+                  <button type="submit"  class="btn btn-fill btn-danger" onclick="toggleStatusDisable()" id="cancel" hidden="true"><a href="/confirmEvent/tomatalina" ><font color="white">Confirm Event</font></a></button></form>
+                  <button type="submit"  class="btn btn-fill btn-primary" onclick="toggleStatusDisable()" id="cancel1" hidden="true"><a href=""> <font color="white">Delete Event</font></a></button></form>
                   <button type="submit" class="btn btn-fill btn-primary" onclick="toggleStatusEnable()" id="update" >Enable for Update</button></form>
                 </div>
               </div>
@@ -658,6 +664,7 @@ function toggleStatusDisable() {
     
         $('#formDetails :input').attr('disabled', true);
         $('#cancel').attr('hidden', true);
+        $('#cancel1').attr('hidden', true);
         $('#save').attr('hidden', true);
         $('#update').attr('hidden', false);
         location.reload();
@@ -669,6 +676,7 @@ function toggleStatusEnable() {
     $('#formDetails :input').attr('disabled', false);
     $('#update').attr('hidden', true);
     $('#cancel').attr('hidden', false);
+    $('#cancel1').attr('hidden', false);
     $('#save').attr('hidden', false);
 
 }
