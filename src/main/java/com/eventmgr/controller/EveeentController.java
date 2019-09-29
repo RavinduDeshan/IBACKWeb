@@ -90,20 +90,23 @@ public class EveeentController {
 	return evlst;
 	 }
 
-	public void deleteEvent(String id) {
+	public void deleteEvent(String ename) {
 		MongoClient mongo = new MongoClient( "localhost" , 27017 );
      	
 		MongoCredential credential; 
-		credential = MongoCredential.createCredential("examplesUser", "examplesDb", 
-		"password".toCharArray()); 
+		   credential = MongoCredential.createCredential("EventManagement",    "eventManagementDb", 
+				   "password".toCharArray()); 
 		System.out.println("Connected to the database successfully");
     
-		MongoDatabase database = mongo.getDatabase("examplesDb");
+		MongoDatabase database = mongo.getDatabase("eventManagementDb");
     	
 		MongoCollection<Document> collection =       database.getCollection("eventCollection");
 		System.out.println("Collection examplesCollection selected successfully");
-   
-		collection.deleteOne(Filters.eq("id", id)); 
+			 
+		System.out.println(ename);
+	
+		String abc=ename;
+		collection.deleteOne(Filters.eq("ename",ename)); 
 		System.out.println("Document deleted successfully..."); 
 		
 	}
@@ -180,6 +183,35 @@ public class EveeentController {
 		   
 		   
 		   FindIterable<Document> iterDoc = collection.find(Filters.eq("estatus", "confirm")); 
+		   int i = 1;
+		   ArrayList<Event> evlst = new ArrayList<Event>();
+		   Iterator it = iterDoc.iterator(); 
+		   while (it.hasNext()) { 
+			   String txt=((it.next().toString().replace("{{", "{\"")).replace("}}", "\"}")).replace("Document", "");
+			   txt=((txt.replace("=", "\":\"")).replace(",", "\",\""));
+			   txt=txt.replace(",\" ", ",\"");
+			   txt= txt.replace("_id", "id");
+		   Gson g = new Gson();
+		   Event p = g.fromJson(txt, Event.class);
+		   evlst.add(p);
+		   i++; 
+		   }
+		return evlst;
+		 }
+	
+	public List<Event> geteventDetails(String ename) {
+		 String str="";
+		 MongoClient mongo = new MongoClient( "localhost" , 27017 );
+		   MongoCredential credential;
+		   credential = MongoCredential.createCredential("EventManagement",    "eventManagementDb", 
+		   "password".toCharArray()); 
+		   System.out.println("Connected to the database successfully");  
+		   MongoDatabase database = mongo.getDatabase("eventManagementDb");  
+		   MongoCollection<Document> collection =    database.getCollection("eventCollection");
+		   System.out.println("Collection examplesCollection selected successfully");
+		   
+		   
+		   FindIterable<Document> iterDoc = collection.find(Filters.eq("ename", ename)); 
 		   int i = 1;
 		   ArrayList<Event> evlst = new ArrayList<Event>();
 		   Iterator it = iterDoc.iterator(); 

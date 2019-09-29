@@ -42,7 +42,9 @@
 </style>
 </head>
 
-<body class="">
+<body class="" onload="myFunction()">
+
+
     <center><div class="logodiv"> <img class="" src="assets/img/logo3.png" alt="..."></div></center>
     
   <div class="wrapper">
@@ -61,8 +63,8 @@
         </div>
         <ul class="nav">
           <li class="active ">
-            <a href="./eventManagement.html">
-              <i class="tim-icons icon-chart-pie-36"></i>
+           <a href="./eventManagement.html">
+             <i class="tim-icons icon-chart-pie-36"></i>
               <p>Event Dashboard</p>
             </a>
           </li>
@@ -217,6 +219,10 @@
                 <div class="card-header">
                   <h5 class="title">Edit Profile</h5>
                 </div>
+                
+                
+                
+
                 <div class="card-body" id="formDetails" >
                   <form>
                     <div class="row">
@@ -224,7 +230,7 @@
                         <div class="form-group">
                           <label>Event Code</label>
                           <input type="text" class="form-control" disabled="" placeholder="" name="eCode">
-                        </div>
+                       </div>
                       </div>
                       <div class="col-md-3 px-md-1">
                         <div class="form-group">
@@ -235,7 +241,7 @@
                       <div class="col-md-4 pl-md-1">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Date</label>
-                          <input type="text" class="form-control" disabled="" placeholder="" name="date">
+                          <input type="text" class="form-control" disabled="" placeholder='' name="date">
                         </div>
                       </div>
                     </div>
@@ -245,7 +251,7 @@
                           <label>Event Type</label>
                           <input type="text" class="form-control" disabled="" placeholder=""  name="eType">
                         </div>
-                      </div>
+                     </div>
                       <div class="col-md-6 pl-md-1">
                         <div class="form-group">
                           <label>Start Time</label>
@@ -668,6 +674,20 @@ function toggleStatusEnable() {
 }
 </script>
 
+ <script>
+      function myFunction(){
+        	  var tes="test";
+        	 jQuery.ajax({
+        	        type: "GET",
+        	        url: "http://localhost:8080/geteventDetails/tomatalina,
+        	        data: { "id": "getStatus" }
+        	    }).done(function(msg) {
+        	    	showUsers(msg)
+        	    });
+        	  
+        	  
+        	});
+</script>
 
 
 </body>

@@ -1042,7 +1042,7 @@
        function showUsers(msg) {    	   
 			var trHTML = '';
 			$.each(msg, function (i, item) {
-			    trHTML += '<tr><td>' + item.id + '</td><td>' + item.ename + '</td><td>' + item.elocation + '</td><td>' + item.ephoneNo +'</td><td>' + item.edate +'</td><td>' + item.etime + '</td><td>' + item.estatus +'</td><td><a class="btn btn-primary" href = "/Admin Event Details.html">View Event</a> <a class="btn btn-danger" href = "/Admin Event Details.html">Remove</a></td></tr>';
+			    trHTML += '<tr><td>' + item.id + '</td><td>' + item.ename + '</td><td>' + item.elocation + '</td><td>' + item.ephoneNo +'</td><td>' + item.edate +'</td><td>' + item.etime + '</td><td>' + item.estatus +'</td><td><a class="btn btn-primary" href = "/Admin Event Details.html">View Event</a> <a class="btn btn-danger" href = "/deleteEvent/{'+item.ename+'}">Remove</a></td></tr>';
 			});
 			$("#reqtbl tr").detach();
 			$('#reqtbl').append(trHTML);

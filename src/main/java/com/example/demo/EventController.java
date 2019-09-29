@@ -13,21 +13,23 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import com.eventmgr.controller.*;
 import com.eventmgr.model.*;
 import com.eventmgr.repositaries.*;
 import com.google.gson.Gson;
 
-
+@RestController
 @Controller
 public class EventController {
 	
-    private MongoTemplate mongoTemplate;
+    //private MongoTemplate mongoTemplate;
 	
 	@RequestMapping("/index")
 	public String home() {
@@ -36,7 +38,8 @@ public class EventController {
 	}
 	
 	@RequestMapping("/addEvent")
-	public String addevent(Event events) {
+	public RedirectView addevent(Event events) {
+		
 		
 		System.out.println("Hiii");
 		System.out.println(events.getEname());
@@ -47,18 +50,19 @@ public class EventController {
 		System.out.println(events.getEdate());
 		EveeentController ev= new EveeentController();
 		ev.createEvent(events);
-		return "index.html";
+		return new RedirectView("/getIndex");
+		
 	}
 	
 	@RequestMapping("/addCustomer")
-	public String addcustomer(Customer customer) {
+	public RedirectView addcustomer(Customer customer) {
 		
 		System.out.println("Hiii");
 		System.out.println(customer.getfName());
 		
 		CustomerController ev= new CustomerController();
 		ev.createCustomer(customer);
-		return "index.html";
+		return new RedirectView("/getIndex");
 	}
 	
 	@RequestMapping("eventManagement")
@@ -68,14 +72,14 @@ public class EventController {
 	}
 	
 	@RequestMapping("/selectAllEvents")
-	public String selctEvent() {
+	public RedirectView selctEvent() {
 		
 		System.out.println("Hiii");
 		
 		EveeentController ev= new EveeentController();
 		ev.getAllEvent();
 		
-		return "event.html";
+		return new RedirectView("/eventManagements");
 		
 	}
 	
@@ -118,14 +122,14 @@ public class EventController {
 	}
 	
 	@RequestMapping("/addSupplier")
-	public String addSupplier(Supplier supplier) {
+	public RedirectView addSupplier(Supplier supplier) {
 		
 		System.out.println("Hiii");
 		System.out.println(supplier.getCompanyName());
 		
 		SupplierController ev= new SupplierController();
 		ev.createSupplier(supplier);
-		return "index.html";
+		return new RedirectView("/getIndex");
 	}
 	
 	@GetMapping("/retrieveSuppliers")
@@ -138,6 +142,24 @@ public class EventController {
 		return sclst;
 	}
 	
+	@RequestMapping("/deleteEvent/{ename}")
+	public RedirectView  deleteEvent(@PathVariable String ename) {
+		
+		EveeentController ev= new EveeentController();
+		System.out.println(ename);
+		
+		ename=(ename.replaceAll("\\p{P}",""));
+		ev.deleteEvent(ename);
+		return new RedirectView("/eventManagements");
+		
+	}
 	
-	
+	@GetMapping("/selcteventDetails/{ename}")
+	public List<Event> selcteventDetails(@PathVariable String ename) {
+		EveeentController ev= new EveeentController();
+		List<Event> evlst = new ArrayList<Event>();
+		ename=(ename.replaceAll("\\p{P}",""));
+		evlst=ev.geteventDetails(ename);
+		return evlst;
+	}
 }
