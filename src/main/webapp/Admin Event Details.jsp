@@ -11,7 +11,6 @@
          align: center;
          width: 400px;
         }
-      
 
         
     </style>
@@ -32,8 +31,6 @@
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
   
- 
-  
   <style>
 .footer {
   position: fixed;
@@ -41,15 +38,11 @@
   bottom: 0;
   width: 100%;
   text-align: center;
-  
-
 }
 </style>
 </head>
 
-<body class="" onload="myFunction()">
-
-
+<body class="">
     <center><div class="logodiv"> <img class="" src="assets/img/logo3.png" alt="..."></div></center>
     
   <div class="wrapper">
@@ -68,8 +61,8 @@
         </div>
         <ul class="nav">
           <li class="active ">
-           <a href="./eventManagement.html">
-             <i class="tim-icons icon-chart-pie-36"></i>
+            <a href="./eventManagement.html">
+              <i class="tim-icons icon-chart-pie-36"></i>
               <p>Event Dashboard</p>
             </a>
           </li>
@@ -224,29 +217,25 @@
                 <div class="card-header">
                   <h5 class="title">Edit Profile</h5>
                 </div>
-                
-                
-                
-
                 <div class="card-body" id="formDetails" >
-                  <form>
+                  <form action="updateEvent/MyWedding">
                     <div class="row">
                       <div class="col-md-5 pr-md-1">
                         <div class="form-group">
                           <label>Event Code</label>
-                          <input type="text" class="form-control" disabled="" placeholder="" name="eCode">
-                       </div>
+                          <input type="text" class="form-control" disabled="" placeholder="" name=id value=${event.id} readonly>
+                        </div>
                       </div>
                       <div class="col-md-3 px-md-1">
                         <div class="form-group">
                           <label>Event Name</label>
-                          <input type="text" class="form-control" disabled="" placeholder=""  name="eventName">
+                          <input type="text" class="form-control" disabled="" value=${event.ename}  name=ename readonly>
                         </div>
                       </div>
                       <div class="col-md-4 pl-md-1">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Date</label>
-                          <input type="text" class="form-control" disabled="" placeholder='' name="date">
+                          <input type="text" class="form-control" disabled="" value=${event.edate} name=edate>
                         </div>
                       </div>
                     </div>
@@ -254,13 +243,13 @@
                       <div class="col-md-6 pr-md-1">
                         <div class="form-group">
                           <label>Event Type</label>
-                          <input type="text" class="form-control" disabled="" placeholder=""  name="eType">
+                          <input type="text" class="form-control" disabled="" value=${event.etype}  name=etype readonly>
                         </div>
-                     </div>
+                      </div>
                       <div class="col-md-6 pl-md-1">
                         <div class="form-group">
                           <label>Start Time</label>
-                          <input type="text" class="form-control" disabled="" placeholder="" name="time">
+                          <input type="text" class="form-control" disabled="" value=${event.etime} name=etime>
                         </div>
                       </div>
                     </div>
@@ -268,7 +257,7 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <label>Venue</label>
-                          <input type="text" class="form-control" disabled="" placeholder="" name="venue">
+                          <input type="text" class="form-control" disabled="" value=${event.elocation} name=elocation>
                         </div>
                       </div>
                     </div>
@@ -277,13 +266,13 @@
                       <div class="col-md-6 pr-md-1">
                         <div class="form-group">
                           <label>Company</label>
-                          <input type="text" class="form-control" disabled="" placeholder=""  name="eCompany">
+                          <input type="text" class="form-control" disabled="" placeholder="IBack"  name=eCompany readonly>
                         </div>
                       </div>
                       <div class="col-md-6 pl-md-1">
                         <div class="form-group">
                           <label>Contact No</label>
-                          <input type="text" class="form-control" disabled="" placeholder="" name="tel">
+                          <input type="text" class="form-control" disabled="" value=${event.ephoneNo} name=ephoneNo>
                         </div>
                       </div>
                     </div>
@@ -297,9 +286,9 @@
                   
                 </div>
                 <div class="card-footer">
-                  <button type="submit"  class="btn btn-fill btn-primary" id="save" hidden="true"><a href="" ><font color="white">Update Details</font></a></button></form>
-                  <button type="submit"  class="btn btn-fill btn-danger" onclick="toggleStatusDisable()" id="cancel" hidden="true"><a href="/confirmEvent/tomatalina" ><font color="white">Confirm Event</font></a></button></form>
-                  <button type="submit"  class="btn btn-fill btn-primary" onclick="toggleStatusDisable()" id="cancel1" hidden="true"><a href=""> <font color="white">Delete Event</font></a></button></form>
+                  <button type="submit" class="btn btn-fill btn-primary" id="save" hidden="true">Update Details</a></button></form>
+                  <button type="submit" class="btn btn-fill btn-danger" onclick="toggleStatusDisable()" id="cancel" hidden="true"><a href="/confirmEvent/{ename}">Confirm Event</a></button></form>
+                  <button type="submit" class="btn btn-fill btn-danger" onclick="toggleStatusDisable()" id="cancel" hidden="true"><a href="/deleteEvent/{ename}">Delete Event</a></button></form>
                   <button type="submit" class="btn btn-fill btn-primary" onclick="toggleStatusEnable()" id="update" >Enable for Update</button></form>
                 </div>
               </div>
@@ -664,7 +653,6 @@ function toggleStatusDisable() {
     
         $('#formDetails :input').attr('disabled', true);
         $('#cancel').attr('hidden', true);
-        $('#cancel1').attr('hidden', true);
         $('#save').attr('hidden', true);
         $('#update').attr('hidden', false);
         location.reload();
@@ -676,26 +664,13 @@ function toggleStatusEnable() {
     $('#formDetails :input').attr('disabled', false);
     $('#update').attr('hidden', true);
     $('#cancel').attr('hidden', false);
-    $('#cancel1').attr('hidden', false);
     $('#save').attr('hidden', false);
-
+    
+    
+    
 }
 </script>
 
- <script>
-      function myFunction(){
-        	  var tes="test";
-        	 jQuery.ajax({
-        	        type: "GET",
-        	        url: "http://localhost:8080/geteventDetails/tomatalina,
-        	        data: { "id": "getStatus" }
-        	    }).done(function(msg) {
-        	    	showUsers(msg)
-        	    });
-        	  
-        	  
-        	});
-</script>
 
 
 </body>

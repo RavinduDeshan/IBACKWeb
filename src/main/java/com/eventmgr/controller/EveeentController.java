@@ -1,11 +1,15 @@
 package com.eventmgr.controller;
 
+import org.springframework.data.mongodb.core.FindAndModifyOptions;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.data.mongodb.core.geo.GeoJson;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.data.mongodb.core.MongoOperations;
 //import com.google.gson.Gson;
 import com.eventmgr.model.Event;
 import com.eventmgr.repositaries.EventRepositary;
@@ -23,6 +27,7 @@ import java.util.Iterator;
 //import org.apache.tomcat.util.json.JSONParser;
 import java.util.List;
 
+import com.mongodb.BasicDBObject;
 import com.mongodb.MongoClient; 
 import com.mongodb.MongoCredential;
 
@@ -200,7 +205,7 @@ public class EveeentController {
 		return evlst;
 		 }
 	
-	public List<Event> geteventDetails(String ename) {
+	public Event geteventDetails(String ename) {
 		 String str="";
 		 MongoClient mongo = new MongoClient( "localhost" , 27017 );
 		   MongoCredential credential;
@@ -211,10 +216,9 @@ public class EveeentController {
 		   MongoCollection<Document> collection =    database.getCollection("eventCollection");
 		   System.out.println("Collection examplesCollection selected successfully");
 		   
-		   
 		   FindIterable<Document> iterDoc = collection.find(Filters.eq("ename", ename)); 
 		   int i = 1;
-		   ArrayList<Event> evlst = new ArrayList<Event>();
+		   Event p=new Event();
 		   Iterator it = iterDoc.iterator(); 
 		   while (it.hasNext()) { 
 			   String txt=((it.next().toString().replace("{{", "{\"")).replace("}}", "\"}")).replace("Document", "");
@@ -222,11 +226,13 @@ public class EveeentController {
 			   txt=txt.replace(",\" ", ",\"");
 			   txt= txt.replace("_id", "id");
 		   Gson g = new Gson();
-		   Event p = g.fromJson(txt, Event.class);
-		   evlst.add(p);
-		   i++; 
+		  
+		    p = g.fromJson(txt, Event.class);
+		  
 		   }
-		return evlst;
+		    
+		   return p;
+		 
 		 }
 	public void confirmEvent(String ename) {
 		MongoClient mongo = new MongoClient( "localhost" , 27017 );
@@ -251,6 +257,25 @@ public class EveeentController {
 	      i++; 
 	      } */
 	   
+	}
+	
+	public void updateEvent(Event event,String ename) {
+		MongoClient mongo = new MongoClient( "localhost" , 27017 );
+		   MongoCredential credential;
+		   credential = MongoCredential.createCredential("EventManagement",    "eventManagementDb", 
+		   "password".toCharArray()); 
+		   System.out.println("Connected to the database successfully");  
+		   MongoDatabase database = mongo.getDatabase("eventManagementDb");  
+		   MongoCollection<Document> collection =    database.getCollection("eventCollection");
+		   System.out.println("Collection examplesCollection selected successfully");
+		   
+		   collection.updateOne(Filters.eq("ename", ename), Updates.set("edate",event.getEdate()));
+		   collection.updateOne(Filters.eq("ename", ename), Updates.set("elocation",event.getElocation()));
+		   collection.updateOne(Filters.eq("ename", ename), Updates.set("etime",event.getEtime()));
+		   collection.updateOne(Filters.eq("ename", ename), Updates.set("ephoneNo",event.getEphoneNo()));
+			
+			 
+			System.out.println("Collection examplesCollection updated successfully");
 	}
 	
 }

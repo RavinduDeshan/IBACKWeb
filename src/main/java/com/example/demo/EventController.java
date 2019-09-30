@@ -8,16 +8,22 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import com.eventmgr.controller.*;
@@ -155,13 +161,13 @@ public class EventController {
 	}
 	
 	@GetMapping("/selcteventDetails/{ename}")
-	public List<Event> selcteventDetails(@PathVariable String ename) {
+	/*public List<Event> selcteventDetails(@PathVariable String ename) {
 		EveeentController ev= new EveeentController();
 		List<Event> evlst = new ArrayList<Event>();
 		ename=(ename.replaceAll("\\p{P}",""));
 		evlst=ev.geteventDetails(ename);
 		return evlst;
-	}
+	}*/
 	
 	@RequestMapping("/confirmEvent/{ename}")
 	public RedirectView  confirmEvent(@PathVariable String ename) {
@@ -174,4 +180,42 @@ public class EventController {
 		return new RedirectView("/eventManagements");
 		
 	}
+	@RequestMapping("/updateEvent/{ename}")
+	public RedirectView updateEvents(Event event,@PathVariable String ename) {
+		
+		System.out.println("Hiii Update");
+		System.out.println(event.getEname());
+		
+		EveeentController ev= new EveeentController();
+		System.out.println(ename);
+		ev.updateEvent(event,ename);
+		return new RedirectView("/eventManagements");
+	}
+	
+	@RequestMapping("/AdminEventDetails/{ename}")
+	public  RedirectView AdminEventDetails(@PathVariable String ename,@Valid Event customer, BindingResult result,Model model,RedirectAttributes redirectAttributes) {
+        model.addAttribute("customer",customer);
+        //Do the Registration logic and then redirect to home page without using action for home page
+       
+       redirectAttributes.addFlashAttribute("customerEmail", customer.getEname());
+		
+		System.out.println("Hiii admin");
+		
+		String name=ename;
+		EveeentController ev= new EveeentController();
+		List<Event> evlst = new ArrayList<Event>();
+		
+	//name=(ename.replaceAll("\\p{P}",""));
+	//vlst=ev.geteventDetails(ename);		
+		//odel.put("message", evlst);
+		//edirectAttributes.addFlashAttribute("message", evlst);
+		return new RedirectView("/adminEventDtls");
+		//return evlst;
+		
+		
+	}
+	
+	
+
+	
 }
