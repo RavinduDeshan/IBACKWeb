@@ -288,7 +288,7 @@
                 <div class="card-footer">
                   <button type="submit" class="btn btn-fill btn-primary" id="save" hidden="true">Update Details</a></button></form>
                   <button type="submit" class="btn btn-fill btn-danger" onclick="toggleStatusDisable()" id="cancel" hidden="true"><a href="/confirmEvent/${event.ename}">Confirm Event</a></button></form>
-                  <button type="submit" class="btn btn-fill btn-danger" onclick="toggleStatusDisable()" id="cancel1" hidden="true"><a href="/deleteEvent/${event.ename}">Delete Event</a></button></form>
+                  <button type="submit" class="btn btn-fill btn-danger" onclick="toggleStatusDisable()" id="cancel1" hidden="true"><a href = "/deleteEvent/${event.ename}">Delete Event</a></button></form>
                   <button type="submit" class="btn btn-fill btn-primary" onclick="toggleStatusEnable()" id="update" >Enable for Update</button></form>
                 </div>
               </div>
