@@ -345,7 +345,7 @@ padding-right: 20px;
 							<div class="col-sm-4 col-xs-4 w3ls-lt-form">
 								<div class="w3ls-pr">
 									<input type="tel" name=ephoneNo placeholder="Phone no" required="required">
-									<input type="date" name=edate required="required" placeholder="Select Date">
+									<input type="date" id="date" name=edate required="required" placeholder="Select Date" onchange="checkDate()">
 									
 								</div>
 							</div>
@@ -645,6 +645,50 @@ $("#booknow3").click(function() {
 	
 });
 
+
+</script>
+<script type="text/javascript">
+function checkDate(){
+    var idate = document.getElementById("date"),
+        //resultDiv = document.getElementById("datewarn"),
+        dateReg = /(0[1-9]|[12][0-9]|3[01])[\/](0[1-9]|1[012])[\/]201[4-9]|20[2-9][0-9]/;
+
+    /*if(!dateReg.test(idate.value)){
+       // resultDiv.innerHTML = "Invalid date!";
+        //resultDiv.style.color = "red";
+        //return; 
+    	 window.alert("Enter a Future Date");
+    } */
+
+    if(isFutureDate(idate.value)==true){
+    	window.alert("Correct");
+       
+    } else {
+    	window.alert("Enter a Future Date");
+    }
+    
+    
+    
+    function isFutureDate(idate){
+    	var today = new Date().getTime(),
+        idate = idate.split("/");
+
+    idate = new Date(idate[2], idate[1] - 1, idate[0]).getTime();
+            console.log(today);
+            console.log(idate);
+
+        if(today-idate<0){
+        	return true;
+        }else{
+        	return false;
+        }
+        	
+    }
+    
+}
+
+
+    
 
 </script>
 
