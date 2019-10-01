@@ -214,8 +214,83 @@ public class EventController {
 		
 		
 	}
+	@RequestMapping("/addSuplierPayment")
+	public String createSupplierPayment(SupplierPayment supplierPay) {
+		
+		
+		SupplierPaymentController ev= new SupplierPaymentController();
+		ev.createSupplierPayment(supplierPay);
+		System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPP");
+		return "index.html";
+		
+	}
+	@RequestMapping("/addCustomerPayment")
+	public String createCustomerPayment(CustomerPayment customerPay) {
+		
+		
+		CustomerPaymentController ev= new CustomerPaymentController();
+		ev.createCustomerPayment(customerPay);
+		System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPP");
+		return "index.html";
+		
+	}
 	
+	@RequestMapping("/selectCustomerPayment")
+	public List<CustomerPayment> getAllCustomerPayments() {
+		System.out.println("Calll");
+		CustomerPaymentController ev= new CustomerPaymentController();
+		List<CustomerPayment> evlst = new ArrayList<CustomerPayment>();
+		evlst=ev.getAllCustomerPayments();
+		System.out.println("Calll11111111111111111111");
+		return evlst;
+		
+	}
+	
+	@RequestMapping("/selectCustomerPendingPayment")
+	public List<CustomerPayment> getPendingCustomerPayments() {
+		System.out.println("Calll");
+		CustomerPaymentController ev= new CustomerPaymentController();
+		List<CustomerPayment> evlst = new ArrayList<CustomerPayment>();
+		evlst=ev.getPendingCustomerPayment();
+		System.out.println("Calll11111111111111111111");
+		return evlst;
+		
+	}
 	
 
+	@RequestMapping("/selectSupplierPendingPayment")
+	public List<SupplierPayment> getPendingSupplierPayments() {
+		System.out.println("Calll");
+		SupplierPaymentController ev= new SupplierPaymentController();
+		List<SupplierPayment> evlst = new ArrayList<SupplierPayment>();
+		evlst=ev.getPendingSupplierPayment();
+		System.out.println("Call222222222222222222222222222221");
+		return evlst;
+		
+	}
 	
+	@RequestMapping("/deleteCustomerPayment/{ename}")
+	public RedirectView  deleteCustomerPayment(@PathVariable String ename) {
+		
+		CustomerPaymentController ev= new CustomerPaymentController();
+		System.out.println(ename);
+		
+		System.out.println("yyyyyyyyyyyyyyyyyyioit");
+		ename=(ename.replaceAll("\\p{P}",""));
+		ev.deleteCustomerPayment(ename);
+		return new RedirectView("/paymentDashboard");
+		
+	}
+	
+	@RequestMapping("/updateCustomerPayment/{ename}")
+	public RedirectView updateCustomerPayment(CustomerPayment cs,@PathVariable String ename) {
+		
+		System.out.println("Hiii Update");
+		System.out.println(cs.getEventName());
+		
+		CustomerPaymentController ev= new CustomerPaymentController();
+		System.out.println(ename);
+		ev.updateCustomerPayment(cs,ename);
+		return new RedirectView("/PaymentDashboard");
+	}
 }
