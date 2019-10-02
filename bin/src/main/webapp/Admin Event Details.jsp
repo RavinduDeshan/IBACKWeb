@@ -218,24 +218,24 @@
                   <h5 class="title">Edit Profile</h5>
                 </div>
                 <div class="card-body" id="formDetails" >
-                  <form>
+                  <form action="updateEvent/${event.ename }">
                     <div class="row">
                       <div class="col-md-5 pr-md-1">
                         <div class="form-group">
                           <label>Event Code</label>
-                          <input type="text" class="form-control" disabled="" placeholder="" name="eCode">
+                          <input type="text" class="form-control" disabled="" placeholder="" name=id value=${event.id} readonly>
                         </div>
                       </div>
                       <div class="col-md-3 px-md-1">
                         <div class="form-group">
                           <label>Event Name</label>
-                          <input type="text" class="form-control" disabled="" placeholder=""  name="eventName">
+                          <input type="text" class="form-control" disabled="" value=${event.ename}  name=ename readonly>
                         </div>
                       </div>
                       <div class="col-md-4 pl-md-1">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Date</label>
-                          <input type="text" class="form-control" disabled="" placeholder="" name="date">
+                          <input type="text" class="form-control" disabled="" value=${event.edate} name=edate>
                         </div>
                       </div>
                     </div>
@@ -243,13 +243,13 @@
                       <div class="col-md-6 pr-md-1">
                         <div class="form-group">
                           <label>Event Type</label>
-                          <input type="text" class="form-control" disabled="" placeholder=""  name="eType">
+                          <input type="text" class="form-control" disabled="" value=${event.etype}  name=etype readonly>
                         </div>
                       </div>
                       <div class="col-md-6 pl-md-1">
                         <div class="form-group">
                           <label>Start Time</label>
-                          <input type="text" class="form-control" disabled="" placeholder="" name="time">
+                          <input type="text" class="form-control" disabled="" value=${event.etime} name=etime>
                         </div>
                       </div>
                     </div>
@@ -257,7 +257,7 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <label>Venue</label>
-                          <input type="text" class="form-control" disabled="" placeholder="" name="venue">
+                          <input type="text" class="form-control" disabled="" value=${event.elocation} name=elocation>
                         </div>
                       </div>
                     </div>
@@ -266,13 +266,13 @@
                       <div class="col-md-6 pr-md-1">
                         <div class="form-group">
                           <label>Company</label>
-                          <input type="text" class="form-control" disabled="" placeholder=""  name="eCompany">
+                          <input type="text" class="form-control" disabled="" placeholder="IBack"  name=eCompany readonly>
                         </div>
                       </div>
                       <div class="col-md-6 pl-md-1">
                         <div class="form-group">
                           <label>Contact No</label>
-                          <input type="text" class="form-control" disabled="" placeholder="" name="tel">
+                          <input type="text" class="form-control" disabled="" value=${event.ephoneNo} name=ephoneNo>
                         </div>
                       </div>
                     </div>
@@ -286,8 +286,9 @@
                   
                 </div>
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-fill btn-primary" id="save" hidden="true">Save</button></form>
-                  <button type="submit" class="btn btn-fill btn-danger" onclick="toggleStatusDisable()" id="cancel" hidden="true">Cancel</button></form>
+                  <button type="submit" class="btn btn-fill btn-primary" id="save" hidden="true">Update Details</a></button></form>
+                  <button type="submit" class="btn btn-fill btn-danger" onclick="toggleStatusDisable()" id="cancel" hidden="true"><a href="/confirmEvent/${event.ename}">Confirm Event</a></button></form>
+                  <button type="submit" class="btn btn-fill btn-danger" onclick="toggleStatusDisable()" id="cancel1" hidden="true"><a href="/deleteEvent/${event.ename}">Delete Event</a></button></form>
                   <button type="submit" class="btn btn-fill btn-primary" onclick="toggleStatusEnable()" id="update" >Enable for Update</button></form>
                 </div>
               </div>
@@ -652,6 +653,7 @@ function toggleStatusDisable() {
     
         $('#formDetails :input').attr('disabled', true);
         $('#cancel').attr('hidden', true);
+        $('#cancel1').attr('hidden', true);
         $('#save').attr('hidden', true);
         $('#update').attr('hidden', false);
         location.reload();
@@ -663,8 +665,11 @@ function toggleStatusEnable() {
     $('#formDetails :input').attr('disabled', false);
     $('#update').attr('hidden', true);
     $('#cancel').attr('hidden', false);
+    $('#cancel1').attr('hidden', false);
     $('#save').attr('hidden', false);
-
+    
+    
+    
 }
 </script>
 

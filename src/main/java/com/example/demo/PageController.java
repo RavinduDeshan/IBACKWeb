@@ -60,4 +60,12 @@ public class PageController {
         
 		return "Admin Event Details.jsp";
 	}
+	
+	@RequestMapping("//paymentDashboard")
+	public String home22() {
+		System.out.println("Home Called");
+		
+		return "PaymentDashboard.html";
+	}
+	
 }

@@ -343,6 +343,7 @@ public class EveeentController {
 			System.out.println("Collection examplesCollection updated successfully");
 	}
 	
+
 	public List<Event> getUpcomingEvent() {
 		 String str="";
 		 MongoClient mongo = new MongoClient( "localhost" , 27017 );
@@ -400,6 +401,10 @@ public class EveeentController {
 		   }
 		return evlst;
 		 }
+
+	
+	
+
 	
 }
 	
