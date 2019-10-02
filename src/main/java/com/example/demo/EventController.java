@@ -230,6 +230,14 @@ public class EventController {
 		return "index.html";
 		
 	}
+	
+	@RequestMapping("customerManagement")
+	public String dashhboard2() {
+		
+		return "customerManagement.html";
+	}
+	
+	
 	@RequestMapping("/addCustomerPayment")
 	public String createCustomerPayment(CustomerPayment customerPay) {
 		
@@ -252,6 +260,18 @@ public class EventController {
 		
 	}
 	
+	@RequestMapping("/deleteCustomer/{nic}")
+	public RedirectView  deleteCustomer(@PathVariable String nic) {
+		
+		CustomerController cus= new CustomerController();
+		System.out.println(nic);
+		
+		nic=(nic.replaceAll("\\p{P}",""));
+		cus.deleteCustomer(nic);
+		return new RedirectView("/customerManagements");
+		
+	}
+	
 
 	@RequestMapping("/addEventInquiry")
 	public RedirectView addeventInquiry(Inquiries inq) {
@@ -263,6 +283,14 @@ public class EventController {
 		evq.createInquiry(inq);
 		return new RedirectView("/getIndex");
 		
+	}
+	@GetMapping("/selectAllCustomer")
+	public float selctAllCustomer(HttpServletRequest request) {
+		CustomerController c=new CustomerController();
+		float res1=c.countAllCustomer();
+		System.out.println("Count is"+res1);
+		return res1;
+	
 	}
 
 	@GetMapping("/selectCountRequestEvents")
@@ -312,6 +340,7 @@ public class EventController {
 		return evlst;
 		
 	}
+	
 	
 
 	@RequestMapping("/selectSupplierPendingPayment")

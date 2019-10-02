@@ -15,7 +15,7 @@ public class Customer {
 	private String fName;
 	private String lName;
 	private String address;
-	private String  phneNo;
+	private String phneNo;
 	private String username;
 	public String getUsername() {
 		return username;

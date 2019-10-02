@@ -35,6 +35,13 @@ public class PageController {
 		return "eventManagement.html";
 	}
 	
+	@RequestMapping("/customerManagements")
+	public String dashhboar2d() {
+		
+		return "customerManagement.html";
+	}
+	
+	
 	@RequestMapping("/adminEventDtls")
 	public String adminEventDtls( HttpServletRequest request,Model model,ModelAndView testModel) {
 		System.out.println("test");

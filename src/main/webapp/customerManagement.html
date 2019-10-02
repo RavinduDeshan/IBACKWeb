@@ -223,7 +223,7 @@
                       <div class="col-7 col-md-8">
                         <div class="numbers">
                           <p class="card-category">Total Customers</p>
-                          <p class="card-title">150
+                          <p class="card-title" id="demo">
                             <p>
                         </div>
                       </div>
@@ -249,7 +249,7 @@
                       <div class="col-7 col-md-8">
                         <div class="numbers">
                           <p class="card-category">Total Events Created</p>
-                          <p class="card-title">1,345
+                          <p class="card-title" id="demo3">
                             <p>
                         </div>
                       </div>
@@ -824,15 +824,104 @@ $("#pend").removeClass("btn btn-primary");
       	  
       	});
        function showUsers(msg) {    	   
-			var trHTML = '';
+			var trHTML = '<tr><th>NIC No:</th><th>First Name</th><th>Last Name</th><th>User Name</th><th>Email</th><th>Actions</th></tr>';
 			$.each(msg, function (i, item) {
-			    trHTML += '<tr><td>' + item.id + '</td><td>' + item.fName + '</td><td>'  + item.address +'</td><td>' + item.email +'</td><td><a class="btn btn-primary" href = "/Customer Details.html">View Customer</a><a class="btn btn-danger" href = "/Admin Event Details.html">Remove</a></td></tr>';
+			    trHTML += '<tr><td>' + item.nic + '</td><td>' + item.fName + '</td><td>' + item.lName + '</td><td>'  + item.username +'</td><td>' + item.email +'</td><td><a class="btn btn-primary" href = "/Customer Details.html">View Customer</a><a class="btn btn-danger" href = "/deleteCustomer/{'+item.nic+'}">Remove</a></td></tr>';
 			});
 			$("#reqtbl tr").detach();
 			$('#reqtbl').append(trHTML);
 			$( ".card" ).show();
        }
         </script>
+        
+        <script>
+  	function myFunction(){
+  		 var tes="test";
+      	 jQuery.ajax({
+      	        type: "GET",
+      	        url: "http://localhost:8080/selectAllCustomer",
+      	        data: { "id": "getStatus" }
+      	    }).done(function(msg) {
+      	    	document.getElementById("demo").innerHTML = msg;
+      	    });
+      	function showUsers(msg) {    	   
+			var trHTML = '';
+			$.each(msg, function (i, item) {
+			    document.getElementById("demo").innerHTML = "Paragraph changed!";
+			});$("#reqtbl tr").detach();
+			$('#reqtbl').append(trHTML);
+			$( ".card" ).show();
+			
+			
+       }
+      	
+      	 var tes="test1";
+      	 jQuery.ajax({
+      	        type: "GET",
+      	        url: "http://localhost:8080/selectCountRequestEvents",
+      	        data: { "id": "getStatus" }
+      	    }).done(function(msg) {
+      	    	document.getElementById("demo1").innerHTML = msg;
+      	    });
+      	function showUsers(msg) {    	   
+			var trHTML = '';
+			$.each(msg, function (i, item) {
+			    document.getElementById("demo").innerHTML = "Paragraph changed!";
+			});$("#reqtbl tr").detach();
+			$('#reqtbl').append(trHTML);
+			$( ".card" ).show();
+			
+			
+       }
+      	
+      	 var tes="test2";
+      	 jQuery.ajax({
+      	        type: "GET",
+      	        url: "http://localhost:8080/selectConfirmRequestEvents",
+      	        data: { "id": "getStatus" }
+      	    }).done(function(msg) {
+      	    	document.getElementById("demo2").innerHTML = msg;
+      	    });
+      	function showUsers(msg) {    	   
+			var trHTML = '';
+			$.each(msg, function (i, item) {
+			    document.getElementById("demo").innerHTML = "Paragraph changed!";
+			});$("#reqtbl tr").detach();
+			$('#reqtbl').append(trHTML);
+			$( ".card" ).show();
+			
+			
+       }
+      	
+      	var tes="test3";
+     	 jQuery.ajax({
+     	        type: "GET",
+     	        url: "http://localhost:8080/selectAllRequestEvents",
+     	        data: { "id": "getStatus" }
+     	    }).done(function(msg) {
+     	    	document.getElementById("demo3").innerHTML = msg;
+     	    });
+     	function showUsers(msg) {    	   
+			var trHTML = '';
+			$.each(msg, function (i, item) {
+			    document.getElementById("demo").innerHTML = "Paragraph changed!";
+			});$("#reqtbl tr").detach();
+			$('#reqtbl').append(trHTML);
+			$( ".card" ).show();
+			
+			
+      }
+      		
+      	  
+      	
+  	}
+  
+  
+  
+  
+  
+  </script>
+  
 
 </body>
 
