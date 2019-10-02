@@ -49,7 +49,8 @@
 
 </head>
 
-<body class="">
+<body onload="myFunction()">
+
     <center><div class="logodiv"> <img class="" src="assets/img/logo3.png" alt="..."></div></center>
     
   <div class="wrapper">
@@ -233,8 +234,8 @@
                       </div>
                       <div class="col-7 col-md-8">
                         <div class="numbers">
-                          <p class="card-category">Total Customers</p>
-                          <p class="card-title">150
+                          <p class="card-category">Total Events</p>
+                          <p class="card-title" id="demo3">
                             <p>
                         </div>
                       </div>
@@ -243,7 +244,10 @@
                   <div class="card-footer ">
                     <hr>
                     <div class="stats">
-                      <i class="fa fa-refresh"></i> Refresh For Updates
+                      <i class="fa fa-refresh"></i> 
+                      <a href="">Refresh For Updates</a>
+                      <br>
+                      <a href="Export()">Export List To PDF</a>
                     </div>
                   </div>
                 </div>
@@ -259,8 +263,8 @@
                       </div>
                       <div class="col-7 col-md-8">
                         <div class="numbers">
-                          <p class="card-category">Total Events Created</p>
-                          <p class="card-title">1,345
+                          <p class="card-category">Requested Events </p>
+                          <p class="card-title" id="demo">
                             <p>
                         </div>
                       </div>
@@ -269,7 +273,10 @@
                   <div class="card-footer ">
                     <hr>
                     <div class="stats">
-                      <i class="fa fa-calendar-o"></i> Refresh For Updates
+                      <i class="fa fa-calendar-o"></i>
+                         <a href="">Refresh For Updates</a>
+                         <br>
+                      	<a href="">Export List To PDF</a>
                     </div>
                   </div>
                 </div>
@@ -285,8 +292,8 @@
                       </div>
                       <div class="col-7 col-md-8">
                         <div class="numbers">
-                          <p class="card-category">Idle Customers</p>
-                          <p class="card-title">23
+                          <p class="card-category" >Pending Events</p>
+                          <p class="card-title" id="demo1">
                             <p>
                         </div>
                       </div>
@@ -295,7 +302,10 @@
                   <div class="card-footer ">
                     <hr>
                     <div class="stats">
-                      <i class="fa fa-clock-o"></i> <a href="" class="alink">Show Details</a>
+                      <i class="fa fa-clock-o"></i> 
+                      <a href="">Refresh For Updates</a>
+                      <br>
+                      <a href="">Export List To PDF</a>
                     </div>
                   </div>
                 </div>
@@ -311,8 +321,8 @@
                       </div>
                       <div class="col-7 col-md-8">
                         <div class="numbers">
-                          <p class="card-category">Accounts Suspended</p>
-                          <p class="card-title">45
+                          <p class="card-category">Confirmed Events</p>
+                          <p class="card-title" id="demo2">
                             <p>
                         </div>
                       </div>
@@ -321,7 +331,10 @@
                   <div class="card-footer ">
                     <hr>
                     <div class="stats">
-                      <i class="fa fa-refresh"></i> <a href="" class="alink">Show Details</a>
+                      <i class="fa fa-refresh"></i>
+                       <a href="">Refresh For Updates</a>
+                       <br>
+                       <a href="">Export List To PDF</a>
                     </div>
                   </div>
                 </div>
@@ -335,7 +348,7 @@
                         
                           <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
                              <button class="btn btn-danger" id="req" >Requests</button>
-                              <!-- button class="btn btn-danger" id="req" onclick="showReq()">Requests</button-->
+                              <!-- button class="btn btn-danger" id="req" onclick="showReq()" >Requests</button-->
                               <button class="btn btn-primary" id="pend"  >Pending</button>
                             <!--button class="btn btn-primary" id="pend"  onclick="showPend()">Pending</button-->
                             <!-- button class="btn btn-primary" id="confirm"  onclick="showCon()">Confirm</button-->
@@ -694,7 +707,7 @@
       </div>
       <div class="card-body">
         <div class="table-responsive">
-          <table class="table tablesorter " id="">
+          <table class="table tablesorter " id="tblCustomers">
             <thead class=" text-primary">
               <tr>
                 <th>
@@ -1114,6 +1127,96 @@ $("#pend").removeClass("btn btn-primary");
       
       }
   </script>
+<script>
+  	function myFunction(){
+  		 var tes="test";
+      	 jQuery.ajax({
+      	        type: "GET",
+      	        url: "http://localhost:8080/selectCountRequestEvents",
+      	        data: { "id": "getStatus" }
+      	    }).done(function(msg) {
+      	    	document.getElementById("demo").innerHTML = msg;
+      	    });
+      	function showUsers(msg) {    	   
+			var trHTML = '';
+			$.each(msg, function (i, item) {
+			    document.getElementById("demo").innerHTML = "Paragraph changed!";
+			});$("#reqtbl tr").detach();
+			$('#reqtbl').append(trHTML);
+			$( ".card" ).show();
+			
+			
+       }
+      	
+      	 var tes="test1";
+      	 jQuery.ajax({
+      	        type: "GET",
+      	        url: "http://localhost:8080/selectPendRequestEvents",
+      	        data: { "id": "getStatus" }
+      	    }).done(function(msg) {
+      	    	document.getElementById("demo1").innerHTML = msg;
+      	    });
+      	function showUsers(msg) {    	   
+			var trHTML = '';
+			$.each(msg, function (i, item) {
+			    document.getElementById("demo").innerHTML = "Paragraph changed!";
+			});$("#reqtbl tr").detach();
+			$('#reqtbl').append(trHTML);
+			$( ".card" ).show();
+			
+			
+       }
+      	
+      	 var tes="test2";
+      	 jQuery.ajax({
+      	        type: "GET",
+      	        url: "http://localhost:8080/selectConfirmRequestEvents",
+      	        data: { "id": "getStatus" }
+      	    }).done(function(msg) {
+      	    	document.getElementById("demo2").innerHTML = msg;
+      	    });
+      	function showUsers(msg) {    	   
+			var trHTML = '';
+			$.each(msg, function (i, item) {
+			    document.getElementById("demo").innerHTML = "Paragraph changed!";
+			});$("#reqtbl tr").detach();
+			$('#reqtbl').append(trHTML);
+			$( ".card" ).show();
+			
+			
+       }
+      	
+      	var tes="test3";
+     	 jQuery.ajax({
+     	        type: "GET",
+     	        url: "http://localhost:8080/selectAllRequestEvents",
+     	        data: { "id": "getStatus" }
+     	    }).done(function(msg) {
+     	    	document.getElementById("demo3").innerHTML = msg;
+     	    });
+     	function showUsers(msg) {    	   
+			var trHTML = '';
+			$.each(msg, function (i, item) {
+			    document.getElementById("demo").innerHTML = "Paragraph changed!";
+			});$("#reqtbl tr").detach();
+			$('#reqtbl').append(trHTML);
+			$( ".card" ).show();
+			
+			
+      }
+      		
+      	  
+      	
+  	}
+  
+  
+  
+  
+  
+  </script>
+  
+  
+
 
 
 </body>

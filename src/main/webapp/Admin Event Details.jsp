@@ -42,7 +42,7 @@
 </style>
 </head>
 
-<body class="">
+<body onload="abc()">
     <center><div class="logodiv"> <img class="" src="assets/img/logo3.png" alt="..."></div></center>
     
   <div class="wrapper">
@@ -458,24 +458,15 @@
                       </div>
                       <div class="card-body">
                         <div class="table-responsive">
-                          <table class="table tablesorter " id="">
+                          <table class="table tablesorter " id="reqtbl">
                             <thead class=" text-primary">
-                            
+                            <tr>
+                            	<th>Event Name</th>
+                            	<th>Inquiry</th>
+                            </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                               
-                                <td>
-                                  <div class="alert alert-info alert-with-icon" data-notify="container" style="background-color: coral" id="notificationBack">
-                                    <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close" onclick="changeColor()">
-                                      <i class="tim-icons icon-simple-remove"></i>
-                                    </button>
-                                    <span data-notify="icon" class="tim-icons icon-bell-55"></span><span data-notify="message" id="notificationDate" style="font-weight:bold">Date and Time</span>
-                                    <span data-notify="message" id="notificationDetails">This is a notification with close button and icon and have many lines. You can see that the icon and the close button are always vertically aligned. This is a beautiful notification. So you don't have to worry about the style.</span>
-                                  </div>
-                                </td>
-                                
-                              </tr>
+                             
                               
                               
                               
@@ -675,6 +666,31 @@ function toggleStatusEnable() {
 
 
 
+<script>
+ 	function abc(){
+ 		var tes="test";
+     	 jQuery.ajax({
+     	        type: "GET",
+     	        url: "http://localhost:8080/selectEventInquiries/${event.ename}",
+     	        data: { "id": "getStatus" }
+     	    }).done(function(msg) {
+     	    	showUsers(msg)
+     	    });
+     	function showUsers(msg) {    	   
+			var trHTML = '';
+			$.each(msg, function (i, item) {
+			    trHTML += '<tr><td>' + item.ename + '</td><td>' + item.inquiry + '</td></tr>';
+			});
+			$("#reqtbl tr").detach();
+			$('#reqtbl').append(trHTML);
+			$( ".card" ).show();
+       }
+     	 
+ 	}
+ 
+ </script>
+ 
+  
 </body>
 
 

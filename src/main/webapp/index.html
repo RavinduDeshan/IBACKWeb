@@ -127,13 +127,13 @@ padding-right: 20px;
 								<li class="hidden"><a class="page-scroll" href="#page-top"></a>	</li>
 								<li><a class="hvr-sweep-to-right" href="index.html">Home</a></li>
 								<li><a class="hvr-sweep-to-right" href="about.html">About</a></li>
-								<li><a class="hvr-sweep-to-right" href="events.html">Events</a></li>
+								<li><a class="hvr-sweep-to-right" href="Event Profile.html">Events</a></li>
 			
 								<li><a class="hvr-sweep-to-right" href="gallery.html">Gallery</a></li>
 								<li><a class="hvr-sweep-to-right" href="contact.html">Contact</a></li>
 								<li><a class="hvr-sweep-to-right" href="login.html">Login</a></li>
 								<li><a class="hvr-sweep-to-right" href="Customer SignUp.html">Sign Up</a></li>
-								<li><a class="hvr-sweep-to-right" href="Customer Profile.html">Profile</a></li>
+								<li><a class="hvr-sweep-to-right" href="Event Profile.html">Profile</a></li>
 							</ul>
 						</div>
 						<!-- /.navbar-collapse -->
@@ -410,6 +410,15 @@ padding-right: 20px;
 
 	</div>
 </div>
+
+
+
+
+
+
+
+
+
 <!--//testimonials-->
 
 <!-- footer-top -->	
@@ -460,6 +469,14 @@ padding-right: 20px;
 				<div class="clearfix"></div>
 		</div>
 	</div>
+	
+	<div>
+ 		<form action="/addEventInquiry">
+ 			<input type="textarea" name=inquiry>
+ 			<button>Submit</button>
+ 		
+ 		</form>
+ </div>    
 <!-- /footer-top -->							
 
 <!-- footer -->
@@ -670,14 +687,20 @@ function checkDate(){
     
     
     function isFutureDate(idate){
-    	var today = new Date().getTime(),
+    	//var today = new Date().getTime(),
         idate = idate.split("/");
+    	
+    	var today = new Date();
+    	var date = today.getFullYear()+'/'+(today.getMonth()+1)+'/'+today.getDate();
+    	
 
-    idate = new Date(idate[2], idate[1] - 1, idate[0]).getTime();
-            console.log(today);
+   // idate = new Date(idate[2], idate[1] - 1, idate[0]).getTime();
+            console.log(date);
             console.log(idate);
+            var x = Math.floor((date - idate));
+            console.log(x);
 
-        if(today-idate<0){
+        if(date-idate<0){
         	return true;
         }else{
         	return false;

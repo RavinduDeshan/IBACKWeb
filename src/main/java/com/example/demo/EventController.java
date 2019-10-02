@@ -43,6 +43,12 @@ public class EventController {
 		return "index.html";
 	}
 	
+	@RequestMapping("/eventProfile")
+	public String home147() {
+		
+		return "eventProfile.html";
+	}
+	
 	@RequestMapping("/addEvent")
 	public RedirectView addevent(Event events) {
 		
@@ -109,7 +115,7 @@ public class EventController {
 
 	@GetMapping("/selectPendingEvent")
 	public List<Event> getPendingEvent() {
-		
+		System.out.println("ppppp");
 		EveeentController ev= new EveeentController();
 		List<Event> evlst = new ArrayList<Event>();
 		evlst=ev.getPendingEvent();
@@ -215,7 +221,69 @@ public class EventController {
 		
 	}
 	
-	
+	@RequestMapping("/addEventInquiry")
+	public RedirectView addeventInquiry(Inquiries inq) {
+		EventInquiry evq=new EventInquiry();
+		
+		System.out.println("Hiii");
+		inq.setEname("MyWedding");
+		inq.setCusId("C001");
+		evq.createInquiry(inq);
+		return new RedirectView("/getIndex");
+		
+	}
 
+	@GetMapping("/selectCountRequestEvents")
+	public float selctCountRequestEvent(HttpServletRequest request) {
+		EveeentController e=new EveeentController();
+		float res=e.countReqEvent();
+		System.out.println("Count is"+res);
+		return res;
+	}
+	@GetMapping("/selectPendRequestEvents")
+	public float selctPendRequestEvent(HttpServletRequest request) {
+		EveeentController e=new EveeentController();
+		float res1=e.countPendEvent();
+		System.out.println("Count is"+res1);
+		return res1;
+	}
+	@GetMapping("/selectConfirmRequestEvents")
+	public float selctConfirmRequestEvent(HttpServletRequest request) {
+		EveeentController e=new EveeentController();
+		float res1=e.countConfirmedEvent();
+		System.out.println("Count is"+res1);
+		return res1;
+	}
+	@GetMapping("/selectAllRequestEvents")
+	public float selctAllRequestEvent(HttpServletRequest request) {
+		EveeentController e=new EveeentController();
+		float res1=e.countAllEvent();
+		System.out.println("Count is"+res1);
+		return res1;
+	}
+	
+	@RequestMapping("/selectComingEvent")
+	public List<Event> getComingEvent() {
+		System.out.println("hi");
+		EveeentController ev= new EveeentController();
+		List<Event> evlst = new ArrayList<Event>();
+		evlst=ev.getUpcomingEvent();
+		return evlst;
+		
+	}
+	
+	@RequestMapping("/selectEventInquiries/{ename}")
+	public List<Inquiries>  selectEventInquiries(@PathVariable String ename) {
+		
+		EveeentController ev= new EveeentController();
+		System.out.println(ename);
+		List<Inquiries> evlst = new ArrayList<Inquiries>();
+		ename=(ename.replaceAll("\\p{P}",""));
+		evlst=ev.getEventInquiries(ename);
+		return evlst;
+		
+	}
+	
+	
 	
 }
