@@ -17,24 +17,32 @@ public class Customer {
 	private String address;
 	private String phneNo;
 	private String username;
+	private String company;
+	private String password;
+	private String post;
+	
 	public String getUsername() {
 		return username;
 	}
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	private String password;
 	
 	
 	
-	public Customer(String email, String nic, String fName, String lName, String address, String  phneNo,String password) {
-		super();
-		this.email = email;
-		this.nic = nic;
-		this.fName = fName;
-		this.address = address;
-		this.phneNo = phneNo;
-		this.phneNo = password;
+	
+	
+	public String getPost() {
+		return post;
+	}
+	public void setPost(String post) {
+		this.post = post;
+	}
+	public String getCompany() {
+		return company;
+	}
+	public void setCompany(String company) {
+		this.company = company;
 	}
 	public String getPassword() {
 		return password;

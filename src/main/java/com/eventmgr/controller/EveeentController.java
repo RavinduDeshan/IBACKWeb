@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.data.mongodb.core.MongoOperations;
+
+import com.eventmgr.model.Customer;
 //import com.google.gson.Gson;
 import com.eventmgr.model.Event;
 import com.eventmgr.model.Inquiries;
@@ -235,6 +237,9 @@ public class EveeentController {
 		   return p;
 		 
 		 }
+	
+
+	
 	public void confirmEvent(String ename) {
 		MongoClient mongo = new MongoClient( "localhost" , 27017 );
 		   MongoCredential credential;

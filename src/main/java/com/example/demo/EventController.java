@@ -77,6 +77,17 @@ public class EventController {
 		return new RedirectView("/getIndex");
 	}
 	
+	@RequestMapping("/validateCustomer")
+	public RedirectView validateCustomer(Customer customer) {
+		
+		System.out.println("Hiii");
+		System.out.println(customer.getfName());
+		
+		CustomerController ev= new CustomerController();
+		ev.validateCustomer(customer);
+		return new RedirectView("/getIndex");
+	}
+	
 	@RequestMapping("eventManagement")
 	public String dashhboard() {
 		
@@ -198,6 +209,20 @@ public class EventController {
 		return new RedirectView("/eventManagements");
 	}
 	
+	@RequestMapping("/updateCustomer/{nic}")
+	public RedirectView updateCustomer(Customer cust,@PathVariable String nic) {
+		
+		System.out.println("Hiii Update");
+		System.out.println(cust.getNic());
+		
+		CustomerController ev= new CustomerController();
+		System.out.println(nic);
+		ev.updateCustomer(cust,nic);
+		return new RedirectView("/customerManagements");
+	}
+	
+	
+	
 	@RequestMapping("/AdminEventDetails/{ename}")
 	public  RedirectView AdminEventDetails(@PathVariable String ename,@Valid Event customer, BindingResult result,Model model,RedirectAttributes redirectAttributes) {
         model.addAttribute("customer",customer);
@@ -216,6 +241,55 @@ public class EventController {
 		//odel.put("message", evlst);
 		//edirectAttributes.addFlashAttribute("message", evlst);
 		return new RedirectView("/adminEventDtls");
+		//return evlst;
+		
+		
+	}
+	
+//	@RequestMapping("/AdminCustomerDetails1/{ename}")
+//	public  RedirectView AdminEventDetails1(@PathVariable String ename,@Valid Event customer, BindingResult result,Model model,RedirectAttributes redirectAttributes) {
+//        model.addAttribute("customer",customer);
+//        //Do the Registration logic and then redirect to home page without using action for home page
+//       
+//       redirectAttributes.addFlashAttribute("customerEmail", customer.getEname());
+//		
+//		System.out.println("Hiii admin");
+//		
+//		String name=ename;
+//		EveeentController ev= new EveeentController();
+//		List<Event> evlst = new ArrayList<Event>();
+//		
+//	//name=(ename.replaceAll("\\p{P}",""));
+//	//vlst=ev.geteventDetails(ename);		
+//		//odel.put("message", evlst);
+//		//edirectAttributes.addFlashAttribute("message", evlst);
+//		return new RedirectView("/adminEventDtls");
+//		//return evlst;
+//		
+//		
+//	}
+	
+
+	
+	
+	@RequestMapping("/AdminCustomerDetails/{nic}")
+	public  RedirectView AdminCustomerDetails(@PathVariable String nic,@Valid Customer customer, BindingResult result,Model model,RedirectAttributes redirectAttributes) {
+        model.addAttribute("customer",customer);
+        //Do the Registration logic and then redirect to home page without using action for home page
+       
+       redirectAttributes.addFlashAttribute("nic", customer.getNic());
+		
+		System.out.println("Hiii admin");
+		
+		String NIC=nic;
+		CustomerController ev= new CustomerController();
+		List<Event> evlst = new ArrayList<Event>();
+		
+	//name=(ename.replaceAll("\\p{P}",""));
+	//vlst=ev.geteventDetails(ename);		
+		//odel.put("message", evlst);
+		//edirectAttributes.addFlashAttribute("message", evlst);
+		return new RedirectView("/adminCustomerDetails");
 		//return evlst;
 		
 		
@@ -395,4 +469,5 @@ public class EventController {
 		ev.updateCustomerPayment(cs,ename);
 		return new RedirectView("/PaymentDashboard");
 	}
+	
 }

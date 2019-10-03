@@ -22,6 +22,7 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
 
 @Controller
 public class CustomerController {
@@ -43,10 +44,37 @@ public class CustomerController {
 	     .append("address",customer.getAddress()) 
 	     .append("phneNo",customer.getPhneNo())
 	     .append("username",customer.getUsername())
-	     .append("password",customer.getPassword());
-	     collection.insertOne(document); 
+	     .append("password",customer.getPassword())
+	     .append("company",customer.getCompany())
+	     .append("post",customer.getPost());
+	     collection.insertOne(document);
+	     
 	     System.out.println("Document inserted successfully"); 
 	   } 
+	
+	public void updateCustomer(Customer cust,String nic) {
+		MongoClient mongo = new MongoClient( "localhost" , 27017 );
+		   MongoCredential credential;
+		   credential = MongoCredential.createCredential("EventManagement",    "eventManagementDb", 
+		   "password".toCharArray()); 
+		   System.out.println("Connected to the database successfully");  
+		   MongoDatabase database = mongo.getDatabase("eventManagementDb");  
+		   MongoCollection<Document> collection =    database.getCollection("customerCollection");
+		   System.out.println("Collection examplesCollection selected successfully");
+		   
+		   collection.updateOne(Filters.eq("nic", nic), Updates.set("nic",cust.getNic()));
+		   collection.updateOne(Filters.eq("nic", nic), Updates.set("email",cust.getEmail()));
+		   collection.updateOne(Filters.eq("nic", nic), Updates.set("fName",cust.getfName()));
+		   collection.updateOne(Filters.eq("nic", nic), Updates.set("lName",cust.getlName()));
+		   collection.updateOne(Filters.eq("nic", nic), Updates.set("address",cust.getAddress()));
+		   collection.updateOne(Filters.eq("nic", nic), Updates.set("phneNo",cust.getPhneNo()));
+		   collection.updateOne(Filters.eq("nic", nic), Updates.set("username",cust.getUsername()));
+		   collection.updateOne(Filters.eq("nic", nic), Updates.set("password",cust.getPassword()));
+		   collection.updateOne(Filters.eq("nic", nic), Updates.set("company",cust.getCompany()));
+		   collection.updateOne(Filters.eq("nic", nic), Updates.set("post",cust.getPost()));
+			  
+			System.out.println("Collection examplesCollection updated successfully");
+	}
 	
 	public float countAllCustomer() {
 		MongoClient mongo = new MongoClient( "localhost" , 27017 );
@@ -98,6 +126,37 @@ public class CustomerController {
 		   }
 		return evlst;
 		 }
+	
+	public Customer getCustomerDetails(String nic) {
+		 String str="";
+		 MongoClient mongo = new MongoClient( "localhost" , 27017 );
+		   MongoCredential credential;
+		   credential = MongoCredential.createCredential("EventManagement",    "eventManagementDb", 
+		   "password".toCharArray()); 
+		   System.out.println("Connected to the database successfully");  
+		   MongoDatabase database = mongo.getDatabase("eventManagementDb");  
+		   MongoCollection<Document> collection =    database.getCollection("customerCollection");
+		   System.out.println("Collection examplesCollection selected successfully");
+		   
+		   FindIterable<Document> iterDoc = collection.find(Filters.eq("nic", nic)); 
+		   int i = 1;
+		   Customer p=new Customer();
+		   Iterator it = iterDoc.iterator(); 
+		   while (it.hasNext()) { 
+			   String txt=((it.next().toString().replace("{{", "{\"")).replace("}}", "\"}")).replace("Document", "");
+			   txt=((txt.replace("=", "\":\"")).replace(",", "\",\""));
+			   txt=txt.replace(",\" ", ",\"");
+			   txt= txt.replace("_id", "id");
+		   Gson g = new Gson();
+		  
+		    p = g.fromJson(txt, Customer.class);
+		  
+		   }
+		    
+		   return p;
+		 
+		 }
+	
 	
 	public void deleteCustomer(String nic) {
 		MongoClient mongo = new MongoClient( "localhost" , 27017 );

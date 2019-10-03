@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -229,7 +232,7 @@
                       <div class="col-md-3 px-md-1">
                         <div class="form-group">
                           <label>Username</label>
-                          <input type="text" class="form-control" disabled="" placeholder="Username"  name="userName" value=${cust.username}>
+                          <input type="text" class="form-control" disabled="" placeholder="Username"  name="username" value=${cust.username}>
                         </div>
                       </div>
                       <div class="col-md-4 pl-md-1">
@@ -272,7 +275,7 @@
                       <div class="col-md-6 pl-md-1">
                         <div class="form-group">
                           <label>Position</label>
-                          <input type="text" class="form-control" disabled="" placeholder="Position or Designation" name="post" value=${cust.company}>
+                          <input type="text" class="form-control" disabled="" placeholder="Position or Designation" name="post" value=${cust.post}>
                         </div>
                       </div>
                     </div>
@@ -300,16 +303,16 @@
                       <a href="javascript:void(0)">
                         <img class="avatar" src="../assets/img/emilyz.jpg" alt="...">
                         <br><button class="btn btn-fill btn-primary">Change Profile Picture</button><br><br>
-                        <h5 class="title" name="namedesc">Mike Andrew</h5>
+                        <h5 class="title" name="namedesc">${cust.fName} &nbsp ${cust.lName}</h5>
                       </a>
                       <p class="description" name="positionDesc">
-                        Position
+                        ${cust.post}
                       </p>
                       <p class="description" name="companyDesc">
-                        Company
+                        ${cust.company}
                       </p>
                       <p class="description" name="EmailDesc">
-                        Email
+                        ${cust.email}
                       </p>
                       
                     </div>
@@ -488,7 +491,7 @@
                                   Minerva Hooper
                                 </td>
                                 <td>
-                                  CuraÃ§ao
+                                  Curaçao
                                 </td>
                                 <td>
                                   Sinaai-Waas
@@ -533,7 +536,7 @@
                                   Malawi
                                 </td>
                                 <td>
-                                  Feldkirchen in KÃ¤rnten
+                                  Feldkirchen in Kärnten
                                 </td>
                                 <td class="text-center">
                                   $63,542
@@ -750,6 +753,7 @@ function toggleStatusDisable() {
 function toggleStatusEnable() {
     
     $('#formDetails :input').attr('disabled', false);
+   
     $('#update').attr('hidden', true);
     $('#cancel').attr('hidden', false);
     $('#save').attr('hidden', false);

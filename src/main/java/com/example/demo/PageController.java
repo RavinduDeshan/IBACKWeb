@@ -15,7 +15,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.RequestContextUtils;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.eventmgr.controller.CustomerController;
 import com.eventmgr.controller.EveeentController;
+import com.eventmgr.model.Customer;
 import com.eventmgr.model.Event;
 
 
@@ -67,6 +69,34 @@ public class PageController {
         
 		return "Admin Event Details.jsp";
 	}
+	
+	@RequestMapping("/adminCustomerDetails")
+	public String adminCustomerDetailsPage( HttpServletRequest request,Model model,ModelAndView testModel) {
+		System.out.println("test");
+        String NIC = (String)model.asMap().get("nic");
+        CustomerController ev= new CustomerController();
+        Customer evlst=new Customer();
+        //name=(ename.replaceAll("\\p{P}",""));
+        evlst=ev.getCustomerDetails(NIC.replaceAll("\\p{P}",""));		
+	
+		
+		//evlst.setEname("aaaaaaaaaaaaa");
+		//evlst.setElocation("eeee");
+		//edirectAttributes.addFlashAttribute("message", evlst);
+       // Map<String, ?> flashMap = RequestContextUtils.getInputFlashMap(request);
+       // String emailId2 =  (String) flashMap.get("customerEmail");
+       // model2.put("message",emailId2 );
+        model.addAttribute("cust", evlst);
+        //Map<String, Object> modeil = new HashMap<String, Object>();
+		
+        //modeil.put("numberOfMovies", "1234");
+
+        System.out.println("Customer Nic"+NIC);
+        
+		return "Customer Details.jsp";
+	}
+	
+	
 	
 	@RequestMapping("//paymentDashboard")
 	public String home22() {
