@@ -77,17 +77,17 @@ public class EventController {
 		return new RedirectView("/getIndex");
 	}
 	
-	@RequestMapping("/validateCustomer")
-	public RedirectView validateCustomer(Customer customer) {
-		
-		System.out.println("Hiii");
-		System.out.println(customer.getfName());
-		
-		CustomerController ev= new CustomerController();
-		ev.validateCustomer(customer);
-		return new RedirectView("/getIndex");
-	}
-	
+//	@RequestMapping("/validateCustomer")
+//	public RedirectView validateCustomer(Customer customer) {
+//		
+//		System.out.println("Hiii");
+//		System.out.println(customer.getfName());
+//		
+//		CustomerController ev= new CustomerController();
+//		ev.validateCustomer(customer);
+//		return new RedirectView("/getIndex");
+//	}
+//	
 	@RequestMapping("eventManagement")
 	public String dashhboard() {
 		
