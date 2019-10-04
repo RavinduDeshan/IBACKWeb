@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -76,6 +77,8 @@ public class EventController {
 		ev.createCustomer(customer);
 		return new RedirectView("/getIndex");
 	}
+	
+	
 	
 //	@RequestMapping("/validateCustomer")
 //	public RedirectView validateCustomer(Customer customer) {
@@ -177,6 +180,55 @@ public class EventController {
 		
 	}
 	
+	@GetMapping("/validateCustomer")
+	public RedirectView  validateCustomer(@RequestParam String nic, @RequestParam String password,RedirectAttributes redirectAttributes) {
+		
+		CustomerController ev= new CustomerController();
+		System.out.println(nic);
+		System.out.println(password);
+		nic=(nic.replaceAll("\\p{P}",""));
+		password=(password.replaceAll("\\p{P}",""));
+		
+		 redirectAttributes.addFlashAttribute("nic", nic);
+		
+		
+		if(ev.validate(nic,password)) {return new RedirectView("/customerProfile") ;}
+		else {
+		return new RedirectView("/login");}
+		
+	}
+	
+	@RequestMapping("/customerProfile")
+	public  RedirectView customerProfile(@Valid Customer customer, BindingResult result,Model model,RedirectAttributes redirectAttributes) {
+        model.addAttribute("customer",customer);
+        //Do the Registration logic and then redirect to home page without using action for home page
+      
+        String NIC = (String)model.asMap().get("nic");
+        
+       redirectAttributes.addFlashAttribute("nic", NIC);
+       
+       System.out.println("Methanta enwa");
+       System.out.println(NIC);
+		
+		System.out.println("Hiii admin");
+		
+		
+		CustomerController ev= new CustomerController();
+		List<Event> evlst = new ArrayList<Event>();
+		
+	//name=(ename.replaceAll("\\p{P}",""));
+	//vlst=ev.geteventDetails(ename);		
+		//odel.put("message", evlst);
+		//edirectAttributes.addFlashAttribute("message", evlst);
+		return new RedirectView("/CustomerDetailsProfile");
+		//return evlst;
+		
+		
+	}
+	
+
+	
+	
 	@GetMapping("/selcteventDetails/{ename}")
 	/*public List<Event> selcteventDetails(@PathVariable String ename) {
 		EveeentController ev= new EveeentController();
@@ -210,7 +262,7 @@ public class EventController {
 	}
 	
 	@RequestMapping("/updateCustomer/{nic}")
-	public RedirectView updateCustomer(Customer cust,@PathVariable String nic) {
+	public RedirectView updateCustomer(Customer cust, @RequestParam String hidden,@PathVariable String nic) {
 		
 		System.out.println("Hiii Update");
 		System.out.println(cust.getNic());
@@ -218,7 +270,15 @@ public class EventController {
 		CustomerController ev= new CustomerController();
 		System.out.println(nic);
 		ev.updateCustomer(cust,nic);
-		return new RedirectView("/customerManagements");
+		
+		if(hidden.equals("admin")) {
+		return new RedirectView("/customerManagements");}
+		
+		else if(hidden.equals("user")){
+			
+			return new RedirectView("/login");}
+			
+		else return null;
 	}
 	
 	

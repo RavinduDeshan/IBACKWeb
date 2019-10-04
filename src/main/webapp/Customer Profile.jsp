@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -104,7 +106,7 @@
                   <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Profile</a></li>
                   <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Settings</a></li>
                   <li class="dropdown-divider"></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Log out</a></li>
+                  <li class="nav-link"><a href="index.html" class="nav-item dropdown-item">Log out</a></li>
                 </ul>
               </li>
               <li class="separator d-lg-none"></li>
@@ -128,42 +130,43 @@
                     <div class="col-md-5 pr-md-1">
                       <div class="form-group">
                         <label>National Identity Card No</label>
-                        <input type="text" class="form-control" readonly placeholder="NIC" name="nic">
+                        <input type="text" class="form-control" readonly placeholder="NIC" name="nic" value=${cust.nic}>
                       </div>
                     </div>
                     <div class="col-md-3 px-md-1">
                       <div class="form-group">
                         <label>Username</label>
-                        <input type="text" class="form-control" placeholder="Username"  name="username">
+                        <input type="text" class="form-control" placeholder="Username"  name="username" value=${cust.username}>
                       </div>
                     </div>
-                   
+                    
                   </div>
-                   <div class="row">
+              <div class="row" style=" margin-left: 1px;">
                     <div class="col-md-4 pl-md-1">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Email address</label>
-                          <input type="email" class="form-control" disabled="" placeholder="mike@email.com" name="email" value=${cust.email}>
+                          <input type="email" class="form-control"  placeholder="mike@email.com" name="email" value=${cust.email}>
                         </div>
                       </div>
                     <div class="col-md-3 px-md-1">
                         <div class="form-group">
                           <label>Username</label>
-                          <input type="password" class="form-control" disabled="" placeholder="password"  name="password" value=${cust.password}>
+                          <input type="password" class="form-control" placeholder="password"  name="password" value=${cust.password}>
                         </div>
                       </div>
   				</div>
+                  
                   <div class="row">
                     <div class="col-md-6 pr-md-1">
                       <div class="form-group">
                         <label>First Name</label>
-                        <input type="text" class="form-control" placeholder="First Name"  name="fName">
+                        <input type="text" class="form-control" placeholder="First Name"  name="fName" value=${cust.fName}>
                       </div>
                     </div>
                     <div class="col-md-6 pl-md-1">
                       <div class="form-group">
                         <label>Last Name</label>
-                        <input type="text" class="form-control" placeholder="Last Name" name="lName">
+                        <input type="text" class="form-control" placeholder="Last Name" name="lName" value=${cust.lName}>
                       </div>
                     </div>
                   </div>
@@ -171,7 +174,7 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <label>Address</label>
-                        <input type="text" class="form-control" placeholder="Home Address" name="address">
+                        <input type="text" class="form-control" placeholder="Home Address" name="address" value=${cust.address}>
                       </div>
                     </div>
                   </div>
@@ -180,13 +183,14 @@
                     <div class="col-md-6 pr-md-1">
                       <div class="form-group">
                         <label>Company</label>
-                        <input type="text" class="form-control" placeholder="Company Name"  name="company">
+                        <input type="text" class="form-control" placeholder="Company Name"  name="company" value=${cust.company}>
                       </div>
                     </div>
                     <div class="col-md-6 pl-md-1">
                       <div class="form-group">
                         <label>Position</label>
-                        <input type="text" class="form-control" placeholder="Position or Designation" name="post">
+                        <input type="text" class="form-control" placeholder="Position or Designation" name="post" value=${cust.post}>
+                        <input type="hidden" class="form-control" placeholder="Position or Designation" name="hidden" id="hidden" value="user">
                       </div>
                     </div>
                   </div>
@@ -212,16 +216,16 @@
                     <a href="javascript:void(0)">
                       <img class="avatar" src="../assets/img/emilyz.jpg" alt="...">
                       <br><button class="btn btn-fill btn-primary">Change Profile Picture</button><br><br>
-                      <h5 class="title" name="namedesc">Mike Andrew</h5>
+                      <h5 class="title" name="namedesc">${cust.fName} &nbsp ${cust.lName}</h5>
                     </a>
                     <p class="description" name="positionDesc">
-                      Position
+                      ${cust.post}
                     </p>
                     <p class="description" name="companyDesc">
-                      Company
+                      ${cust.company}
                     </p>
                     <p class="description" name="EmailDesc">
-                      Email
+                     ${cust.email}
                     </p>
                     
                   </div>
@@ -400,7 +404,7 @@
                                 Minerva Hooper
                               </td>
                               <td>
-                                CuraÃ§ao
+                                Curaçao
                               </td>
                               <td>
                                 Sinaai-Waas
@@ -445,7 +449,7 @@
                                 Malawi
                               </td>
                               <td>
-                                Feldkirchen in KÃ¤rnten
+                                Feldkirchen in Kärnten
                               </td>
                               <td class="text-center">
                                 $63,542
@@ -491,7 +495,7 @@
 
 
           <div class="copyright">
-            Â©
+            ©
             <script>
               document.write(new Date().getFullYear())
             </script> IBACK Entertainment All Rights Reserved 

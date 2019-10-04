@@ -235,12 +235,8 @@
                           <input type="text" class="form-control" disabled="" placeholder="Username"  name="username" value=${cust.username}>
                         </div>
                       </div>
-                      <div class="col-md-4 pl-md-1">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Email address</label>
-                          <input type="email" class="form-control" disabled="" placeholder="mike@email.com" name="email" value=${cust.email}>
-                        </div>
-                      </div>
+                       
+                     
                     </div>
                     <div class="row">
                       <div class="col-md-6 pr-md-1">
@@ -264,7 +260,20 @@
                         </div>
                       </div>
                     </div>
-  
+                   <div class="row" style=" margin-left: 1px;">
+                    <div class="col-md-4 pl-md-1">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Email address</label>
+                          <input type="email" class="form-control" disabled="" placeholder="mike@email.com" name="email" value=${cust.email}>
+                        </div>
+                      </div>
+                    <div class="col-md-3 px-md-1">
+                        <div class="form-group">
+                          <label>Username</label>
+                          <input type="password" class="form-control" disabled="" placeholder="password"  name="password" value=${cust.password}>
+                        </div>
+                      </div>
+  				</div>
                     <div class="row">
                       <div class="col-md-6 pr-md-1">
                         <div class="form-group">
@@ -276,6 +285,7 @@
                         <div class="form-group">
                           <label>Position</label>
                           <input type="text" class="form-control" disabled="" placeholder="Position or Designation" name="post" value=${cust.post}>
+                          <input type="hidden" id="hidden" class="form-control" placeholder="Position or Designation" name="hidden" value="admin">
                         </div>
                       </div>
                     </div>

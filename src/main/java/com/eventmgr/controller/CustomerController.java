@@ -45,8 +45,8 @@ public class CustomerController {
 	     .append("phneNo",customer.getPhneNo())
 	     .append("username",customer.getUsername())
 	     .append("password",customer.getPassword())
-	     .append("company",customer.getCompany())
-	     .append("post",customer.getPost());
+	     .append("company","No Company Specified")
+	     .append("post","No Position Specified");
 	     collection.insertOne(document);
 	     
 	     System.out.println("Document inserted successfully"); 
@@ -178,4 +178,51 @@ public class CustomerController {
 		System.out.println("Document deleted successfully..."); 
 		
 	}
+	public boolean validate(String nic,String Password) {
+		MongoClient mongo = new MongoClient( "localhost" , 27017 );
+     	
+		MongoCredential credential; 
+		   credential = MongoCredential.createCredential("EventManagement",    "eventManagementDb", 
+				   "password".toCharArray()); 
+		System.out.println("Connected to the database successfully");
+    
+		MongoDatabase database = mongo.getDatabase("eventManagementDb");
+    	
+		MongoCollection<Document> collection =       database.getCollection("customerCollection");
+		System.out.println("Collection examplesCollection selected successfully");
+			 
+		System.out.println(nic);
+	
+		String conp;
+		
+		 FindIterable<Document> iterDoc = collection.find(Filters.eq("nic", nic)); 
+		   int i = 1;
+		   Customer p=new Customer();
+		   Iterator it = iterDoc.iterator(); 
+		   while (it.hasNext()) { 
+			   String txt=((it.next().toString().replace("{{", "{\"")).replace("}}", "\"}")).replace("Document", "");
+			   txt=((txt.replace("=", "\":\"")).replace(",", "\",\""));
+			   txt=txt.replace(",\" ", ",\"");
+			   txt= txt.replace("_id", "id");
+		   Gson g = new Gson();
+		  
+		    p = g.fromJson(txt, Customer.class);
+		  
+		   }
+		  
+		   conp=p.getPassword();
+		   
+		   if(Password.equals(conp)) {
+			   return true;
+		   }
+		   
+		   else {
+			   
+			   return false;
+		   }
+		 
+		
+	}
+	
+	
 }
