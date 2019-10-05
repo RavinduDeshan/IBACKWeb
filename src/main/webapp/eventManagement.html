@@ -370,11 +370,11 @@
                            <c:when test="${mode=='eventManagement' }">
                           <div class="card-body">
                             <div class="table-responsive">
-                              <table class="table tablesorter " id="reqtbl">
+                              <table class="table tablesorter " >
                                 <thead class=" text-primary">
                                   <tr>
                                     <th>
-                                      id
+                                      Customer Id
                         				</th>
                                     <th>
                                       ename
@@ -396,7 +396,7 @@
                                     </th>
                                   </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="reqtbl">
                                <!-- c:forEach var="ev" items="${ev }">
                                   <tr>
                                     <td>${ev.id}</td>
@@ -1055,7 +1055,7 @@
        function showUsers(msg) {    	   
 			var trHTML = '';
 			$.each(msg, function (i, item) {
-			    trHTML += '<tr><td>' + item.id + '</td><td>' + item.ename + '</td><td>' + item.elocation + '</td><td>' + item.ephoneNo +'</td><td>' + item.edate +'</td><td>' + item.etime + '</td><td>' + item.estatus +'</td><td><a class="btn btn-primary" href = "/AdminEventDetails/{'+item.ename+'}">View Event</a> <a class="btn btn-danger" href = "/deleteEvent/{'+item.ename+'}">Remove</a></td></tr>';
+			    trHTML += '<tr><td>' + item.cusId + '</td><td>' + item.ename + '</td><td>' + item.elocation + '</td><td>' + item.ephoneNo +'</td><td>' + item.edate +'</td><td>' + item.etime + '</td><td>' + item.etype +'</td><td><a class="btn btn-primary" href = "/AdminEventDetails/{'+item.ename+'}">View Event</a> <a class="btn btn-danger" href = "/deleteEvent/{'+item.ename+'}">Remove</a></td></tr>';
 			});
 			$("#reqtbl tr").detach();
 			$('#reqtbl').append(trHTML);

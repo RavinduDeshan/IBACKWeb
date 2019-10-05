@@ -409,10 +409,10 @@
                                 <h2 class="card-title">Events On this Month</h2>
                                 
                                 	<div id="tab" >
-      									<table class="table tablesorter " id="reqtbl">
+      									<table class="table tablesorter " >
                                 <thead class=" text-primary">
                                   <tr>
-                                    <th> id</th>
+                                    <th>Event id</th>
                         				
                                     <th>ename</th>
                                       
@@ -423,18 +423,18 @@
                                      <th>ephoneNo</th>
                                      
                                     
-                                     <th>edate</th>
+                                     <th>etype</th>
                                      
                                     
                                      <th> etime</th>
                                      
                                    	
-                                    <th class="text-center">etype </th>
+                                    <th class="text-center">estatus </th>
                                       
                                    
                                  </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="reqtbl">
                                 
                               
                                        
@@ -610,7 +610,7 @@
      	function showUsers(msg) {    	   
 			var trHTML = '';
 			$.each(msg, function (i, item) {
-			    trHTML += '<tr><td>' + item.id + '</td><td>' + item.ename + '</td><td>' + item.elocation + '</td><td>' + item.ephoneNo +'</td><td>' + item.edate +'</td><td>' + item.etime + '</td><td>' + item.estatus +'</td></tr>';
+			    trHTML += '<tr><td>' + item.id + '</td><td>' + item.ename + '</td><td>' + item.elocation + '</td><td>' + item.ephoneNo +'</td><td>' + item.etype +'</td><td>' + item.etime + '</td><td>' + item.estatus +'</td></tr>';
 			});
 			$("#reqtbl tr").detach();
 			$('#reqtbl').append(trHTML);

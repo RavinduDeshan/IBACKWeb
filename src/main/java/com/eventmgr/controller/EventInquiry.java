@@ -24,7 +24,6 @@ public class EventInquiry {
 	     System.out.println("Collection examplesCollection selected successfully");
 	     
 	     Document document = new Document("ename", inq.getEname()) 
-	     .append("cid", inq.getCusId())
 	     .append("inquiry",inq.getInquiry()); 
 	     collection.insertOne(document); 
 	     System.out.println("Document inserted successfully"); 

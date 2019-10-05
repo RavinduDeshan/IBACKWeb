@@ -60,6 +60,7 @@ public class EveeentController {
 	     .append("ephoneNo",event.getEphoneNo()) 
 	     .append("edate",event.getEdate()) 
 	     .append("etime",event.getEtime())
+	     .append("cusId",event.getCusId())
 	     .append("estatus",event.getEstatus()); 
 	     collection.insertOne(document); 
 	     System.out.println("Document inserted successfully"); 
@@ -280,6 +281,23 @@ public class EveeentController {
 			System.out.println("Collection examplesCollection Request Collections Number successfully");
 			return a;
 	}
+	/*public float countIdleCustomer() {
+		MongoClient mongo = new MongoClient( "localhost" , 27017 );
+		   MongoCredential credential;
+		   credential = MongoCredential.createCredential("EventManagement",    "eventManagementDb", 
+		   "password".toCharArray()); 
+		   System.out.println("Connected to the database successfully");  
+		   MongoDatabase database = mongo.getDatabase("eventManagementDb");  
+		   MongoCollection<Document> collection =    database.getCollection("eventCollection");
+		   System.out.println("Collection examplesCollection selected successfully");
+		   
+		    collection.distinct("cusId");
+		    System.out.println("Count is"+a);
+		   
+			System.out.println("Collection examplesCollection Request Collections Number successfully");
+			return a;
+	}*/
+	
 	public float countPendEvent() {
 		MongoClient mongo = new MongoClient( "localhost" , 27017 );
 		   MongoCredential credential;
@@ -296,6 +314,7 @@ public class EveeentController {
 			System.out.println("Collection examplesCollection Request Collections Number successfully");
 			return a;
 	}
+	
 	public float countConfirmedEvent() {
 		MongoClient mongo = new MongoClient( "localhost" , 27017 );
 		   MongoCredential credential;
@@ -407,9 +426,36 @@ public class EveeentController {
 		return evlst;
 		 }
 
+	public List<Event> getCusEvent(String nic) {
+		 String str="";
+		 MongoClient mongo = new MongoClient( "localhost" , 27017 );
+		   MongoCredential credential;
+		   credential = MongoCredential.createCredential("EventManagement",    "eventManagementDb", 
+		   "password".toCharArray()); 
+		   System.out.println("Connected to the database successfully");  
+		   MongoDatabase database = mongo.getDatabase("eventManagementDb");  
+		   MongoCollection<Document> collection =    database.getCollection("eventCollection");
+		   System.out.println("Collection examplesCollection selected successfully");
+		   
+		   
+		   FindIterable<Document> iterDoc = collection.find(Filters.eq("cusId", nic)); 
+		   int i = 1;
+		   ArrayList<Event> evlst = new ArrayList<Event>();
+		   Iterator it = iterDoc.iterator(); 
+		   while (it.hasNext()) { 
+			   String txt=((it.next().toString().replace("{{", "{\"")).replace("}}", "\"}")).replace("Document", "");
+			   txt=((txt.replace("=", "\":\"")).replace(",", "\",\""));
+			   txt=txt.replace(",\" ", ",\"");
+			   txt= txt.replace("_id", "id");
+		   Gson g = new Gson();
+		   Event p = g.fromJson(txt, Event.class);
+		   evlst.add(p);
+		   i++; 
+		   }
+		return evlst;
+		 }
 	
 	
-
 	
 }
 	

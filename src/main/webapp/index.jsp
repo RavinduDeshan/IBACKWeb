@@ -133,7 +133,7 @@ padding-right: 20px;
 								<li><a class="hvr-sweep-to-right" href="contact.html">Contact</a></li>
 								<li><a class="hvr-sweep-to-right" href="login.html">Login</a></li>
 								<li><a class="hvr-sweep-to-right" href="Customer SignUp.html">Sign Up</a></li>
-								<li><a class="hvr-sweep-to-right" href="Event Profile.html">Profile</a></li>
+								<li><a class="hvr-sweep-to-right" href="customerProfile/${cust.nic}">${cust.username}</a></li>
 							</ul>
 						</div>
 						<!-- /.navbar-collapse -->
@@ -353,6 +353,7 @@ padding-right: 20px;
 								<div class="w3ls-pr">
 									<input type="text" name=elocation placeholder="Location" required="required" >
 									<input type="text" name=etime required="required"  placeholder=" starting time">
+									<input type="hidden" id="hidden" name=cusId value="${cust.nic}" >
 									
 								</div>
 							</div>
@@ -360,7 +361,7 @@ padding-right: 20px;
 							<input type="submit" value="Book Now" >
 
 						</form>
-						<></a>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -411,7 +412,38 @@ padding-right: 20px;
 	</div>
 </div>
 
+<!--inquery-->
+     
 
+            
+            <div class="content">
+            <div class="row">
+              <div class="col-md-8">
+
+                
+                  
+                      <div class="formgrp2">
+                        <h3 class="card-title">Event Inquiry</h4>
+                        <form action="addEventInquiry">
+                        <input type="text" class="form-control inqr" style="background-color:white; color:#ff80bf;text-align:center; height: 100px; font-size: 18px;"  placeholder="Type Any Updates or Inquiries Regarding this Event" name=inquiry>
+                        <input type="hidden" id="hidden" name=ename value=${event.ename} >
+                        <div>
+                          <button  type="submit" class="btn btn-fill btn-primary">Send</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+
+
+            </div></div>
+           
+
+            </div>  
+  
+        </div>
+       
+
+       
 
 
 

@@ -63,6 +63,8 @@ public class EventController {
 		System.out.println(events.getEdate());
 		EveeentController ev= new EveeentController();
 		ev.createEvent(events);
+		
+		
 		return new RedirectView("/getIndex");
 		
 	}
@@ -192,14 +194,14 @@ public class EventController {
 		 redirectAttributes.addFlashAttribute("nic", nic);
 		
 		
-		if(ev.validate(nic,password)) {return new RedirectView("/customerProfile") ;}
+		if(ev.validate(nic,password)) {return new RedirectView("/indexlogged") ;}
 		else {
 		return new RedirectView("/login");}
 		
 	}
 	
-	@RequestMapping("/customerProfile")
-	public  RedirectView customerProfile(@Valid Customer customer, BindingResult result,Model model,RedirectAttributes redirectAttributes) {
+	@RequestMapping("/indexlogged")
+	public  RedirectView indexlogged(@Valid Customer customer, BindingResult result,Model model,RedirectAttributes redirectAttributes) {
         model.addAttribute("customer",customer);
         //Do the Registration logic and then redirect to home page without using action for home page
       
@@ -220,7 +222,7 @@ public class EventController {
 	//vlst=ev.geteventDetails(ename);		
 		//odel.put("message", evlst);
 		//edirectAttributes.addFlashAttribute("message", evlst);
-		return new RedirectView("/CustomerDetailsProfile");
+		return new RedirectView("/IndexCustomer");
 		//return evlst;
 		
 		
@@ -407,17 +409,7 @@ public class EventController {
 	}
 	
 
-	@RequestMapping("/addEventInquiry")
-	public RedirectView addeventInquiry(Inquiries inq) {
-		EventInquiry evq=new EventInquiry();
-		
-		System.out.println("Hiii");
-		inq.setEname("MyWedding");
-		inq.setCusId("C001");
-		evq.createInquiry(inq);
-		return new RedirectView("/getIndex");
-		
-	}
+	
 	@GetMapping("/selectAllCustomer")
 	public float selctAllCustomer(HttpServletRequest request) {
 		CustomerController c=new CustomerController();
@@ -529,5 +521,85 @@ public class EventController {
 		ev.updateCustomerPayment(cs,ename);
 		return new RedirectView("/PaymentDashboard");
 	}
+	
+	@GetMapping("customerProfile/{nic}")
+	public RedirectView  validateCustomer(@PathVariable String nic,RedirectAttributes redirectAttributes) {
+		
+		CustomerController ev= new CustomerController();
+		System.out.println("Customer profile entry nic "+nic);
+		
+		
+		
+		 redirectAttributes.addFlashAttribute("nic", nic);
+		
+		
+		return new RedirectView("/GetCustomerProfileRe") ;
+		
+		
+	}
+	
+	@RequestMapping("/GetCustomerProfileRe")
+	public  RedirectView customerProfile(@Valid Customer customer, BindingResult result,Model model,RedirectAttributes redirectAttributes) {
+        model.addAttribute("customer",customer);
+        //Do the Registration logic and then redirect to home page without using action for home page
+      
+        String NIC = (String)model.asMap().get("nic");
+        
+       redirectAttributes.addFlashAttribute("nic", NIC);
+       
+       System.out.println("Methanta enwa  Profile");
+       System.out.println(NIC);
+		
+		System.out.println("Hiii admin");
+		
+		
+		CustomerController ev= new CustomerController();
+		List<Event> evlst = new ArrayList<Event>();
+		
+	//name=(ename.replaceAll("\\p{P}",""));
+	//vlst=ev.geteventDetails(ename);		
+		//odel.put("message", evlst);
+		//edirectAttributes.addFlashAttribute("message", evlst);
+		return new RedirectView("/CustomerDetailsProfile");
+		//return evlst;
+		
+		
+	}
+
+	@RequestMapping("/selectEventCus/{nic}")
+	public List<Event> selectEventCus(@PathVariable String nic) {
+	System.out.println("Divvvvvyaaaniiiii");
+	EveeentController ev= new EveeentController();
+	List<Event> evlst = new ArrayList<Event>();
+	//System.out.println(nic);
+	
+	//ename=(ename.replaceAll("\\p{P}",""));
+	evlst=ev.getCusEvent(nic);
+	return evlst;
+	
+	}
+	@RequestMapping("/EventDetails/{ename}")
+	public  RedirectView EventDetails(@PathVariable String ename,@Valid Event customer, BindingResult result,Model model,RedirectAttributes redirectAttributes) {
+        model.addAttribute("customer",customer);
+        //Do the Registration logic and then redirect to home page without using action for home page
+       
+       redirectAttributes.addFlashAttribute("customerEmail", customer.getEname());
+		
+		System.out.println("Hiii admin");
+		
+		String name=ename;
+		EveeentController ev= new EveeentController();
+		List<Event> evlst = new ArrayList<Event>();
+		
+	//name=(ename.replaceAll("\\p{P}",""));
+	//vlst=ev.geteventDetails(ename);		
+		//odel.put("message", evlst);
+		//edirectAttributes.addFlashAttribute("message", evlst);
+		return new RedirectView("/EventDtls");
+		//return evlst;
+		
+		
+	}
+	
 	
 }

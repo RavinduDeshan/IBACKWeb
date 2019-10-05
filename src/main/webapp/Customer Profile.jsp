@@ -34,7 +34,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <title>
-    Black Dashboard by Creative Tim
+   Your Profile
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
@@ -47,7 +47,7 @@
   <link href="../assets/demo/demo.css" rel="stylesheet" />
 </head>
 
-<body class="">
+<body onload="myFunction()">
     <center><div class="logodiv"> <img class="" src="assets/img/logo3.png" alt="..."></div></center>
     <div class="main-panel">
       <!-- Navbar -->
@@ -76,22 +76,7 @@
                   <span class="d-lg-none d-md-block">Search</span>
                 </button>
               </li>-->
-              <li class="dropdown nav-item">
-                <a href="javascript:void(0)" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                  <div class="notification d-none d-lg-block d-xl-block"></div>
-                  <i class="tim-icons icon-sound-wave"></i>
-                  <p class="d-lg-none">
-                    Notifications
-                  </p>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
-                  <li class="nav-link"><a href="#" class="nav-item dropdown-item">Mike John responded to your email</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">You have 5 more tasks</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Your friend Michael is in town</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Another notification</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Another one</a></li>
-                </ul>
-              </li>
+              
               <li class="dropdown nav-item">
                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                   <div class="photo">
@@ -103,10 +88,9 @@
                   </p>
                 </a>
                 <ul class="dropdown-menu dropdown-navbar">
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Profile</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Settings</a></li>
+           
                   <li class="dropdown-divider"></li>
-                  <li class="nav-link"><a href="index.html" class="nav-item dropdown-item">Log out</a></li>
+                  <li class="nav-link"><a href="index.jsp" class="nav-item dropdown-item">Log out</a></li>
                 </ul>
               </li>
               <li class="separator d-lg-none"></li>
@@ -215,7 +199,7 @@
                     <div class="block block-four"></div>
                     <a href="javascript:void(0)">
                       <img class="avatar" src="../assets/img/emilyz.jpg" alt="...">
-                      <br><button class="btn btn-fill btn-primary">Change Profile Picture</button><br><br>
+                     
                       <h5 class="title" name="namedesc">${cust.fName} &nbsp ${cust.lName}</h5>
                     </a>
                     <p class="description" name="positionDesc">
@@ -356,142 +340,71 @@
         </div>
 
         <!--table-->
-      <div class="content">
-
-          <div class="content">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="card ">
-                    <div class="card-header">
-                      <h4 class="card-title"> My Events</h4>
-                    </div>
-                    <div class="card-body">
-                      <div class="table-responsive">
-                        <table class="table tablesorter " id="">
-                          <thead class=" text-primary">
-                            <tr>
-                              <th>
-                                Event Code
-                              </th>
-                              <th>
-                                Event Name
-                              </th>
-                              <th>
-                                Venue
-                              </th>
-                              <th class="text-center">
-                                Status
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                Dakota Rice
-                              </td>
-                              <td>
-                                Niger
-                              </td>
-                              <td>
-                                Oud-Turnhout
-                              </td>
-                              <td class="text-center">
-                                $36,738
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                Minerva Hooper
-                              </td>
-                              <td>
-                                Curaçao
-                              </td>
-                              <td>
-                                Sinaai-Waas
-                              </td>
-                              <td class="text-center">
-                                $23,789
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                Sage Rodriguez
-                              </td>
-                              <td>
-                                Netherlands
-                              </td>
-                              <td>
-                                Baileux
-                              </td>
-                              <td class="text-center">
-                                $56,142
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                Philip Chaney
-                              </td>
-                              <td>
-                                Korea, South
-                              </td>
-                              <td>
-                                Overland Park
-                              </td>
-                              <td class="text-center">
-                                $38,735
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                Doris Greene
-                              </td>
-                              <td>
-                                Malawi
-                              </td>
-                              <td>
-                                Feldkirchen in Kärnten
-                              </td>
-                              <td class="text-center">
-                                $63,542
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                Mason Porter
-                              </td>
-                              <td>
-                                Chile
-                              </td>
-                              <td>
-                                Gloucester
-                              </td>
-                              <td class="text-center">
-                                $78,615
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                Jon Porter
-                              </td>
-                              <td>
-                                Portugal
-                              </td>
-                              <td>
-                                Gloucester
-                              </td>
-                              <td class="text-center">
-                                $98,615
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
+      	<c:choose>
+           <!--Customer Table-->
+          
+            <div class="content">
+                    <div class="row" id="requestTable">
+                      <div class="col-md-12">
+                        <div class="card" style="display: none;">
+                          <div class="card-header" id="hed-t">
+                            <h4 class="card-title"> Request Events</h4>
+                          </div>
+                           <c:when test="${mode=='eventManagement' }">
+                          <div class="card-body">
+                            <div class="table-responsive">
+                              <table class="table tablesorter " >
+                                <thead class=" text-primary">
+                                  <tr>
+                                    <th>
+                                      id
+                        				</th>
+                                    <th>
+                                      ename
+                                    </th>
+                                    <th>
+                                      elocation
+                                    </th>
+                                     <th>
+                                     ephoneNo
+                                    </th>
+                                     <th>
+                                     edate
+                                    </th>
+                                     <th>
+                                      etime
+                                   	</th>
+                                    <th class="text-center">
+                                      etype
+                                    </th>
+                                  </tr>
+                                </thead>
+                                <tbody id="reqtbl">
+                               <!-- c:forEach var="ev" items="${ev }">
+                                  <tr>
+                                    <td>${ev.id}</td>
+                                    <td>${ev.ename}</td>
+                                    <td> ${ev.elocation}</td>
+                                    <td>${ev.ephoneNo}</td>
+                                     <td> ${ev.edate}</td>
+                                    <td> ${ev.etime}</td>
+                                     <td class="text-center">${ev.etype}</td>
+                                       
+                                     </tr>
+                                   </c:forEach-->
+                                       
+                                    
+                              
+                                </tbody>         
+                                      
+                               </table>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                </div>
-
-
-      </div>
+					</c:when>
+                      <!--Event Table-->
+	</c:choose>       
 
 
           <div class="copyright">
@@ -631,6 +544,37 @@
         });
       });
     });
+    
+  </script>
+  
+  
+  <script>
+
+	function myFunction(){
+		console.log("HIIIIII R");
+	 	var tes="test";
+  	 	jQuery.ajax({
+  	        type: "GET",
+  	        url: "http://localhost:8080/selectEventCus/${cust.nic}",
+  	        data: { "id": "getStatus" }
+  	    }).done(function(msg) {
+  	    	showUsers(msg)
+  	    });
+  	  
+  	  
+  	
+   function showUsers(msg) {    	   
+		var trHTML = '';
+		$.each(msg, function (i, item) {
+		    trHTML += '<tr><td>' + item.id + '</td><td>' + item.ename + '</td><td>' + item.elocation + '</td><td>' + item.ephoneNo +'</td><td>' + item.edate +'</td><td>' + item.etime + '</td><td>' + item.etype +'</td><td><a class="btn btn-primary" href = "/EventDetails/{'+item.ename+'}">View Event</a></td></tr>';
+		});
+		$("#reqtbl tr").detach();
+		$('#reqtbl').append(trHTML);
+		$( ".card" ).show();
+   }
+   
+}
+	
   </script>
   <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
   <script>

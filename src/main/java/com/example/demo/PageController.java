@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,8 +18,10 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.eventmgr.controller.CustomerController;
 import com.eventmgr.controller.EveeentController;
+import com.eventmgr.controller.EventInquiry;
 import com.eventmgr.model.Customer;
 import com.eventmgr.model.Event;
+import com.eventmgr.model.Inquiries;
 
 
 @Controller
@@ -28,7 +31,7 @@ public class PageController {
 	public String home111() {
 		System.out.println("Home Called");
 		
-		return "index.html";
+		return "index.jsp";
 	}
 	
 	@RequestMapping("/eventManagements")
@@ -98,8 +101,8 @@ public class PageController {
 	
 	
 	
-	@RequestMapping("/CustomerDetailsProfile")
-	public String CustomerDetailsProfile( HttpServletRequest request,Model model,ModelAndView testModel) {
+	@RequestMapping("/IndexCustomer")
+	public String IndexCustomer( HttpServletRequest request,Model model,ModelAndView testModel) {
 		System.out.println("test");
         String NIC = (String)model.asMap().get("nic");
         CustomerController ev= new CustomerController();
@@ -121,7 +124,9 @@ public class PageController {
 
         System.out.println("Customer Nic"+NIC);
         
-		return "Customer Profile.jsp";
+   
+        
+		return "index.jsp";
 	}
 	
 	@RequestMapping("//paymentDashboard")
@@ -137,5 +142,69 @@ public class PageController {
 		return "login.html";
 	}
 	
+	@RequestMapping("/CustomerDetailsProfile")
+	public String CustomerDetailsProfile( HttpServletRequest request,Model model,ModelAndView testModel) {
+		System.out.println("test");
+        String NIC = (String)model.asMap().get("nic");
+        CustomerController ev= new CustomerController();
+        Customer evlst=new Customer();
+        //name=(ename.replaceAll("\\p{P}",""));
+        evlst=ev.getCustomerDetails(NIC.replaceAll("\\p{P}",""));		
+	
+		
+		//evlst.setEname("aaaaaaaaaaaaa");
+		//evlst.setElocation("eeee");
+		//edirectAttributes.addFlashAttribute("message", evlst);
+       // Map<String, ?> flashMap = RequestContextUtils.getInputFlashMap(request);
+       // String emailId2 =  (String) flashMap.get("customerEmail");
+       // model2.put("message",emailId2 );
+        model.addAttribute("cust", evlst);
+        //Map<String, Object> modeil = new HashMap<String, Object>();
+		
+        //modeil.put("numberOfMovies", "1234");
+
+        System.out.println("Customer Nic"+ NIC);
+        
+   
+        
+		return "Customer Profile.jsp";
+	}
+	
+	@RequestMapping("/EventDtls")
+	public String EventDtls( HttpServletRequest request,Model model,ModelAndView testModel) {
+		System.out.println("test");
+        String emailId1 = (String)model.asMap().get("customerEmail");
+        EveeentController ev= new EveeentController();
+        Event evlst=new Event();
+        //name=(ename.replaceAll("\\p{P}",""));
+        evlst=ev.geteventDetails(emailId1.replaceAll("\\p{P}",""));		
+	
+		
+		//evlst.setEname("aaaaaaaaaaaaa");
+		//evlst.setElocation("eeee");
+		//edirectAttributes.addFlashAttribute("message", evlst);
+       // Map<String, ?> flashMap = RequestContextUtils.getInputFlashMap(request);
+       // String emailId2 =  (String) flashMap.get("customerEmail");
+       // model2.put("message",emailId2 );
+        model.addAttribute("event", evlst);
+        //Map<String, Object> modeil = new HashMap<String, Object>();
+		
+        //modeil.put("numberOfMovies", "1234");
+
+        System.out.println("testmeeeeeeeeee"+emailId1);
+        
+		return "eventProfile.jsp";
+	}
+	
+	@RequestMapping("/addEventInquiry")
+	public String addeventInquiry(Inquiries inq) {
+		EventInquiry evq=new EventInquiry();
+		
+		System.out.println("Hiii");
+		
+		evq.createInquiry(inq);
+		return "Customer Profile.jsp";
+		
+	}
 	
 }
