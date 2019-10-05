@@ -8,7 +8,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Events a Wedding Category Bootstrap Responsive website Template | About :: w3layouts</title>
+<title>Contact</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Events Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -34,7 +34,30 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<!-- banner-text --> 
 	
 	<!-- //banner --> 
-		<!-- header -->
+			<!-- header -->
+				
+				    <%
+	          String link,linkdash="index.jsp",visi="block",visil="block",visij="bloack",lo="none";
+	          
+	          if(session.getAttribute( "nic" )==null){
+	        	  
+	        	  
+	        	  visil="block";
+	        	  lo="none";
+	        	  
+	        	  
+	          
+	          }
+	          
+	          else{
+	        	  
+	        	  visil="none";
+	        	  lo="block";
+	        	  
+	          }
+	          %>
+	          
+	          
 			<div class="header-w3layouts"> 
 				<!-- Navigation -->
 				<nav class="navbar navbar-default navbar-fixed-top">
@@ -54,14 +77,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
 								<li class="hidden"><a class="page-scroll" href="#page-top"></a>	</li>
 								<li><a class="hvr-sweep-to-right" href="index.jsp">Home</a></li>
-								<li><a class="hvr-sweep-to-right" href="about.html">About</a></li>
-								<li><a class="hvr-sweep-to-right" href="Event Profile.html">Events</a></li>
-			
-								<li><a class="hvr-sweep-to-right" href="gallery.html">Gallery</a></li>
-								<li><a class="hvr-sweep-to-right" href="contact.html">Contact</a></li>
-								<li><a class="hvr-sweep-to-right" href="login.html">Login</a></li>
-								<li><a class="hvr-sweep-to-right" href="Customer SignUp.html">Sign Up</a></li>
-								<li><a class="hvr-sweep-to-right" href="customerProfile/${cust.nic}">${cust.username}</a></li>
+								<li><a class="hvr-sweep-to-right" href="about.jsp">About</a></li>
+								
+								<li><a class="hvr-sweep-to-right" href="gallery.jsp">Gallery</a></li>
+								<li><a class="hvr-sweep-to-right" href="contact.jsp">Contact</a></li>
+								<li><a class="hvr-sweep-to-right" href="login.html" style="display:<%=visil %>;">Login</a></li>
+								<li><a class="hvr-sweep-to-right" href="Customer SignUp.html" style="display:<%=visil %>;">Sign Up</a></li>
+								<li><a class="hvr-sweep-to-right" style="display:<%=lo %>;" href="customerProfile/<%=session.getAttribute( "nic" )%>"><%=session.getAttribute( "username" )%> 's Profile</a></li>
+								<li><a class="hvr-sweep-to-right" href="logout" style="display:<%=lo %>;">Log Out</a></li>
+								
 							</ul>
 						</div>
 						<!-- /.navbar-collapse -->
@@ -71,151 +95,59 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</div>	
 		<!-- //header -->
 	</div>	
-<!-- about -->
-<!-- about -->
-	<div class="about">
-		<div class="container">
-		<h2 class="heading-agileinfo">About Us<span>Who We Are</span></h2>
-			<div class="about-grids-1">
-				<div class="col-md-5 wthree-about-left">
-					<div class="wthree-about-left-info">
-						<img src="images/g11.jpg" alt="" />
-					</div>
-				</div>
-				<div class="col-md-7 agileits-about-right">
-					<h5>IBACK Evets is a company which is operated by the IBACK Entertainment. IBACK Entertainment is a renowned company provide all Events needs for the best price with the best Quality</h5>
-					<p>Weare capable to full fill your all event needs. Our Partners are well recognized by most of the customers as the better service provides by them.
-					<span>Join with us to Make your event un-forgettable. We will create your event while you will celebrate. </span>
-					</p>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
+<!-- contact -->	
+	<div class="w3ls_address_mail_footer_grids">
+	<div class="container">
+	<h2 class="heading-agileinfo">Contact<span></span></h2>
+		<div class="map">
+			<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3539.812628729253!2d153.014155!3d-27.4750921!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b915a0835840a2f%3A0xdd5e3f5c208dc0e1!2sMelbourne+St%2C+South+Brisbane+QLD+4101%2C+Australia!5e0!3m2!1sen!2sin!4v1492257477691"></iframe>
 		</div>
+		<div class="col-md-6 contact-form">
+				<h4 class="white-w3ls">Contact Form</h4>
+				<form action="#" method="post">
+					<div class="styled-input agile-styled-input-top">
+						<input type="text" name="Name" required="">
+						<label>Name</label>
+						<span></span>
+					</div>
+					<div class="styled-input">
+						<input type="email" name="Email" required=""> 
+						<label>Email</label>
+						<span></span>
+					</div> 
+					<div class="styled-input">
+						<input type="text" name="Subject" required="">
+						<label>Subject</label>
+						<span></span>
+					</div>
+					<div class="styled-input">
+						<textarea name="Message" required=""></textarea>
+						<label>Message</label>
+						<span></span>
+					</div>	 
+					<input type="submit" value="SEND">
+				</form>
+			</div>
+			<div class="col-md-6 contactright">
+				
+				<div class="w3ls_footer_grid_left">
+					<div class="wthree_footer_grid_left">
+						<i class="fa fa-phone" aria-hidden="true"></i>
+					</div>
+					<p>076 56 52 530 <span>011 28 57 539</span></p>
+				</div>
+				<div class="w3ls_footer_grid_left">
+					<div class="wthree_footer_grid_left">
+						<i class="fa fa-envelope-o" aria-hidden="true"></i>
+					</div>
+					<p><a href="mailto:info@example.com">ibackevents@gmail.com</a> 
+						<span><a href="mailto:info@example.com">ibackstd@gmail.com</a></span></p>
+				</div>
+			</div>
+			<div class="clearfix"> </div>
 	</div>
-	<!-- //about -->
-	<!-- offers -->
-	<div class="offers">
-		<div class="container">
-			
-			<h3 class="heading-agileinfo white-w3ls">Our Services<span class="black-w3ls">We offer Best Services for you</span></h3>
-			<div class="offers-grids">
-				<div class="col-md-6 wthree-offers-left">
-					<div class="offers-left-heading">
-						<h4>Providing the Best Service to You is Our Happiness</h4>
-					</div>
-					<div class="offers-left-grids">
-						<div class="offers-number">
-							<p>1</p>
-						</div>
-						<div class="offers-text">
-							<p>Easy Onilne Event Booking System<br> IBACK Events provides you with a online Event booking system which easily customizable to your requirements.</p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="offers-left-grids offers-left-middle">
-						<div class="offers-number">
-							<p>2</p>
-						</div>
-						<div class="offers-text">
-							<p>24/7 Customer Care Service<br> We are always here to help you with all event solutions 24/7.</p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="offers-left-grids">
-						<div class="offers-number">
-							<p>3</p>
-						</div>
-						<div class="offers-text">
-							<p>Easy Payment Methods<br> You Don't need to worry about payments. It is very easy and flexible. We accept all kind of payment methods to make it much easier for you. </p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-				</div>
-				<div class="col-md-6 wthree-offers-right">
-					<h5>Here Are Main Services provides to fullfill your Event Needs</h5>
-					<p></p>
-					<ul>
-						<li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-angle-right" aria-hidden="true"></i> Event Managament</a></li>
-						<li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-angle-right" aria-hidden="true"></i> Event Coverage </a></li>
-						<li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-angle-right" aria-hidden="true"></i> Graphic Designing</a></li>
-						<li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-angle-right" aria-hidden="true"></i> Advertising</a></li>
-						<li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-angle-right" aria-hidden="true"></i> Web Solutions</a></li>
-						<li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-angle-right" aria-hidden="true"></i> Decorations</a></li>
-						<li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-angle-right" aria-hidden="true"></i> LightAnd Sound Solutions</a></li>
-					</ul>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-	</div>
-	<!-- offers -->
-		<!-- about-team -->
-	<!--<div class="team">		
-		<div class="container">
-			<h3 class="heading-agileinfo">Our Team<span>Events is a professionally managed Event</span></h3>			
-			<div class="team-row-agileinfo">
-				<div class="col-md-3 col-xs-6 team-grids">
-					<div class="thumbnail team-agileits">
-						<img src="images/t2.jpg" class="img-responsive" alt=""/>
-						<div class="w3agile-caption ">
-							<h4>Vaura Tegsner</h4>
-							<p>Lorem</p>
-							<div class="social-icon social-w3lsicon">
-								<a href="#" class="social-button twit"><i class="fa fa-twitter"></i></a>
-								<a href="#" class="social-button fb"><i class="fa fa-facebook"></i></a> 
-								<a href="#" class="social-button in"><i class="fa fa-linkedin"></i></a>  
-							</div>	
-						</div> 
-					</div>
-				</div>
-				<div class="col-md-3 col-xs-6 team-grids">
-					<div class="thumbnail team-agileits">
-						<img src="images/t1.jpg" class="img-responsive" alt=""/>
-						<div class="w3agile-caption">
-							<h4>Jark Kohnson</h4>
-							<p>Lorem</p>
-							<div class="social-icon social-w3lsicon">
-								<a href="#" class="social-button twit"><i class="fa fa-twitter"></i></a>
-								<a href="#" class="social-button fb"><i class="fa fa-facebook"></i></a> 
-								<a href="#" class="social-button in"><i class="fa fa-linkedin"></i></a>  
-							</div>	
-						</div> 
-					</div>
-				</div>
-				<div class="col-md-3 col-xs-6 team-grids">
-					<div class="thumbnail team-agileits">
-						<img src="images/t3.jpg" class="img-responsive" alt=""/>
-						<div class="w3agile-caption">
-							<h4>Chunk Erson</h4>
-							<p>Lorem</p>				
-							<div class="social-icon social-w3lsicon">
-								<a href="#" class="social-button twit"><i class="fa fa-twitter"></i></a>
-								<a href="#" class="social-button fb"><i class="fa fa-facebook"></i></a> 
-								<a href="#" class="social-button in"><i class="fa fa-linkedin"></i></a>  
-							</div>	
-						</div> 
-					</div>
-				</div>
-				<div class="col-md-3 col-xs-6 team-grids">
-					<div class="thumbnail team-agileits">
-						<img src="images/t4.jpg" class="img-responsive" alt=""/>
-						<div class="w3agile-caption">
-							<h4>Goes Mehak</h4>
-							<p>Lorem</p>						
-							<div class="social-icon social-w3lsicon">
-								<a href="#" class="social-button twit"><i class="fa fa-twitter"></i></a>
-								<a href="#" class="social-button fb"><i class="fa fa-facebook"></i></a> 
-								<a href="#" class="social-button in"><i class="fa fa-linkedin"></i></a>  
-							</div>	
-						</div> 
-					</div>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-	</div>-->
-	<!-- //about-team -->
-<!-- about -->
+</div>
+<!-- //contact -->	
 <!-- footer-top -->	
 	<div class="footer-top">
 		<div class="container">

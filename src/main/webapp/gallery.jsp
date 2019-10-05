@@ -35,7 +35,30 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<!-- banner-text --> 
 	
 	<!-- //banner --> 
-				<!-- header -->
+			<!-- header -->
+				
+				    <%
+	          String link,linkdash="index.jsp",visi="block",visil="block",visij="bloack",lo="none";
+	          
+	          if(session.getAttribute( "nic" )==null){
+	        	  
+	        	  
+	        	  visil="block";
+	        	  lo="none";
+	        	  
+	        	  
+	          
+	          }
+	          
+	          else{
+	        	  
+	        	  visil="none";
+	        	  lo="block";
+	        	  
+	          }
+	          %>
+	          
+	          
 			<div class="header-w3layouts"> 
 				<!-- Navigation -->
 				<nav class="navbar navbar-default navbar-fixed-top">
@@ -55,14 +78,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
 								<li class="hidden"><a class="page-scroll" href="#page-top"></a>	</li>
 								<li><a class="hvr-sweep-to-right" href="index.jsp">Home</a></li>
-								<li><a class="hvr-sweep-to-right" href="about.html">About</a></li>
-								<li><a class="hvr-sweep-to-right" href="Event Profile.html">Events</a></li>
-			
-								<li><a class="hvr-sweep-to-right" href="gallery.html">Gallery</a></li>
-								<li><a class="hvr-sweep-to-right" href="contact.html">Contact</a></li>
-								<li><a class="hvr-sweep-to-right" href="login.html">Login</a></li>
-								<li><a class="hvr-sweep-to-right" href="Customer SignUp.html">Sign Up</a></li>
-								<li><a class="hvr-sweep-to-right" href="customerProfile/${cust.nic}">${cust.username}</a></li>
+								<li><a class="hvr-sweep-to-right" href="about.jsp">About</a></li>
+								
+								<li><a class="hvr-sweep-to-right" href="gallery.jsp">Gallery</a></li>
+								<li><a class="hvr-sweep-to-right" href="contact.jsp">Contact</a></li>
+								<li><a class="hvr-sweep-to-right" href="login.html" style="display:<%=visil %>;">Login</a></li>
+								<li><a class="hvr-sweep-to-right" href="Customer SignUp.html" style="display:<%=visil %>;">Sign Up</a></li>
+								<li><a class="hvr-sweep-to-right" style="display:<%=lo %>;" href="customerProfile/<%=session.getAttribute( "nic" )%>"><%=session.getAttribute( "username" )%> 's Profile</a></li>
+								<li><a class="hvr-sweep-to-right" href="logout" style="display:<%=lo %>;">Log Out</a></li>
+								
 							</ul>
 						</div>
 						<!-- /.navbar-collapse -->

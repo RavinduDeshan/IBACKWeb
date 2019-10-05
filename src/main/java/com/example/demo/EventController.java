@@ -183,7 +183,7 @@ public class EventController {
 	}
 	
 	@GetMapping("/validateCustomer")
-	public RedirectView  validateCustomer(@RequestParam String nic, @RequestParam String password,RedirectAttributes redirectAttributes) {
+	public RedirectView  validateCustomer(@RequestParam String nic, @RequestParam String password,RedirectAttributes redirectAttributes, HttpServletRequest request) {
 		
 		CustomerController ev= new CustomerController();
 		System.out.println(nic);
@@ -194,20 +194,49 @@ public class EventController {
 		 redirectAttributes.addFlashAttribute("nic", nic);
 		
 		
-		if(ev.validate(nic,password)) {return new RedirectView("/indexlogged") ;}
+		if(ev.validate(nic,password)) {
+			
+			request.getSession().setAttribute("nic", nic);
+			
+			
+			return new RedirectView("/indexlogged") ;
+			
+		
+		}
 		else {
 		return new RedirectView("/login");}
 		
 	}
 	
+	
+	@GetMapping("/logout")
+	public RedirectView  logout(RedirectAttributes redirectAttributes, HttpServletRequest request) {
+		
+		
+			
+			request.getSession().setAttribute("nic", null);
+			request.getSession().setAttribute("username", null);
+			
+			
+			return new RedirectView("/indexlogout") ;
+			
+
+		
+	}
+	
+	
 	@RequestMapping("/indexlogged")
-	public  RedirectView indexlogged(@Valid Customer customer, BindingResult result,Model model,RedirectAttributes redirectAttributes) {
+	public  RedirectView indexlogged(@Valid Customer customer, BindingResult result,Model model,RedirectAttributes redirectAttributes, HttpServletRequest request) {
         model.addAttribute("customer",customer);
         //Do the Registration logic and then redirect to home page without using action for home page
       
         String NIC = (String)model.asMap().get("nic");
         
        redirectAttributes.addFlashAttribute("nic", NIC);
+       
+       String username = customer.getUsername();
+       
+       
        
        System.out.println("Methanta enwa");
        System.out.println(NIC);

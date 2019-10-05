@@ -129,13 +129,13 @@
                     <div class="col-md-4 pl-md-1">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Email address</label>
-                          <input type="email" class="form-control"  placeholder="mike@email.com" name="email" value=${cust.email}>
+                          <input type="email" class="form-control"  placeholder="mike@email.com" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" value=${cust.email}>
                         </div>
                       </div>
                     <div class="col-md-3 px-md-1">
                         <div class="form-group">
-                          <label>Username</label>
-                          <input type="password" class="form-control" placeholder="password"  name="password" value=${cust.password}>
+                          <label>Password</label>
+                          <input type="password" class="form-control" placeholder="password"  name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" value=${cust.password}>
                         </div>
                       </div>
   				</div>

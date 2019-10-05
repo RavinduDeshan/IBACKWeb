@@ -34,6 +34,16 @@ public class PageController {
 		return "index.jsp";
 	}
 	
+	
+	
+	@RequestMapping("/indexlogout")
+	public String indexlogout() {
+		System.out.println("Home Called");
+		
+		return "index.jsp";
+	}
+	
+	
 	@RequestMapping("/eventManagements")
 	public String dashhboar1d() {
 		
@@ -108,9 +118,14 @@ public class PageController {
         CustomerController ev= new CustomerController();
         Customer evlst=new Customer();
         //name=(ename.replaceAll("\\p{P}",""));
-        evlst=ev.getCustomerDetails(NIC.replaceAll("\\p{P}",""));		
-	
-		
+        evlst=ev.getCustomerDetails(NIC.replaceAll("\\p{P}",""));	
+        
+        
+        
+        String username= evlst.getUsername();
+        request.getSession().setAttribute("username", username);
+        
+        
 		//evlst.setEname("aaaaaaaaaaaaa");
 		//evlst.setElocation("eeee");
 		//edirectAttributes.addFlashAttribute("message", evlst);
