@@ -84,7 +84,7 @@
                         	$('#request_table').append(event_results);
                         		
                         		
-                        	});
+                        	//});
                             $('#messageDiv').css("display","block");
                         }else{
                             $('#messageDiv').css("display","none");
@@ -92,8 +92,8 @@
                             alert("Some exception occurred! Please try again.");
                         }
                     }
-                });
-            });
+                //});
+            //});
              
             //function to display message to the user
             function showMessage(results){
@@ -106,8 +106,8 @@
         </script>
 <!-- script close -->
 </head>
+<body  onload="myFunction()">
 
-<body class="">
     <center><div class="logodiv"> <img class="" src="assets/img/logo3.png" alt="..."></div></center>
     
   <div class="wrapper">
@@ -272,6 +272,10 @@
     <div class="content" id="contentStat">
 
         
+       <!--Content-->
+
+    <div class="content" id="contentStat">
+
         <!--Stats-->
         <div class="content">
             <div class="row">
@@ -286,8 +290,8 @@
                       </div>
                       <div class="col-7 col-md-8">
                         <div class="numbers">
-                          <p class="card-category">Total Events Created</p>
-                          <p class="card-title">182
+                          <p class="card-category">Total Events</p>
+                          <p class="card-title" id="demo3">
                             <p>
                         </div>
                       </div>
@@ -296,7 +300,10 @@
                   <div class="card-footer ">
                     <hr>
                     <div class="stats">
-                      <i class="fa fa-refresh"></i> Refresh For Updates
+                      <i class="fa fa-refresh"></i> 
+                      <a href="">Refresh For Updates</a>
+                      <br>
+                      <a href="">Export List To PDF</a>
                     </div>
                   </div>
                 </div>
@@ -312,8 +319,8 @@
                       </div>
                       <div class="col-7 col-md-8">
                         <div class="numbers">
-                          <p class="card-category">Requested Events</p>
-                          <p class="card-title">12
+                          <p class="card-category">Requested Events </p>
+                          <p class="card-title" id="demo">
                             <p>
                         </div>
                       </div>
@@ -322,7 +329,10 @@
                   <div class="card-footer ">
                     <hr>
                     <div class="stats">
-                      <i class="fa fa-calendar-o"></i> Refresh For Updates
+                      <i class="fa fa-calendar-o"></i>
+                         <a href="">Refresh For Updates</a>
+                         <br>
+                      	<a href="">Export List To PDF</a>
                     </div>
                   </div>
                 </div>
@@ -338,8 +348,8 @@
                       </div>
                       <div class="col-7 col-md-8">
                         <div class="numbers">
-                          <p class="card-category">pending  Events</p>
-                          <p class="card-title">23
+                          <p class="card-category" >Pending Events</p>
+                          <p class="card-title" id="demo1">
                             <p>
                         </div>
                       </div>
@@ -348,7 +358,10 @@
                   <div class="card-footer ">
                     <hr>
                     <div class="stats">
-                      <i class="fa fa-clock-o"></i> <a href="" class="alink">Show Details</a>
+                      <i class="fa fa-clock-o"></i> 
+                      <a href="">Refresh For Updates</a>
+                      <br>
+                      <a href="">Export List To PDF</a>
                     </div>
                   </div>
                 </div>
@@ -364,8 +377,8 @@
                       </div>
                       <div class="col-7 col-md-8">
                         <div class="numbers">
-                          <p class="card-category">Events Suspended</p>
-                          <p class="card-title">08
+                          <p class="card-category">Confirmed Events</p>
+                          <p class="card-title" id="demo2">
                             <p>
                         </div>
                       </div>
@@ -374,7 +387,10 @@
                   <div class="card-footer ">
                     <hr>
                     <div class="stats">
-                      <i class="fa fa-refresh"></i> <a href="" class="alink">Show Details</a>
+                      <i class="fa fa-refresh"></i>
+                       <a href="">Refresh For Updates</a>
+                       <br>
+                       <a href="">Export List To PDF</a>
                     </div>
                   </div>
                 </div>
@@ -389,334 +405,67 @@
                           <div class="card-header ">
                             <div class="row">
                               <div class="col-sm-6 text-left">
-                                <h5 class="card-category">Graphical Representation of</h5>
-                                <h2 class="card-title">Event Statistics</h2>
+                                
+                                <h2 class="card-title">Events On this Month</h2>
+                                
+                                	<div id="tab" >
+      									<table class="table tablesorter " >
+                                <thead class=" text-primary">
+                                  <tr>
+                                    <th>Event id</th>
+                        				
+                                    <th>ename</th>
+                                      
+                                    
+                                    <th>elocation</th>
+                                      
+                                    
+                                     <th>ephoneNo</th>
+                                     
+                                    
+                                     <th>etype</th>
+                                     
+                                    
+                                     <th> etime</th>
+                                     
+                                   	
+                                    <th class="text-center">estatus </th>
+                                      
+                                   
+                                 </tr>
+                                </thead>
+                                <tbody id="reqtbl">
+                                
+                              
+                                       
+                                    
+                              
+                                </tbody>         
+                                      
+                               </table>
+                               
+     
                               </div>
-                              <div class="col-sm-6">
-                                <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
-                                  <label class="btn btn-sm btn-primary btn-simple active" id="request">
-                                    <input type="radio" name="options" checked>
-                                    <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Requests</span>
-                                    <span class="d-block d-sm-none">
-                                      <i class="tim-icons icon-single-02"></i>
-                                      <table id="request_table">
-                                      <tr>
-                                      		<th>EID</th>
-                                      		<th>Event Name</th>
-                                      		<th>Event Location</th>
-                                      		<th>Event Type</th>
-                                      		<th>PhoneNo</th>
-                                      		<th>Event Date</th>
-                                      		<th>EID</th>
-                                      </tr>
-                                      </table>
-                                    </span>
-                                  </label>
-                                  <label class="btn btn-sm btn-primary btn-simple" id="1">
-                                    <input type="radio" class="d-none d-sm-none" name="options">
-                                    <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Pending</span>
-                                    <span class="d-block d-sm-none">
-                                      <i class="tim-icons icon-gift-2"></i>
-                                    </span>
-                                  </label>
-                                  <label class="btn btn-sm btn-primary btn-simple" id="2">
-                                    <input type="radio" class="d-none" name="options">
-                                    <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Confirmed</span>
-                                    <span class="d-block d-sm-none">
-                                      <i class="tim-icons icon-tap-02"></i>
-                                    </span>
-                                  </label>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="card-body">
-                            <div class="chart-area">
-                              <canvas id="chartBig1"></canvas>
-                            </div>
-                          </div>
+                             <p>
+       							 <input type="button" value="Export List To PDF" class="btn btn-danger"
+           							 id="btPrint" onclick="createPDF()" />
+    								</p>
                         </div>
                       </div>
                     </div>
 
-            <!--Customer Table-->
-            <div class="content">
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="card ">
-                          <div class="card-header">
-                            <h4 class="card-title"> Simple Table</h4>
-                          </div>
-                          <div class="card-body">
-                            <div class="table-responsive">
-                              <table class="table tablesorter " id="">
-                                <thead class=" text-primary">
-                                  <tr>
-                                    <th>
-                                      Name
-                                    </th>
-                                    <th>
-                                      Country
-                                    </th>
-                                    <th>
-                                      City
-                                    </th>
-                                    <th class="text-center">
-                                      Salary
-                                    </th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td>
-                                      Dakota Rice
-                                    </td>
-                                    <td>
-                                      Niger
-                                    </td>
-                                    <td>
-                                      Oud-Turnhout
-                                    </td>
-                                    <td class="text-center">
-                                      $36,738
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>
-                                      Minerva Hooper
-                                    </td>
-                                    <td>
-                                      Curaçao
-                                    </td>
-                                    <td>
-                                      Sinaai-Waas
-                                    </td>
-                                    <td class="text-center">
-                                      $23,789
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>
-                                      Sage Rodriguez
-                                    </td>
-                                    <td>
-                                      Netherlands
-                                    </td>
-                                    <td>
-                                      Baileux
-                                    </td>
-                                    <td class="text-center">
-                                      $56,142
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>
-                                      Philip Chaney
-                                    </td>
-                                    <td>
-                                      Korea, South
-                                    </td>
-                                    <td>
-                                      Overland Park
-                                    </td>
-                                    <td class="text-center">
-                                      $38,735
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>
-                                      Doris Greene
-                                    </td>
-                                    <td>
-                                      Malawi
-                                    </td>
-                                    <td>
-                                      Feldkirchen in Kärnten
-                                    </td>
-                                    <td class="text-center">
-                                      $63,542
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>
-                                      Mason Porter
-                                    </td>
-                                    <td>
-                                      Chile
-                                    </td>
-                                    <td>
-                                      Gloucester
-                                    </td>
-                                    <td class="text-center">
-                                      $78,615
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>
-                                      Jon Porter
-                                    </td>
-                                    <td>
-                                      Portugal
-                                    </td>
-                                    <td>
-                                      Gloucester
-                                    </td>
-                                    <td class="text-center">
-                                      $98,615
-                                    </td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!--Event Table-->
-
-                      <div class="col-md-12">
-                            <div class="card  card-plain">
-                              <div class="card-header">
-                                <h4 class="card-title"> Table on Plain Background</h4>
-                                <p class="category"> Here is a subtitle for this table</p>
-                              </div>
-                              <div class="card-body">
-                                <div class="table-responsive">
-                                  <table class="table tablesorter " id="">
-                                    <thead class=" text-primary">
-                                      <tr>
-                                        <th>
-                                          Name
-                                        </th>
-                                        <th>
-                                          Country
-                                        </th>
-                                        <th>
-                                          City
-                                        </th>
-                                        <th class="text-center">
-                                          Salary
-                                        </th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr>
-                                        <td>
-                                          Dakota Rice
-                                        </td>
-                                        <td>
-                                          Niger
-                                        </td>
-                                        <td>
-                                          Oud-Turnhout
-                                        </td>
-                                        <td class="text-center">
-                                          $36,738
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td>
-                                          Minerva Hooper
-                                        </td>
-                                        <td>
-                                          Curaçao
-                                        </td>
-                                        <td>
-                                          Sinaai-Waas
-                                        </td>
-                                        <td class="text-center">
-                                          $23,789
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td>
-                                          Sage Rodriguez
-                                        </td>
-                                        <td>
-                                          Netherlands
-                                        </td>
-                                        <td>
-                                          Baileux
-                                        </td>
-                                        <td class="text-center">
-                                          $56,142
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td>
-                                          Philip Chaney
-                                        </td>
-                                        <td>
-                                          Korea, South
-                                        </td>
-                                        <td>
-                                          Overland Park
-                                        </td>
-                                        <td class="text-center">
-                                          $38,735
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td>
-                                          Doris Greene
-                                        </td>
-                                        <td>
-                                          Malawi
-                                        </td>
-                                        <td>
-                                          Feldkirchen in Kärnten
-                                        </td>
-                                        <td class="text-center">
-                                          $63,542
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td>
-                                          Mason Porter
-                                        </td>
-                                        <td>
-                                          Chile
-                                        </td>
-                                        <td>
-                                          Gloucester
-                                        </td>
-                                        <td class="text-center">
-                                          $78,615
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td>
-                                          Jon Porter
-                                        </td>
-                                        <td>
-                                          Portugal
-                                        </td>
-                                        <td>
-                                          Gloucester
-                                        </td>
-                                        <td class="text-center">
-                                          $98,615
-                                        </td>
-                                      </tr>
-                                    </tbody>
-                                  </table>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!--End of Event Table-->
-    </div>
+           
+                 
+    			</div>
 
 
 
 
      
-    </div>
-  </div>
-  
+    		</div>
+  		</div>
+  		
+ 
  
   <!--   Core JS Files   -->
   <script src="../assets/js/core/jquery.min.js"></script>
@@ -845,7 +594,36 @@
         });
       });
     });
+    
+   
   </script>
+ <script>
+ 	function abc(){
+ 		var tes="test";
+     	 jQuery.ajax({
+     	        type: "GET",
+     	        url: "http://localhost:8080/selectRequestEvents",
+     	        data: { "id": "getStatus" }
+     	    }).done(function(msg) {
+     	    	showUsers(msg)
+     	    });
+     	function showUsers(msg) {    	   
+			var trHTML = '';
+			$.each(msg, function (i, item) {
+			    trHTML += '<tr><td>' + item.id + '</td><td>' + item.ename + '</td><td>' + item.elocation + '</td><td>' + item.ephoneNo +'</td><td>' + item.etype +'</td><td>' + item.etime + '</td><td>' + item.estatus +'</td></tr>';
+			});
+			$("#reqtbl tr").detach();
+			$('#reqtbl').append(trHTML);
+			$( ".card" ).show();
+       }
+     	 
+ 	}
+ 
+ </script>
+ 
+  
+  
+  
   <script>
     $(document).ready(function() {
       // Javascript method's body can be found in assets/js/demos.js
@@ -861,7 +639,123 @@
         application: "black-dashboard-free"
       });
   </script>
+  <script>
+  	function myFunction(){
+  		 var tes="test";
+      	 jQuery.ajax({
+      	        type: "GET",
+      	        url: "http://localhost:8080/selectCountRequestEvents",
+      	        data: { "id": "getStatus" }
+      	    }).done(function(msg) {
+      	    	document.getElementById("demo").innerHTML = msg;
+      	    });
+      	function showUsers(msg) {    	   
+			var trHTML = '';
+			$.each(msg, function (i, item) {
+			    document.getElementById("demo").innerHTML = "Paragraph changed!";
+			});$("#reqtbl tr").detach();
+			$('#reqtbl').append(trHTML);
+			$( ".card" ).show();
+			
+			
+       }
+      	
+      	 var tes="test1";
+      	 jQuery.ajax({
+      	        type: "GET",
+      	        url: "http://localhost:8080/selectPendRequestEvents",
+      	        data: { "id": "getStatus" }
+      	    }).done(function(msg) {
+      	    	document.getElementById("demo1").innerHTML = msg;
+      	    });
+      	function showUsers(msg) {    	   
+			var trHTML = '';
+			$.each(msg, function (i, item) {
+			    document.getElementById("demo").innerHTML = "Paragraph changed!";
+			});$("#reqtbl tr").detach();
+			$('#reqtbl').append(trHTML);
+			$( ".card" ).show();
+			
+			
+       }
+      	 var tes="test2";
+      	 jQuery.ajax({
+      	        type: "GET",
+      	        url: "http://localhost:8080/selectConfirmRequestEvents",
+      	        data: { "id": "getStatus" }
+      	    }).done(function(msg) {
+      	    	document.getElementById("demo2").innerHTML = msg;
+      	    });
+      	function showUsers(msg) {    	   
+			var trHTML = '';
+			$.each(msg, function (i, item) {
+			    document.getElementById("demo").innerHTML = "Paragraph changed!";
+			});$("#reqtbl tr").detach();
+			$('#reqtbl').append(trHTML);
+			$( ".card" ).show();
+			
+			
+       }
+      	
+      	var tes="test3";
+     	 jQuery.ajax({
+     	        type: "GET",
+     	        url: "http://localhost:8080/selectAllRequestEvents",
+     	        data: { "id": "getStatus" }
+     	    }).done(function(msg) {
+     	    	document.getElementById("demo3").innerHTML = msg;
+     	    });
+     	function showUsers(msg) {    	   
+			var trHTML = '';
+			$.each(msg, function (i, item) {
+			    document.getElementById("demo").innerHTML = "Paragraph changed!";
+			});$("#reqtbl tr").detach();
+			$('#reqtbl').append(trHTML);
+			$( ".card" ).show();
+			
+			
+      }
+      		
+      	abc();  
+      	  
+      	
+  	}
+  
+  
+  
+  
+  
+  </script>
+   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    <script>
+    function createPDF() {
+        var sTable = document.getElementById('tab').innerHTML;
 
+        var style = "<style>";
+        style = style + "table {width: 100%;font: 17px Calibri;}";
+        style = style + "table, th, td {border: solid 1px #DDD; border-collapse: collapse;";
+        style = style + "padding: 2px 3px;text-align: center;}";
+        style = style + "</style>";
+
+        // CREATE A WINDOW OBJECT.
+        var win = window.open('', '', 'height=700,width=700');
+
+        win.document.write('<html><head>');
+        win.document.write('<title>Events for this Month</title>');   // <title> FOR PDF HEADER.
+        win.document.write(style);          // ADD STYLE INSIDE THE HEAD TAG.
+        win.document.write('</head>');
+        win.document.write('<body>');
+        win.document.write(sTable);         // THE TABLE CONTENTS INSIDE THE BODY TAG.
+        win.document.write('</body></html>');
+
+        win.document.close(); 	// CLOSE THE CURRENT WINDOW.
+
+        win.print();    // PRINT THE CONTENTS.
+    }
+    
+    </script>
+	
 
 </body>
 

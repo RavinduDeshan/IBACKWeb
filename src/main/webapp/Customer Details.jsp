@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -42,7 +45,7 @@
 </style>
 </head>
 
-<body class="">
+<body onload="myFunction()">
     <center><div class="logodiv"> <img class="" src="assets/img/logo3.png" alt="..."></div></center>
     
   <div class="wrapper">
@@ -229,15 +232,11 @@
                       <div class="col-md-3 px-md-1">
                         <div class="form-group">
                           <label>Username</label>
-                          <input type="text" class="form-control" disabled="" placeholder="Username"  name="userName" value=${cust.username}>
+                          <input type="text" class="form-control" disabled="" placeholder="Username"  name="username" value=${cust.username}>
                         </div>
                       </div>
-                      <div class="col-md-4 pl-md-1">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Email address</label>
-                          <input type="email" class="form-control" disabled="" placeholder="mike@email.com" name="email" value=${cust.email}>
-                        </div>
-                      </div>
+                       
+                     
                     </div>
                     <div class="row">
                       <div class="col-md-6 pr-md-1">
@@ -261,7 +260,20 @@
                         </div>
                       </div>
                     </div>
-  
+                   <div class="row" style=" margin-left: 1px;">
+                    <div class="col-md-4 pl-md-1">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Email address</label>
+                          <input type="email" class="form-control" disabled="" placeholder="mike@email.com" name="email" value=${cust.email}>
+                        </div>
+                      </div>
+                    <div class="col-md-3 px-md-1">
+                        <div class="form-group">
+                          <label>Username</label>
+                          <input type="password" class="form-control" disabled="" placeholder="password"  name="password" value=${cust.password}>
+                        </div>
+                      </div>
+  				</div>
                     <div class="row">
                       <div class="col-md-6 pr-md-1">
                         <div class="form-group">
@@ -272,14 +284,15 @@
                       <div class="col-md-6 pl-md-1">
                         <div class="form-group">
                           <label>Position</label>
-                          <input type="text" class="form-control" disabled="" placeholder="Position or Designation" name="post" value=${cust.company}>
+                          <input type="text" class="form-control" disabled="" placeholder="Position or Designation" name="post" value=${cust.post}>
+                          <input type="hidden" id="hidden" class="form-control" placeholder="Position or Designation" name="hidden" value="admin">
                         </div>
                       </div>
-                    </div>.94
+                    </div>
                    
                   
                 </div>
-                <div class="card-footer">1/
+                <div class="card-footer">
                   <button type="submit" class="btn btn-fill btn-primary" id="save" hidden="true">Save</button></form>
                   <button type="submit" class="btn btn-fill btn-danger" onclick="toggleStatusDisable()" id="cancel" hidden="true">Cancel</button></form>
                   <button type="submit" class="btn btn-fill btn-primary" onclick="toggleStatusEnable()" id="update" >Enable for Update</button></form>
@@ -299,17 +312,17 @@
                       <div class="block block-four"></div>
                       <a href="javascript:void(0)">
                         <img class="avatar" src="../assets/img/emilyz.jpg" alt="...">
-                        <br><button class="btn btn-fill btn-primary">Change Profile Picture</button><br><br>
-                        <h5 class="title" name="namedesc">Mike Andrew</h5>
+                        
+                        <h5 class="title" name="namedesc">${cust.fName} &nbsp ${cust.lName}</h5>
                       </a>
                       <p class="description" name="positionDesc">
-                        Position
+                        ${cust.post}
                       </p>
                       <p class="description" name="companyDesc">
-                        Company
+                        ${cust.company}
                       </p>
                       <p class="description" name="EmailDesc">
-                        Email
+                        ${cust.email}
                       </p>
                       
                     </div>
@@ -439,143 +452,73 @@
     
           </div>
   
-          <!--table-->
-        <div class="content">
-  
+         <!--table-->
+      	<c:choose>
+           <!--Customer Table-->
+          
             <div class="content">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="card ">
-                      <div class="card-header">
-                        <h4 class="card-title">Customer's Events</h4>
-                      </div>
-                      <div class="card-body">
-                        <div class="table-responsive">
-                          <table class="table tablesorter " id="">
-                            <thead class=" text-primary">
-                              <tr>
-                                <th>
-                                  Event Code
-                                </th>
-                                <th>
-                                  Event Name
-                                </th>
-                                <th>
-                                  Venue
-                                </th>
-                                <th class="text-center">
-                                  Status
-                                </th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td>
-                                  Dakota Rice
-                                </td>
-                                <td>
-                                  Niger
-                                </td>
-                                <td>
-                                  Oud-Turnhout
-                                </td>
-                                <td class="text-center">
-                                  $36,738
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  Minerva Hooper
-                                </td>
-                                <td>
-                                  Curaçao
-                                </td>
-                                <td>
-                                  Sinaai-Waas
-                                </td>
-                                <td class="text-center">
-                                  $23,789
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  Sage Rodriguez
-                                </td>
-                                <td>
-                                  Netherlands
-                                </td>
-                                <td>
-                                  Baileux
-                                </td>
-                                <td class="text-center">
-                                  $56,142
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  Philip Chaney
-                                </td>
-                                <td>
-                                  Korea, South
-                                </td>
-                                <td>
-                                  Overland Park
-                                </td>
-                                <td class="text-center">
-                                  $38,735
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  Doris Greene
-                                </td>
-                                <td>
-                                  Malawi
-                                </td>
-                                <td>
-                                  Feldkirchen in Kärnten
-                                </td>
-                                <td class="text-center">
-                                  $63,542
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  Mason Porter
-                                </td>
-                                <td>
-                                  Chile
-                                </td>
-                                <td>
-                                  Gloucester
-                                </td>
-                                <td class="text-center">
-                                  $78,615
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  Jon Porter
-                                </td>
-                                <td>
-                                  Portugal
-                                </td>
-                                <td>
-                                  Gloucester
-                                </td>
-                                <td class="text-center">
-                                  $98,615
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
+                    <div class="row" id="requestTable">
+                      <div class="col-md-12">
+                        <div class="card" style="display: none;">
+                          <div class="card-header" id="hed-t">
+                            <h4 class="card-title"> Request Events</h4>
+                          </div>
+                           <c:when test="${mode=='eventManagement' }">
+                          <div class="card-body">
+                            <div class="table-responsive">
+                              <table class="table tablesorter " >
+                                <thead class=" text-primary">
+                                  <tr>
+                                    <th>
+                                      id
+                        				</th>
+                                    <th>
+                                      ename
+                                    </th>
+                                    <th>
+                                      elocation
+                                    </th>
+                                     <th>
+                                     ephoneNo
+                                    </th>
+                                     <th>
+                                     edate
+                                    </th>
+                                     <th>
+                                      etime
+                                   	</th>
+                                    <th class="text-center">
+                                      etype
+                                    </th>
+                                  </tr>
+                                </thead>
+                                <tbody id="reqtbl">
+                               <!-- c:forEach var="ev" items="${ev }">
+                                  <tr>
+                                    <td>${ev.id}</td>
+                                    <td>${ev.ename}</td>
+                                    <td> ${ev.elocation}</td>
+                                    <td>${ev.ephoneNo}</td>
+                                     <td> ${ev.edate}</td>
+                                    <td> ${ev.etime}</td>
+                                     <td class="text-center">${ev.etype}</td>
+                                       
+                                     </tr>
+                                   </c:forEach-->
+                                       
+                                    
+                              
+                                </tbody>         
+                                      
+                               </table>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-  
-  
-        </div>
+					</c:when>
+                      <!--Event Table-->
+	</c:choose>       
+
   
                       <!--End of Event Table-->
       </div></div></div></div></div></div></div>
@@ -743,19 +686,49 @@ function toggleStatusDisable() {
         $('#cancel').attr('hidden', true);
         $('#save').attr('hidden', true);
         $('#update').attr('hidden', false);
-        location.reload();
+        
     
 }
   
 function toggleStatusEnable() {
     
     $('#formDetails :input').attr('disabled', false);
+   
     $('#update').attr('hidden', true);
     $('#cancel').attr('hidden', false);
     $('#save').attr('hidden', false);
 
 }
 </script>
+
+ <script>
+
+	function myFunction(){
+		console.log("HIIIIII R");
+	 	var tes="test";
+  	 	jQuery.ajax({
+  	        type: "GET",
+  	        url: "http://localhost:8080/selectEventCus/${cust.nic}",
+  	        data: { "id": "getStatus" }
+  	    }).done(function(msg) {
+  	    	showUsers(msg)
+  	    });
+  	  
+  	  
+  	
+   function showUsers(msg) {    	   
+		var trHTML = '';
+		$.each(msg, function (i, item) {
+		    trHTML += '<tr><td>' + item.id + '</td><td>' + item.ename + '</td><td>' + item.elocation + '</td><td>' + item.ephoneNo +'</td><td>' + item.edate +'</td><td>' + item.etime + '</td><td>' + item.etype +'</td><td><a class="btn btn-primary" href = "/EventDetails/{'+item.ename+'}">View Event</a></td></tr>';
+		});
+		$("#reqtbl tr").detach();
+		$('#reqtbl').append(trHTML);
+		$( ".card" ).show();
+   }
+   
+}
+	
+  </script>
 
 </body>
 

@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -43,6 +44,12 @@ public class EventController {
 		return "index.html";
 	}
 	
+	@RequestMapping("/eventProfile")
+	public String home147() {
+		
+		return "eventProfile.html";
+	}
+	
 	@RequestMapping("/addEvent")
 	public RedirectView addevent(Event events) {
 		
@@ -56,6 +63,8 @@ public class EventController {
 		System.out.println(events.getEdate());
 		EveeentController ev= new EveeentController();
 		ev.createEvent(events);
+		
+		
 		return new RedirectView("/getIndex");
 		
 	}
@@ -71,6 +80,19 @@ public class EventController {
 		return new RedirectView("/getIndex");
 	}
 	
+	
+	
+//	@RequestMapping("/validateCustomer")
+//	public RedirectView validateCustomer(Customer customer) {
+//		
+//		System.out.println("Hiii");
+//		System.out.println(customer.getfName());
+//		
+//		CustomerController ev= new CustomerController();
+//		ev.validateCustomer(customer);
+//		return new RedirectView("/getIndex");
+//	}
+//	
 	@RequestMapping("eventManagement")
 	public String dashhboard() {
 		
@@ -109,7 +131,7 @@ public class EventController {
 
 	@GetMapping("/selectPendingEvent")
 	public List<Event> getPendingEvent() {
-		
+		System.out.println("ppppp");
 		EveeentController ev= new EveeentController();
 		List<Event> evlst = new ArrayList<Event>();
 		evlst=ev.getPendingEvent();
@@ -160,6 +182,84 @@ public class EventController {
 		
 	}
 	
+	@GetMapping("/validateCustomer")
+	public RedirectView  validateCustomer(@RequestParam String nic, @RequestParam String password,RedirectAttributes redirectAttributes, HttpServletRequest request) {
+		
+		CustomerController ev= new CustomerController();
+		System.out.println(nic);
+		System.out.println(password);
+		nic=(nic.replaceAll("\\p{P}",""));
+		password=(password.replaceAll("\\p{P}",""));
+		
+		 redirectAttributes.addFlashAttribute("nic", nic);
+		
+		
+		if(ev.validate(nic,password)) {
+			
+			request.getSession().setAttribute("nic", nic);
+			
+			
+			return new RedirectView("/indexlogged") ;
+			
+		
+		}
+		else {
+		return new RedirectView("/login");}
+		
+	}
+	
+	
+	@GetMapping("/logout")
+	public RedirectView  logout(RedirectAttributes redirectAttributes, HttpServletRequest request) {
+		
+		
+			
+			request.getSession().setAttribute("nic", null);
+			request.getSession().setAttribute("username", null);
+			
+			
+			return new RedirectView("/indexlogout") ;
+			
+
+		
+	}
+	
+	
+	@RequestMapping("/indexlogged")
+	public  RedirectView indexlogged(@Valid Customer customer, BindingResult result,Model model,RedirectAttributes redirectAttributes, HttpServletRequest request) {
+        model.addAttribute("customer",customer);
+        //Do the Registration logic and then redirect to home page without using action for home page
+      
+        String NIC = (String)model.asMap().get("nic");
+        
+       redirectAttributes.addFlashAttribute("nic", NIC);
+       
+       String username = customer.getUsername();
+       
+       
+       
+       System.out.println("Methanta enwa");
+       System.out.println(NIC);
+		
+		System.out.println("Hiii admin");
+		
+		
+		CustomerController ev= new CustomerController();
+		List<Event> evlst = new ArrayList<Event>();
+		
+	//name=(ename.replaceAll("\\p{P}",""));
+	//vlst=ev.geteventDetails(ename);		
+		//odel.put("message", evlst);
+		//edirectAttributes.addFlashAttribute("message", evlst);
+		return new RedirectView("/IndexCustomer");
+		//return evlst;
+		
+		
+	}
+	
+
+	
+	
 	@GetMapping("/selcteventDetails/{ename}")
 	/*public List<Event> selcteventDetails(@PathVariable String ename) {
 		EveeentController ev= new EveeentController();
@@ -192,6 +292,28 @@ public class EventController {
 		return new RedirectView("/eventManagements");
 	}
 	
+	@RequestMapping("/updateCustomer/{nic}")
+	public RedirectView updateCustomer(Customer cust, @RequestParam String hidden,@PathVariable String nic) {
+		
+		System.out.println("Hiii Update");
+		System.out.println(cust.getNic());
+		
+		CustomerController ev= new CustomerController();
+		System.out.println(nic);
+		ev.updateCustomer(cust,nic);
+		
+		if(hidden.equals("admin")) {
+		return new RedirectView("/customerManagements");}
+		
+		else if(hidden.equals("user")){
+			
+			return new RedirectView("/login");}
+			
+		else return null;
+	}
+	
+	
+	
 	@RequestMapping("/AdminEventDetails/{ename}")
 	public  RedirectView AdminEventDetails(@PathVariable String ename,@Valid Event customer, BindingResult result,Model model,RedirectAttributes redirectAttributes) {
         model.addAttribute("customer",customer);
@@ -214,6 +336,55 @@ public class EventController {
 		
 		
 	}
+	
+//	@RequestMapping("/AdminCustomerDetails1/{ename}")
+//	public  RedirectView AdminEventDetails1(@PathVariable String ename,@Valid Event customer, BindingResult result,Model model,RedirectAttributes redirectAttributes) {
+//        model.addAttribute("customer",customer);
+//        //Do the Registration logic and then redirect to home page without using action for home page
+//       
+//       redirectAttributes.addFlashAttribute("customerEmail", customer.getEname());
+//		
+//		System.out.println("Hiii admin");
+//		
+//		String name=ename;
+//		EveeentController ev= new EveeentController();
+//		List<Event> evlst = new ArrayList<Event>();
+//		
+//	//name=(ename.replaceAll("\\p{P}",""));
+//	//vlst=ev.geteventDetails(ename);		
+//		//odel.put("message", evlst);
+//		//edirectAttributes.addFlashAttribute("message", evlst);
+//		return new RedirectView("/adminEventDtls");
+//		//return evlst;
+//		
+//		
+//	}
+	
+
+	
+	
+	@RequestMapping("/AdminCustomerDetails/{nic}")
+	public  RedirectView AdminCustomerDetails(@PathVariable String nic,@Valid Customer customer, BindingResult result,Model model,RedirectAttributes redirectAttributes) {
+        model.addAttribute("customer",customer);
+        //Do the Registration logic and then redirect to home page without using action for home page
+       
+       redirectAttributes.addFlashAttribute("nic", customer.getNic());
+		
+		System.out.println("Hiii admin");
+		
+		String NIC=nic;
+		CustomerController ev= new CustomerController();
+		List<Event> evlst = new ArrayList<Event>();
+		
+	//name=(ename.replaceAll("\\p{P}",""));
+	//vlst=ev.geteventDetails(ename);		
+		//odel.put("message", evlst);
+		//edirectAttributes.addFlashAttribute("message", evlst);
+		return new RedirectView("/adminCustomerDetails");
+		//return evlst;
+		
+		
+	}
 	@RequestMapping("/addSuplierPayment")
 	public String createSupplierPayment(SupplierPayment supplierPay) {
 		
@@ -224,6 +395,14 @@ public class EventController {
 		return "index.html";
 		
 	}
+	
+	@RequestMapping("customerManagement")
+	public String dashhboard2() {
+		
+		return "customerManagement.html";
+	}
+	
+	
 	@RequestMapping("/addCustomerPayment")
 	public String createCustomerPayment(CustomerPayment customerPay) {
 		
@@ -246,17 +425,77 @@ public class EventController {
 		
 	}
 	
-	@RequestMapping("/selectSupplierPayment")
-	public List<SupplierPayment> getAllSupplierPayments() {
-		System.out.println("Calll");
-		SupplierPaymentController ev= new SupplierPaymentController();
-		List<SupplierPayment> evlst = new ArrayList<SupplierPayment>();
-		evlst=ev.getAllSupplierPayments();
-		System.out.println("Calll11111111111111111111");
-		return evlst;
+	@RequestMapping("/deleteCustomer/{nic}")
+	public RedirectView  deleteCustomer(@PathVariable String nic) {
+		
+		CustomerController cus= new CustomerController();
+		System.out.println(nic);
+		
+		nic=(nic.replaceAll("\\p{P}",""));
+		cus.deleteCustomer(nic);
+		return new RedirectView("/customerManagements");
 		
 	}
 	
+
+	
+	@GetMapping("/selectAllCustomer")
+	public float selctAllCustomer(HttpServletRequest request) {
+		CustomerController c=new CustomerController();
+		float res1=c.countAllCustomer();
+		System.out.println("Count is"+res1);
+		return res1;
+	
+	}
+
+	@GetMapping("/selectCountRequestEvents")
+	public float selctCountRequestEvent(HttpServletRequest request) {
+		EveeentController e=new EveeentController();
+		float res=e.countReqEvent();
+		System.out.println("Count is"+res);
+		return res;
+	}
+	
+	
+	
+	@GetMapping("/countPendCusEvent")
+	public float countPendCusEvent(HttpServletRequest request) {
+		CustomerController e=new CustomerController();
+		float res=e.countPendCusEvent(request);
+		System.out.println("Count is"+res);
+		return res;
+	}
+	
+	@GetMapping("/selectPendRequestEvents")
+	public float selctPendRequestEvent(HttpServletRequest request) {
+		EveeentController e=new EveeentController();
+		float res1=e.countPendEvent();
+		System.out.println("Count is"+res1);
+		return res1;
+	}
+	@GetMapping("/selectConfirmRequestEvents")
+	public float selctConfirmRequestEvent(HttpServletRequest request) {
+		EveeentController e=new EveeentController();
+		float res1=e.countConfirmedEvent();
+		System.out.println("Count is"+res1);
+		return res1;
+	}
+	@GetMapping("/selectAllRequestEvents")
+	public float selctAllRequestEvent(HttpServletRequest request) {
+		EveeentController e=new EveeentController();
+		float res1=e.countAllEvent();
+		System.out.println("Count is"+res1);
+		return res1;
+	}
+	
+	@RequestMapping("/selectComingEvent")
+	public List<Event> getComingEvent() {
+		System.out.println("hi");
+		EveeentController ev= new EveeentController();
+		List<Event> evlst = new ArrayList<Event>();
+		evlst=ev.getUpcomingEvent();
+		return evlst;
+	}	
 	@RequestMapping("/selectCustomerPendingPayment")
 	public List<CustomerPayment> getPendingCustomerPayments() {
 		System.out.println("Calll");
@@ -268,6 +507,7 @@ public class EventController {
 		
 	}
 	
+	
 
 	@RequestMapping("/selectSupplierPendingPayment")
 	public List<SupplierPayment> getPendingSupplierPayments() {
@@ -276,10 +516,26 @@ public class EventController {
 		List<SupplierPayment> evlst = new ArrayList<SupplierPayment>();
 		evlst=ev.getPendingSupplierPayment();
 		System.out.println("Call222222222222222222222222222221");
+
 		return evlst;
 		
 	}
 	
+
+	@RequestMapping("/selectEventInquiries/{ename}")
+	public List<Inquiries>  selectEventInquiries(@PathVariable String ename) {
+		
+		EveeentController ev= new EveeentController();
+		System.out.println(ename);
+		List<Inquiries> evlst = new ArrayList<Inquiries>();
+		ename=(ename.replaceAll("\\p{P}",""));
+		evlst=ev.getEventInquiries(ename);
+		return evlst;
+		
+	}
+	
+	
+
 	@RequestMapping("/deleteCustomerPayment/{ename}")
 	public RedirectView  deleteCustomerPayment(@PathVariable String ename) {
 		
@@ -292,6 +548,7 @@ public class EventController {
 		return new RedirectView("/paymentDashboard");
 		
 	}
+
 	
 	@RequestMapping("/updateCustomerPayment/{ename}")
 	public RedirectView updateCustomerPayment(CustomerPayment cs,@PathVariable String ename) {
@@ -302,73 +559,86 @@ public class EventController {
 		CustomerPaymentController ev= new CustomerPaymentController();
 		System.out.println(ename);
 		ev.updateCustomerPayment(cs,ename);
-		return new RedirectView("/paymentDashboard");
+		return new RedirectView("/PaymentDashboard");
 	}
 	
+	@GetMapping("customerProfile/{nic}")
+	public RedirectView  validateCustomer(@PathVariable String nic,RedirectAttributes redirectAttributes) {
+		
+		CustomerController ev= new CustomerController();
+		System.out.println("Customer profile entry nic "+nic);
+		
+		
+		
+		 redirectAttributes.addFlashAttribute("nic", nic);
+		
+		
+		return new RedirectView("/GetCustomerProfileRe") ;
+		
+		
+	}
 	
-	
-	
-	
-	@RequestMapping("/viewCustomerPayment/{ename}")
-	public  RedirectView viewCustomerPayment(@PathVariable String ename,@Valid CustomerPayment customer, BindingResult result,Model model,RedirectAttributes redirectAttributes) {
+	@RequestMapping("/GetCustomerProfileRe")
+	public  RedirectView customerProfile(@Valid Customer customer, BindingResult result,Model model,RedirectAttributes redirectAttributes) {
         model.addAttribute("customer",customer);
         //Do the Registration logic and then redirect to home page without using action for home page
-       System.out.println(customer.getEventName());
-       redirectAttributes.addFlashAttribute("customerEmail", ename);
-       System.out.println("hp"+ename);
+      
+        String NIC = (String)model.asMap().get("nic");
+        
+       redirectAttributes.addFlashAttribute("nic", NIC);
+       
+       System.out.println("Methanta enwa  Profile");
+       System.out.println(NIC);
+		
 		System.out.println("Hiii admin");
-		System.out.println(ename);
-		String name=ename;
-		CustomerPaymentController ev= new CustomerPaymentController();
-		List<CustomerPayment> evlst = new ArrayList<CustomerPayment>();
+		
+		
+		CustomerController ev= new CustomerController();
+		List<Event> evlst = new ArrayList<Event>();
 		
 	//name=(ename.replaceAll("\\p{P}",""));
 	//vlst=ev.geteventDetails(ename);		
 		//odel.put("message", evlst);
 		//edirectAttributes.addFlashAttribute("message", evlst);
-		return new RedirectView("/viewPayment");
+		return new RedirectView("/CustomerDetailsProfile");
 		//return evlst;
 		
 		
 	}
+
+	@RequestMapping("/selectEventCus/{nic}")
+	public List<Event> selectEventCus(@PathVariable String nic) {
+	System.out.println("Divvvvvyaaaniiiii");
+	EveeentController ev= new EveeentController();
+	List<Event> evlst = new ArrayList<Event>();
+	//System.out.println(nic);
 	
-	
-	@RequestMapping("/deleteSupplierPayment/{ename}")
-	public RedirectView  deleteSupplierPayment(@PathVariable String ename) {
-		
-		SupplierPaymentController ev= new SupplierPaymentController();
-		System.out.println(ename);
-		
-		System.out.println("yyyyyyyyyyyyyyyyyyioit");
-		ename=(ename.replaceAll("\\p{P}",""));
-		ev.deleteSupplierPayment(ename);
-		return new RedirectView("/paymentDashboard");
-		
-	}
-	@RequestMapping("/updateSupplierPayment/{ename}")
-	public RedirectView updateSupplierrPayment(SupplierPayment cs,@PathVariable String ename) {
-		
-		System.out.println("Hiii Update");
-		System.out.println(cs.getSupplierName());
-		
-		SupplierPaymentController ev= new SupplierPaymentController();
-		System.out.println(ename);
-		ev.updateSupplierPayment(cs);
-		return new RedirectView("/paymentDashboard");
+	//ename=(ename.replaceAll("\\p{P}",""));
+	evlst=ev.getCusEvent(nic);
+	return evlst;
 	
 	}
-	
-	@RequestMapping("/viewSupplierPayment/{ename}")
-	public RedirectView deleteSupplierrPayment(SupplierPayment cs,@PathVariable String ename) {
+	@RequestMapping("/EventDetails/{ename}")
+	public  RedirectView EventDetails(@PathVariable String ename,@Valid Event customer, BindingResult result,Model model,RedirectAttributes redirectAttributes) {
+        model.addAttribute("customer",customer);
+        //Do the Registration logic and then redirect to home page without using action for home page
+       
+       redirectAttributes.addFlashAttribute("customerEmail", customer.getEname());
 		
-		System.out.println("Hiii Update");
-		System.out.println(cs.getSupplierName());
+		System.out.println("Hiii admin");
 		
-		SupplierPaymentController ev= new SupplierPaymentController();
-		System.out.println(ename);
-		ev.viewSupplierPayment(cs);
-		return new RedirectView("/paymentDashboard");
-	
+		String name=ename;
+		EveeentController ev= new EveeentController();
+		List<Event> evlst = new ArrayList<Event>();
+		
+	//name=(ename.replaceAll("\\p{P}",""));
+	//vlst=ev.geteventDetails(ename);		
+		//odel.put("message", evlst);
+		//edirectAttributes.addFlashAttribute("message", evlst);
+		return new RedirectView("/EventDtls");
+		//return evlst;
+		
+		
 	}
 	
 	

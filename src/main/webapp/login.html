@@ -19,15 +19,15 @@
 <body>
     
     <div class="login-dark" style="background-image:url(&quot;assets/img/2719387_origback.jpg&quot;); background-color:black; ">
-        <form method="post">
+        <form action="validateCustomer" method="get">
             <h2 class="sr-only">Login Form</h2>
             <div class="logo">
 
                 <a href="index.html"><div class="logodiv" style="width: 50px"> <img class="" src="assets/img/logo3.png" alt="..." style="width: 250px"></div></a>
             </div>
             <div data-bs-hover-animate="swing" class="illustration" style="color:#f73cfc;"><i class="icon ion-ios-locked-outline" style="color:#f73cfc;"></i></div>
-            <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email" ></div>
-            <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password" ></div>
+            <div class="form-group"><input class="form-control" type="text" name="nic" placeholder="NIC" id="nic"></div>
+            <div class="form-group"><input class="form-control" type="password" name="password" id="password" placeholder="Password" ></div>
             <div class="form-group"><button class="btn btn-primary btn-block" type="submit" data-bs-hover-animate="pulse" style="background-color:#f73cfc;">Log In</button></div><a href="#" data-bs-hover-animate="flash" class="forgot" style="color:#f73cfc;">Forgot your email or password?</a></form>
     </div>
     <script src="assets/js/jquery.min.js"></script>

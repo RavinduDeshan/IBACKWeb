@@ -25,6 +25,13 @@
 
   font-size: 45px;
 }
+
+.formgrp2{
+
+    margin-bottom: 10%;
+    
+}
+
         </style>  
 
   <meta charset="utf-8" />
@@ -59,7 +66,7 @@
             
             </div>
             
-            <p class="titleup">User Profile</p>
+            <p class="titleup">My Events</p>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -120,58 +127,49 @@
           <div class="col-md-8">
             <div class="card">
               <div class="card-header">
-                <h5 class="title">Edit Profile</h5>
+                <h5 class="title">Event Details</h5>
               </div>
               <div class="card-body">
-                <form action="updateCustomer/${cust.nic}">
+                <form>
                   <div class="row">
                     <div class="col-md-5 pr-md-1">
                       <div class="form-group">
-                        <label>National Identity Card No</label>
-                        <input type="text" class="form-control" readonly placeholder="NIC" name="nic">
+                        <label>Event Code</label>
+                        <input type="text" class="form-control" disabled="" placeholder="" name="eCode" value=${event.id}>
                       </div>
                     </div>
                     <div class="col-md-3 px-md-1">
                       <div class="form-group">
-                        <label>Username</label>
-                        <input type="text" class="form-control" placeholder="Username"  name="username">
+                        <label>Event Name</label>
+                        <input type="text" class="form-control" disabled="" placeholder=""  name="eventName" value=${event.ename}>
                       </div>
                     </div>
-                   
-                  </div>
-                   <div class="row">
                     <div class="col-md-4 pl-md-1">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Email address</label>
-                          <input type="email" class="form-control" disabled="" placeholder="mike@email.com" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" value=${cust.email}>
-                        </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Date</label>
+                        <input type="text" class="form-control" disabled="" placeholder="" name="date" value=${event.edate}>
                       </div>
-                    <div class="col-md-3 px-md-1">
-                        <div class="form-group">
-                          <label>Username</label>
-                          <input type="password" class="form-control" disabled="" placeholder="password"  name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  value=${cust.password}>
-                        </div>
-                      </div>
-  				</div>
+                    </div>
+                  </div>
                   <div class="row">
                     <div class="col-md-6 pr-md-1">
                       <div class="form-group">
-                        <label>First Name</label>
-                        <input type="text" class="form-control" placeholder="First Name"  name="fName">
+                        <label>Event Type</label>
+                        <input type="text" class="form-control" disabled="" placeholder=""  name="eType" value=${event.etype}>
                       </div>
                     </div>
                     <div class="col-md-6 pl-md-1">
                       <div class="form-group">
-                        <label>Last Name</label>
-                        <input type="text" class="form-control" placeholder="Last Name" name="lName">
+                        <label>Start Time</label>
+                        <input type="text" class="form-control" disabled="" placeholder="" name="time" value=${event.etime}>
                       </div>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label>Address</label>
-                        <input type="text" class="form-control" placeholder="Home Address" name="address">
+                        <label>Venue</label>
+                        <input type="text" class="form-control" disabled="" placeholder="" name="venue" value=${event.elocation}>
                       </div>
                     </div>
                   </div>
@@ -180,22 +178,28 @@
                     <div class="col-md-6 pr-md-1">
                       <div class="form-group">
                         <label>Company</label>
-                        <input type="text" class="form-control" placeholder="Company Name"  name="company">
+                        <input type="text" class="form-control" disabled="" placeholder=""  name="eCompany" value="IBack">
                       </div>
                     </div>
                     <div class="col-md-6 pl-md-1">
                       <div class="form-group">
-                        <label>Position</label>
-                        <input type="text" class="form-control" placeholder="Position or Designation" name="post">
+                        <label>Contact No</label>
+                        <input type="text" class="form-control" disabled="" placeholder="" name="tel" value=${event.ephoneNo}>
                       </div>
                     </div>
+                  </div>
+
+                  <div class="row">
+
+                   <B> <h3 class="card-title" style="color: violet; ">  &nbsp Total Price : Rs. &nbsp </h3></B><h3 class="card-title" id="price"> 100.00</h3>
+                  
                   </div>
                  
                 
               </div>
-              <div class="card-footer">
+             <!-- <div class="card-footer">
                 <button type="submit" class="btn btn-fill btn-primary">Save</button></form>
-              </div>
+              </div>-->
             </div>
           </div>
           
@@ -211,7 +215,7 @@
                     <div class="block block-four"></div>
                     <a href="javascript:void(0)">
                       <img class="avatar" src="../assets/img/emilyz.jpg" alt="...">
-                      <br><button class="btn btn-fill btn-primary">Change Profile Picture</button><br><br>
+                      <!--<br><button class="btn btn-fill btn-primary">Change Profile Picture</button><br><br>-->
                       <h5 class="title" name="namedesc">Mike Andrew</h5>
                     </a>
                     <p class="description" name="positionDesc">
@@ -237,258 +241,46 @@
      
 
       <div class="content">
+ <!--inquery-->
+     
 
-          <!--stats-->
-             <!--Stats-->
-          <div class="content">
-              <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                  <div class="card card-stats">
-                    <div class="card-body ">
-                      <div class="row">
-                        <div class="col-5 col-md-4">
-                          <div class="icon-big text-center icon-warning">
-                            <i class="nc-icon nc-globe text-warning"></i>
-                          </div>
-                        </div>
-                        <div class="col-7 col-md-8">
-                          <div class="numbers">
-                            <p class="card-category">Completed My Events</p>
-                            <p class="card-title">150
-                              <p>
-                          </div>
+            
+         <<div class="content">
+            <div class="row">
+              <div class="col-md-8">
+
+                
+                  <h3 class="card-title">Event Inquiry</h3>
+                      <div class="formgrp2" style="display:none;">
+                        <h3 class="card-title">Event Inquiry</h4>
+                        <form action="addEventInquiry">
+                        <input type="text" class="form-control inqr" style="background-color:white; color:#ff80bf;text-align:center; height: 100px; font-size: 18px;"  placeholder="Type Any Updates or Inquiries Regarding this Event" name=inquiry>
+                        <input type="hidden" id="hidden" name=ename value=${event.ename} >
+                        <div>
+                          <button  type="submit" class="btn btn-fill btn-primary">Send</button>
+                          </form>
                         </div>
                       </div>
                     </div>
-                    <div class="card-footer ">
-                      <hr>
-                      <div class="stats">
-                        <i class="fa fa-refresh"></i> Refresh For Updates
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                  <div class="card card-stats">
-                    <div class="card-body ">
-                      <div class="row">
-                        <div class="col-5 col-md-4">
-                          <div class="icon-big text-center icon-warning">
-                            <i class="nc-icon nc-money-coins text-success"></i>
-                          </div>
-                        </div>
-                        <div class="col-7 col-md-8">
-                          <div class="numbers">
-                            <p class="card-category">Approved Events</p>
-                            <p class="card-title">1,345
-                              <p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-footer ">
-                      <hr>
-                      <div class="stats">
-                        <i class="fa fa-calendar-o"></i> <a href="" class="alink">Show Details</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                  <div class="card card-stats">
-                    <div class="card-body ">
-                      <div class="row">
-                        <div class="col-5 col-md-4">
-                          <div class="icon-big text-center icon-warning">
-                            <i class="nc-icon nc-vector text-danger"></i>
-                          </div>
-                        </div>
-                        <div class="col-7 col-md-8">
-                          <div class="numbers">
-                            <p class="card-category">Events with Payment Dues</p>
-                            <p class="card-title">23
-                              <p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-footer ">
-                      <hr>
-                      <div class="stats">
-                        <i class="fa fa-clock-o"></i> <a href="" class="alink">Show Details</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                  <div class="card card-stats">
-                    <div class="card-body ">
-                      <div class="row">
-                        <div class="col-5 col-md-4">
-                          <div class="icon-big text-center icon-warning">
-                            <i class="nc-icon nc-favourite-28 text-primary"></i>
-                          </div>
-                        </div>
-                        <div class="col-7 col-md-8">
-                          <div class="numbers">
-                            <p class="card-category">Pending Events</p>
-                            <p class="card-title">45
-                              <p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-footer ">
-                      <hr>
-                      <div class="stats">
-                        <i class="fa fa-refresh"></i> <a href="" class="alink">Show Details</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-  
+
+
+            </div></div>
+           
+
+            </div>  
   
         </div>
-
-        <!--table-->
-      <div class="content">
-
-          <div class="content">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="card ">
-                    <div class="card-header">
-                      <h4 class="card-title"> My Events</h4>
-                    </div>
-                    <div class="card-body">
-                      <div class="table-responsive">
-                        <table class="table tablesorter " id="">
-                          <thead class=" text-primary">
-                            <tr>
-                              <th>
-                                Event Code
-                              </th>
-                              <th>
-                                Event Name
-                              </th>
-                              <th>
-                                Venue
-                              </th>
-                              <th class="text-center">
-                                Status
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                Dakota Rice
-                              </td>
-                              <td>
-                                Niger
-                              </td>
-                              <td>
-                                Oud-Turnhout
-                              </td>
-                              <td class="text-center">
-                                $36,738
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                Minerva Hooper
-                              </td>
-                              <td>
-                                Curaçao
-                              </td>
-                              <td>
-                                Sinaai-Waas
-                              </td>
-                              <td class="text-center">
-                                $23,789
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                Sage Rodriguez
-                              </td>
-                              <td>
-                                Netherlands
-                              </td>
-                              <td>
-                                Baileux
-                              </td>
-                              <td class="text-center">
-                                $56,142
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                Philip Chaney
-                              </td>
-                              <td>
-                                Korea, South
-                              </td>
-                              <td>
-                                Overland Park
-                              </td>
-                              <td class="text-center">
-                                $38,735
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                Doris Greene
-                              </td>
-                              <td>
-                                Malawi
-                              </td>
-                              <td>
-                                Feldkirchen in Kärnten
-                              </td>
-                              <td class="text-center">
-                                $63,542
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                Mason Porter
-                              </td>
-                              <td>
-                                Chile
-                              </td>
-                              <td>
-                                Gloucester
-                              </td>
-                              <td class="text-center">
-                                $78,615
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                Jon Porter
-                              </td>
-                              <td>
-                                Portugal
-                              </td>
-                              <td>
-                                Gloucester
-                              </td>
-                              <td class="text-center">
-                                $98,615
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-
-      </div>
-
+		<form action="addEventInquiry">
+			<input type="textarea"  name=inquiry  class="form-control inqr" style="background-color:white; color:#ff80bf;text-align:center; height: 100px; font-size: 18px;"  >
+			<input type="hidden" id="hidden" name=ename value=${event.ename} >
+			<input type="submit"  class="btn btn-fill btn-primary" value="Save">
+		</form>
+       
+       
+                  
+  
+        
+                
 
           <div class="copyright">
             ©

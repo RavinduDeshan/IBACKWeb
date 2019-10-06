@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +34,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <title>
-    Black Dashboard by Creative Tim
+   Your Profile
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
@@ -45,7 +47,7 @@
   <link href="../assets/demo/demo.css" rel="stylesheet" />
 </head>
 
-<body class="">
+<body onload="myFunctionE()">
     <center><div class="logodiv"> <img class="" src="assets/img/logo3.png" alt="..."></div></center>
     <div class="main-panel">
       <!-- Navbar -->
@@ -74,22 +76,7 @@
                   <span class="d-lg-none d-md-block">Search</span>
                 </button>
               </li>-->
-              <li class="dropdown nav-item">
-                <a href="javascript:void(0)" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                  <div class="notification d-none d-lg-block d-xl-block"></div>
-                  <i class="tim-icons icon-sound-wave"></i>
-                  <p class="d-lg-none">
-                    Notifications
-                  </p>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
-                  <li class="nav-link"><a href="#" class="nav-item dropdown-item">Mike John responded to your email</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">You have 5 more tasks</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Your friend Michael is in town</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Another notification</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Another one</a></li>
-                </ul>
-              </li>
+              
               <li class="dropdown nav-item">
                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                   <div class="photo">
@@ -101,10 +88,9 @@
                   </p>
                 </a>
                 <ul class="dropdown-menu dropdown-navbar">
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Profile</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Settings</a></li>
+           
                   <li class="dropdown-divider"></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Log out</a></li>
+                  <li class="nav-link"><a href="index.jsp" class="nav-item dropdown-item">Log out</a></li>
                 </ul>
               </li>
               <li class="separator d-lg-none"></li>
@@ -128,42 +114,43 @@
                     <div class="col-md-5 pr-md-1">
                       <div class="form-group">
                         <label>National Identity Card No</label>
-                        <input type="text" class="form-control" readonly placeholder="NIC" name="nic">
+                        <input type="text" class="form-control" readonly placeholder="NIC" name="nic" value=${cust.nic}>
                       </div>
                     </div>
                     <div class="col-md-3 px-md-1">
                       <div class="form-group">
                         <label>Username</label>
-                        <input type="text" class="form-control" placeholder="Username"  name="username">
+                        <input type="text" class="form-control" placeholder="Username"  name="username" value=${cust.username}>
                       </div>
                     </div>
-                   
+                    
                   </div>
-                   <div class="row">
+              <div class="row" style=" margin-left: 1px;">
                     <div class="col-md-4 pl-md-1">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Email address</label>
-                          <input type="email" class="form-control" disabled="" placeholder="mike@email.com" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" value=${cust.email}>
+                          <input type="email" class="form-control"  placeholder="mike@email.com" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" value=${cust.email}>
                         </div>
                       </div>
                     <div class="col-md-3 px-md-1">
                         <div class="form-group">
-                          <label>Username</label>
-                          <input type="password" class="form-control" disabled="" placeholder="password"  name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  value=${cust.password}>
+                          <label>Password</label>
+                          <input type="password" class="form-control" placeholder="password"  name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" value=${cust.password}>
                         </div>
                       </div>
   				</div>
+                  
                   <div class="row">
                     <div class="col-md-6 pr-md-1">
                       <div class="form-group">
                         <label>First Name</label>
-                        <input type="text" class="form-control" placeholder="First Name"  name="fName">
+                        <input type="text" class="form-control" placeholder="First Name"  name="fName" value=${cust.fName}>
                       </div>
                     </div>
                     <div class="col-md-6 pl-md-1">
                       <div class="form-group">
                         <label>Last Name</label>
-                        <input type="text" class="form-control" placeholder="Last Name" name="lName">
+                        <input type="text" class="form-control" placeholder="Last Name" name="lName" value=${cust.lName}>
                       </div>
                     </div>
                   </div>
@@ -171,7 +158,7 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <label>Address</label>
-                        <input type="text" class="form-control" placeholder="Home Address" name="address">
+                        <input type="text" class="form-control" placeholder="Home Address" name="address" value=${cust.address}>
                       </div>
                     </div>
                   </div>
@@ -180,13 +167,14 @@
                     <div class="col-md-6 pr-md-1">
                       <div class="form-group">
                         <label>Company</label>
-                        <input type="text" class="form-control" placeholder="Company Name"  name="company">
+                        <input type="text" class="form-control" placeholder="Company Name"  name="company" value=${cust.company}>
                       </div>
                     </div>
                     <div class="col-md-6 pl-md-1">
                       <div class="form-group">
                         <label>Position</label>
-                        <input type="text" class="form-control" placeholder="Position or Designation" name="post">
+                        <input type="text" class="form-control" placeholder="Position or Designation" name="post" value=${cust.post}>
+                        <input type="hidden" class="form-control" placeholder="Position or Designation" name="hidden" id="hidden" value="user">
                       </div>
                     </div>
                   </div>
@@ -211,17 +199,17 @@
                     <div class="block block-four"></div>
                     <a href="javascript:void(0)">
                       <img class="avatar" src="../assets/img/emilyz.jpg" alt="...">
-                      <br><button class="btn btn-fill btn-primary">Change Profile Picture</button><br><br>
-                      <h5 class="title" name="namedesc">Mike Andrew</h5>
+                     
+                      <h5 class="title" name="namedesc">${cust.fName} &nbsp ${cust.lName}</h5>
                     </a>
                     <p class="description" name="positionDesc">
-                      Position
+                      ${cust.post}
                     </p>
                     <p class="description" name="companyDesc">
-                      Company
+                      ${cust.company}
                     </p>
                     <p class="description" name="EmailDesc">
-                      Email
+                     ${cust.email}
                     </p>
                     
                   </div>
@@ -238,260 +226,169 @@
 
       <div class="content">
 
-          <!--stats-->
-             <!--Stats-->
-          <div class="content">
-              <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                  <div class="card card-stats">
-                    <div class="card-body ">
-                      <div class="row">
-                        <div class="col-5 col-md-4">
-                          <div class="icon-big text-center icon-warning">
-                            <i class="nc-icon nc-globe text-warning"></i>
-                          </div>
-                        </div>
-                        <div class="col-7 col-md-8">
-                          <div class="numbers">
-                            <p class="card-category">Completed My Events</p>
-                            <p class="card-title">150
-                              <p>
-                          </div>
+  <!--Stats-->
+         <div class="content">
+           <div class="row"  style="margin-left: 20% ;margin-bottom:4%; margin-top:4%;">
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                  <div class="card-body ">
+                    <div class="row">
+                      <div class="col-5 col-md-4">
+                        <div class="icon-big text-center icon-warning">
+                          <i class="nc-icon nc-globe text-warning"></i>
                         </div>
                       </div>
-                    </div>
-                    <div class="card-footer ">
-                      <hr>
-                      <div class="stats">
-                        <i class="fa fa-refresh"></i> Refresh For Updates
+                      <div class="col-7 col-md-8">
+                        <div class="numbers">
+                          <p class="card-category">Total My Events</p>
+                          <p class="card-title" id="demo1">
+                            <p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                  <div class="card card-stats">
-                    <div class="card-body ">
-                      <div class="row">
-                        <div class="col-5 col-md-4">
-                          <div class="icon-big text-center icon-warning">
-                            <i class="nc-icon nc-money-coins text-success"></i>
-                          </div>
-                        </div>
-                        <div class="col-7 col-md-8">
-                          <div class="numbers">
-                            <p class="card-category">Approved Events</p>
-                            <p class="card-title">1,345
-                              <p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-footer ">
-                      <hr>
-                      <div class="stats">
-                        <i class="fa fa-calendar-o"></i> <a href="" class="alink">Show Details</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                  <div class="card card-stats">
-                    <div class="card-body ">
-                      <div class="row">
-                        <div class="col-5 col-md-4">
-                          <div class="icon-big text-center icon-warning">
-                            <i class="nc-icon nc-vector text-danger"></i>
-                          </div>
-                        </div>
-                        <div class="col-7 col-md-8">
-                          <div class="numbers">
-                            <p class="card-category">Events with Payment Dues</p>
-                            <p class="card-title">23
-                              <p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-footer ">
-                      <hr>
-                      <div class="stats">
-                        <i class="fa fa-clock-o"></i> <a href="" class="alink">Show Details</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                  <div class="card card-stats">
-                    <div class="card-body ">
-                      <div class="row">
-                        <div class="col-5 col-md-4">
-                          <div class="icon-big text-center icon-warning">
-                            <i class="nc-icon nc-favourite-28 text-primary"></i>
-                          </div>
-                        </div>
-                        <div class="col-7 col-md-8">
-                          <div class="numbers">
-                            <p class="card-category">Pending Events</p>
-                            <p class="card-title">45
-                              <p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-footer ">
-                      <hr>
-                      <div class="stats">
-                        <i class="fa fa-refresh"></i> <a href="" class="alink">Show Details</a>
-                      </div>
+                  <div class="card-footer ">
+                    <hr>
+                    <div class="stats">
+                      <i class="fa fa-refresh"></i> 
+             
+                      <br>
+          
                     </div>
                   </div>
                 </div>
               </div>
-  
-  
-        </div>
-
-        <!--table-->
-      <div class="content">
-
-          <div class="content">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="card ">
-                    <div class="card-header">
-                      <h4 class="card-title"> My Events</h4>
-                    </div>
-                    <div class="card-body">
-                      <div class="table-responsive">
-                        <table class="table tablesorter " id="">
-                          <thead class=" text-primary">
-                            <tr>
-                              <th>
-                                Event Code
-                              </th>
-                              <th>
-                                Event Name
-                              </th>
-                              <th>
-                                Venue
-                              </th>
-                              <th class="text-center">
-                                Status
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                Dakota Rice
-                              </td>
-                              <td>
-                                Niger
-                              </td>
-                              <td>
-                                Oud-Turnhout
-                              </td>
-                              <td class="text-center">
-                                $36,738
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                Minerva Hooper
-                              </td>
-                              <td>
-                                Curaçao
-                              </td>
-                              <td>
-                                Sinaai-Waas
-                              </td>
-                              <td class="text-center">
-                                $23,789
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                Sage Rodriguez
-                              </td>
-                              <td>
-                                Netherlands
-                              </td>
-                              <td>
-                                Baileux
-                              </td>
-                              <td class="text-center">
-                                $56,142
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                Philip Chaney
-                              </td>
-                              <td>
-                                Korea, South
-                              </td>
-                              <td>
-                                Overland Park
-                              </td>
-                              <td class="text-center">
-                                $38,735
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                Doris Greene
-                              </td>
-                              <td>
-                                Malawi
-                              </td>
-                              <td>
-                                Feldkirchen in Kärnten
-                              </td>
-                              <td class="text-center">
-                                $63,542
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                Mason Porter
-                              </td>
-                              <td>
-                                Chile
-                              </td>
-                              <td>
-                                Gloucester
-                              </td>
-                              <td class="text-center">
-                                $78,615
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                Jon Porter
-                              </td>
-                              <td>
-                                Portugal
-                              </td>
-                              <td>
-                                Gloucester
-                              </td>
-                              <td class="text-center">
-                                $98,615
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                  <div class="card-body ">
+                    <div class="row">
+                      <div class="col-5 col-md-4">
+                        <div class="icon-big text-center icon-warning">
+                          <i class="nc-icon nc-money-coins text-success"></i>
+                        </div>
+                      </div>
+                      <div class="col-7 col-md-8">
+                        <div class="numbers">
+                          <p class="card-category">Pending Events </p>
+                          <p class="card-title" id="demo2">
+                            <p>
+                        </div>
                       </div>
                     </div>
                   </div>
+                  <div class="card-footer ">
+                    <hr>
+                    <div class="stats">
+                      <i class="fa fa-calendar-o"></i>
+                    
+                         <br>
+                      
+                    </div>
+                  </div>
                 </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                  <div class="card-body ">
+                    <div class="row">
+                      <div class="col-5 col-md-4">
+                        <div class="icon-big text-center icon-warning">
+                          <i class="nc-icon nc-vector text-danger"></i>
+                        </div>
+                      </div>
+                      <div class="col-7 col-md-8">
+                        <div class="numbers">
+                          <p class="card-category" >Confirmed Events</p>
+                          <p class="card-title" id="demo3">
+                            <p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer ">
+                    <hr>
+                    <div class="stats">
+                      <i class="fa fa-clock-o"></i> 
+           
+                      <br>
+               
+                    </div>
+                  </div>
+                </div>
+              </div>
+             
+            </div></div>
 
-
-      </div>
+        <!--table-->
+      	<c:choose>
+           <!--Customer Table-->
+          
+            <div class="content">
+                    <div class="row" id="requestTable">
+                      <div class="col-md-12">
+                        <div class="card" style="display: none;">
+                          <div class="card-header" id="hed-t">
+                            <h4 class="card-title"> Request Events</h4>
+                          </div>
+                           <c:when test="${mode=='eventManagement' }">
+                          <div class="card-body">
+                            <div class="table-responsive">
+                              <table class="table tablesorter " >
+                                <thead class=" text-primary">
+                                  <tr>
+                                    <th>
+                                      id
+                        				</th>
+                                    <th>
+                                      ename
+                                    </th>
+                                    <th>
+                                      elocation
+                                    </th>
+                                     <th>
+                                     ephoneNo
+                                    </th>
+                                     <th>
+                                     edate
+                                    </th>
+                                     <th>
+                                      etime
+                                   	</th>
+                                    <th class="text-center">
+                                      etype
+                                    </th>
+                                  </tr>
+                                </thead>
+                                <tbody id="reqtbl">
+                               <!-- c:forEach var="ev" items="${ev }">
+                                  <tr>
+                                    <td>${ev.id}</td>
+                                    <td>${ev.ename}</td>
+                                    <td> ${ev.elocation}</td>
+                                    <td>${ev.ephoneNo}</td>
+                                     <td> ${ev.edate}</td>
+                                    <td> ${ev.etime}</td>
+                                     <td class="text-center">${ev.etype}</td>
+                                       
+                                     </tr>
+                                   </c:forEach-->
+                                       
+                                    
+                              
+                                </tbody>         
+                                      
+                               </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+					</c:when>
+                      <!--Event Table-->
+	</c:choose>       
 
 
           <div class="copyright">
-            ©
+            �
             <script>
               document.write(new Date().getFullYear())
             </script> IBACK Entertainment All Rights Reserved 
@@ -627,6 +524,39 @@
         });
       });
     });
+    
+  </script>
+  
+  
+  <script>
+
+	function myFunctionE(){
+
+		myFunctionS();
+		console.log("HIIIIII R");
+	 	var tes="test";
+  	 	jQuery.ajax({
+  	        type: "GET",
+  	        url: "http://localhost:8080/selectEventCus/${cust.nic}",
+  	        data: { "id": "getStatus" }
+  	    }).done(function(msg) {
+  	    	showUsers(msg)
+  	    });
+  	  
+  	  
+  	
+   function showUsers(msg) {    	   
+		var trHTML = '';
+		$.each(msg, function (i, item) {
+		    trHTML += '<tr><td>' + item.id + '</td><td>' + item.ename + '</td><td>' + item.elocation + '</td><td>' + item.ephoneNo +'</td><td>' + item.edate +'</td><td>' + item.etime + '</td><td>' + item.etype +'</td><td><a class="btn btn-primary" href = "/EventDetails/{'+item.ename+'}">View Event</a></td></tr>';
+		});
+		$("#reqtbl tr").detach();
+		$('#reqtbl').append(trHTML);
+		$( ".card" ).show();
+   }
+   
+}
+	
   </script>
   <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
   <script>
@@ -635,6 +565,114 @@
         token: "ee6fab19c5a04ac1a32a645abde4613a",
         application: "black-dashboard-free"
       });
+  </script>
+  
+  <script>
+
+
+
+
+  
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  function myFunctionS(){
+	
+   	
+   	 var tes="test1";
+   	 jQuery.ajax({
+   	        type: "GET",
+   	        url: "http://localhost:8080/selectCountRequestEvents",
+   	        data: { "id": "getStatus" }
+   	    }).done(function(msg) {
+   	    	document.getElementById("demo1").innerHTML = msg;
+   	    });
+   	function showUsers(msg) {    	   
+			var trHTML = '';
+			$.each(msg, function (i, item) {
+			    document.getElementById("demo").innerHTML = "Paragraph changed!";
+			});$("#reqtbl tr").detach();
+			$('#reqtbl').append(trHTML);
+			$( ".card" ).show();
+			
+			
+    }
+   	
+   	 var tes="test2";
+   	 jQuery.ajax({
+   	        type: "GET",
+   	        url: "http://localhost:8080/countPendCusEvent",
+   	        data: { "id": "getStatus" }
+   	    }).done(function(msg) {
+   	    	document.getElementById("demo2").innerHTML = msg;
+   	    });
+   	function showUsers(msg) {    	   
+			var trHTML = '';
+			$.each(msg, function (i, item) {
+			    document.getElementById("demo").innerHTML = "Paragraph changed!";
+			});$("#reqtbl tr").detach();
+			$('#reqtbl').append(trHTML);
+			$( ".card" ).show();
+			
+			
+    }
+   	
+   	var tes="test3";
+  	 jQuery.ajax({
+  		 
+  		 //total customers
+  	        type: "GET",
+  	        url: "http://localhost:8080/selectAllCustomer",
+  	        data: { "id": "getStatus" }
+  	    }).done(function(msg) {
+  	    	document.getElementById("demo3").innerHTML = msg;
+  	    });
+  	function showUsers(msg) {    	   
+			var trHTML = '';
+			$.each(msg, function (i, item) {
+			    document.getElementById("demo").innerHTML = "Paragraph changed!";
+			});$("#reqtbl tr").detach();
+			$('#reqtbl').append(trHTML);
+			$( ".card" ).show();
+			
+			
+   }
+   		
+   	  
+   	
+	}
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
   </script>
 </body>
 

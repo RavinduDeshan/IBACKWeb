@@ -8,6 +8,7 @@ public class Event {
 
 	
 	private String id;
+	private String cusId;
 	private String ename;
 	private String elocation;
 	private String etype;
@@ -15,11 +16,20 @@ public class Event {
 	private String edate;
 	private float etime;
 	private String estatus="request";
+	
 
 
 	
 	public String getId() {
 		return id;
+	}
+
+	public String getCusId() {
+		return cusId;
+	}
+
+	public void setCusId(String cusId) {
+		this.cusId = cusId;
 	}
 
 	public String getEname() {
