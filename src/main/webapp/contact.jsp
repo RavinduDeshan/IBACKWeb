@@ -69,7 +69,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>
 							</button>
-							<a href="index.html"><div class="logodiv" style="width: 50px"> <img class="" src="assets/img/logo3.png" alt="..." style="width: 350px"></div></a>
+							<a href="index.jsp"><div class="logodiv" style="width: 50px"> <img class="" src="assets/img/logo3.png" alt="..." style="width: 350px"></div></a>
 						</div> 
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse navbar-ex1-collapse" style="margin-top: 2%; margin-right: -30%;" >

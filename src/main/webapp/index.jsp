@@ -142,7 +142,7 @@ padding-right: 20px;
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>
 							</button>
-							<a href="index.html"><div class="logodiv" style="width: 50px"> <img class="" src="assets/img/logo3.png" alt="..." style="width: 350px"></div></a>
+							<a href="index.jsp"><div class="logodiv" style="width: 50px"> <img class="" src="assets/img/logo3.png" alt="..." style="width: 350px"></div></a>
 						</div> 
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse navbar-ex1-collapse" style="margin-top: 2%; margin-right: -30%;" >
@@ -247,27 +247,27 @@ padding-right: 20px;
 <!-- Stats -->
 	<div class="stats-agileits">
 	<div class="container">
-		<h3 class="heading-agileinfo white-w3ls">We Have Something To Be Proud Of<span  style="color: #FF73B9;  font-family: SFMono-Regular, Menlo, Monaco, Consolas">Events is a professionally managed Event</span></h3>
+		<h3 class="heading-agileinfo white-w3ls">We Have Something To Be Proud Of<span  style="color: #FF73B9;  font-family: SFMono-Regular, Menlo, Monaco, Consolas">Our Achievements</span></h3>
 	</div>
 		<div class="stats-info agileits w3layouts">
 		<div class="container">
 			<div class="col-md-4 col-sm-4agileits w3layouts stats-grid stats-grid-1">
 				<i class="fa fa-users" aria-hidden="true"></i>
-				<div class="numscroller agileits-w3layouts" data-slno='1' data-min='0' data-max='2500' data-delay='3' data-increment="2">2500</div>
+				<div class="numscroller agileits-w3layouts" data-slno='1' data-min='0' data-max='250' data-delay='3' data-increment="2">25</div>
 				<div class="stat-info-w3ls">
 					<h4 class="agileits w3layouts">Happy Clients</h4>
 				</div>
 			</div>
 			<div class="col-md-4 col-sm-4 agileits w3layouts stats-grid stats-grid-2">
 				<i class="fa fa-lightbulb-o" aria-hidden="true"></i>
-				<div class="numscroller agileits-w3layouts" data-slno='1' data-min='0' data-max='1000' data-delay='3' data-increment="2">1000</div>
+				<div class="numscroller agileits-w3layouts" data-slno='1' data-min='0' data-max='100' data-delay='3' data-increment="2">10</div>
 				<div class="stat-info-w3ls">
 					<h4 class="agileits w3layouts">Events</h4>
 				</div>
 			</div>
 			<div class="col-md-4 col-sm-4 stats-grid agileits w3layouts stats-grid-3">
 			<i class="fa fa-cog" aria-hidden="true"></i>
-				<div class="numscroller agileits-w3layouts" data-slno='1' data-min='0' data-max='3421' data-delay='3' data-increment="2">3421</div>
+				<div class="numscroller agileits-w3layouts" data-slno='1' data-min='0' data-max='342' data-delay='3' data-increment="2">34</div>
 				<div class="stat-info-w3ls">
 					<h4 class="agileits w3layouts">Services</h4>
 				</div>
@@ -281,7 +281,7 @@ padding-right: 20px;
 	<!-- showcase_w3layouts -->	
 	<div class="showcase_w3layouts">
 		<div class="container">
-		<h3 class="heading-agileinfo">Services<span style="color: #FF73B9;  font-family: SFMono-Regular, Menlo, Monaco, Consolas"> Events is a professionally managed Event</span></h3>
+		<h3 class="heading-agileinfo">Services<span style="color: #FF73B9;  font-family: SFMono-Regular, Menlo, Monaco, Consolas"> Our Services</span></h3>
 			<div class="our_agile-info">
 			<div class="showcase">
 				<div class="thumbnail thumbnail--awesome">
@@ -292,7 +292,7 @@ padding-right: 20px;
 				<div class="desc">
 				
 					<h4>Birthday</h4>
-					<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut l
+					<p>
 					</p>
 				</div>
 			</div>
@@ -301,7 +301,7 @@ padding-right: 20px;
 				<div class="desc">
 					
 					<h4>Conference</h4>
-					<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut l
+					<p>
 					</p>
 				</div>
 				<div class="thumbnail thumbnail--awesome1">
@@ -319,7 +319,7 @@ padding-right: 20px;
 				<div class="desc">
 				
 					<h4>Meetups</h4>
-					<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut l
+					<p>
 					</p>
 				</div>
 			</div>
@@ -327,7 +327,7 @@ padding-right: 20px;
 				<div class="desc">
 					
 					<h4>Musical Show</h4>
-					<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut l
+					<p>
 					</p>
 				</div>
 				<div class="thumbnail thumbnail--awesome3">
@@ -343,7 +343,7 @@ padding-right: 20px;
 <!-- //showcase_w3layouts -->	
 <section class="about_agile">
 		<div class="container">	
-					<h3 class="heading-agileinfo white-w3ls" id="ebook">Event Booking<span class="black-w3ls" style="color: #FF73B9;  font-family: SFMono-Regular, Menlo, Monaco, Consolas">Events is a professionally managed Event</span></h3>
+					<h3 class="heading-agileinfo white-w3ls" id="ebook">Event Booking<span class="black-w3ls" style="color: #FF73B9;  font-family: SFMono-Regular, Menlo, Monaco, Consolas">Book Your Event Now</span></h3>
 			<div class="about-grids">
 				
 				<div class="abt-rt-grid">
@@ -437,35 +437,7 @@ padding-right: 20px;
 	</div>
 </div>
 
-<!--inquery-->
-     
 
-            
-            <div class="content">
-            <div class="row">
-              <div class="col-md-8">
-
-                
-                  
-                      <div class="formgrp2">
-                        <h3 class="card-title">Event Inquiry</h4>
-                        <form action="addEventInquiry">
-                        <input type="text" class="form-control inqr" style="background-color:white; color:#ff80bf;text-align:center; height: 100px; font-size: 18px;"  placeholder="Type Any Updates or Inquiries Regarding this Event" name=inquiry>
-                        <input type="hidden" id="hidden" name=ename value=${event.ename} >
-                        <div>
-                          <button  type="submit" class="btn btn-fill btn-primary">Send</button>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-
-
-            </div></div>
-           
-
-            </div>  
-  
-        </div>
        
 
        
@@ -528,8 +500,11 @@ Event Photography and Videography.<br>
 			<p>Subscribe to receive offers and other notifications</p>
 			<form action="#" method="post">	
 					<input type="email" Name="Enter Your Email" placeholder="Enter Your Email" required="">
+					
 				<input type="submit" value="Subscribe">
 			</form>
+			<br><br><br>
+			<a class="hvr-sweep-to-right" href="Supplier Registeration.html" style="display:<%=visil %>;">Register As Supplier</a>
 			</div>
 				<div class="clearfix"></div>
 		</div>

@@ -8,7 +8,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Events a Wedding Category Bootstrap Responsive website Template | About :: w3layouts</title>
+<title>About</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Events Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -69,7 +69,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>
 							</button>
-							<a href="index.html"><div class="logodiv" style="width: 50px"> <img class="" src="assets/img/logo3.png" alt="..." style="width: 350px"></div></a>
+							<a href="index.jsp"><div class="logodiv" style="width: 50px"> <img class="" src="assets/img/logo3.png" alt="..." style="width: 350px"></div></a>
 						</div> 
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse navbar-ex1-collapse" style="margin-top: 2%; margin-right: -30%;" >

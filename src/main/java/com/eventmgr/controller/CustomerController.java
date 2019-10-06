@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.bson.Document;
 
 import org.springframework.stereotype.Controller;
@@ -21,6 +23,7 @@ import com.mongodb.MongoCredential;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.CountOptions;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
 
@@ -50,7 +53,28 @@ public class CustomerController {
 	     collection.insertOne(document);
 	     
 	     System.out.println("Document inserted successfully"); 
-	   } 
+	   }
+	
+	public float countPendCusEvent(HttpServletRequest request) {
+		MongoClient mongo = new MongoClient( "localhost" , 27017 );
+		   MongoCredential credential;
+		   credential = MongoCredential.createCredential("EventManagement",    "eventManagementDb", 
+		   "password".toCharArray()); 
+		   System.out.println("Connected to the database successfully");  
+		   MongoDatabase database = mongo.getDatabase("eventManagementDb");  
+		   MongoCollection<Document> collection =    database.getCollection("eventCollection");
+		   System.out.println("Collection examplesCollection selected successfully");
+		   
+		   String nic =(String)request.getSession().getAttribute("nic");
+		   
+		   
+		   
+		    float a=collection.count(Filters.eq("estatus", "pending"));
+		    System.out.println("pending cus Count is"+a);
+		   
+			System.out.println("Collection examplesCollection Request Collections Number successfully");
+			return a;
+	}
 	
 	public void updateCustomer(Customer cust,String nic) {
 		MongoClient mongo = new MongoClient( "localhost" , 27017 );

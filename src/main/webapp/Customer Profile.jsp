@@ -47,7 +47,7 @@
   <link href="../assets/demo/demo.css" rel="stylesheet" />
 </head>
 
-<body onload="myFunction()">
+<body onload="myFunctionE()">
     <center><div class="logodiv"> <img class="" src="assets/img/logo3.png" alt="..."></div></center>
     <div class="main-panel">
       <!-- Navbar -->
@@ -226,118 +226,98 @@
 
       <div class="content">
 
-          <!--stats-->
-             <!--Stats-->
-          <div class="content">
-              <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                  <div class="card card-stats">
-                    <div class="card-body ">
-                      <div class="row">
-                        <div class="col-5 col-md-4">
-                          <div class="icon-big text-center icon-warning">
-                            <i class="nc-icon nc-globe text-warning"></i>
-                          </div>
-                        </div>
-                        <div class="col-7 col-md-8">
-                          <div class="numbers">
-                            <p class="card-category">Completed My Events</p>
-                            <p class="card-title">150
-                              <p>
-                          </div>
+  <!--Stats-->
+         <div class="content">
+           <div class="row"  style="margin-left: 20% ;margin-bottom:4%; margin-top:4%;">
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                  <div class="card-body ">
+                    <div class="row">
+                      <div class="col-5 col-md-4">
+                        <div class="icon-big text-center icon-warning">
+                          <i class="nc-icon nc-globe text-warning"></i>
                         </div>
                       </div>
-                    </div>
-                    <div class="card-footer ">
-                      <hr>
-                      <div class="stats">
-                        <i class="fa fa-refresh"></i> Refresh For Updates
+                      <div class="col-7 col-md-8">
+                        <div class="numbers">
+                          <p class="card-category">Total My Events</p>
+                          <p class="card-title" id="demo1">
+                            <p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                  <div class="card card-stats">
-                    <div class="card-body ">
-                      <div class="row">
-                        <div class="col-5 col-md-4">
-                          <div class="icon-big text-center icon-warning">
-                            <i class="nc-icon nc-money-coins text-success"></i>
-                          </div>
-                        </div>
-                        <div class="col-7 col-md-8">
-                          <div class="numbers">
-                            <p class="card-category">Approved Events</p>
-                            <p class="card-title">1,345
-                              <p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-footer ">
-                      <hr>
-                      <div class="stats">
-                        <i class="fa fa-calendar-o"></i> <a href="" class="alink">Show Details</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                  <div class="card card-stats">
-                    <div class="card-body ">
-                      <div class="row">
-                        <div class="col-5 col-md-4">
-                          <div class="icon-big text-center icon-warning">
-                            <i class="nc-icon nc-vector text-danger"></i>
-                          </div>
-                        </div>
-                        <div class="col-7 col-md-8">
-                          <div class="numbers">
-                            <p class="card-category">Events with Payment Dues</p>
-                            <p class="card-title">23
-                              <p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-footer ">
-                      <hr>
-                      <div class="stats">
-                        <i class="fa fa-clock-o"></i> <a href="" class="alink">Show Details</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                  <div class="card card-stats">
-                    <div class="card-body ">
-                      <div class="row">
-                        <div class="col-5 col-md-4">
-                          <div class="icon-big text-center icon-warning">
-                            <i class="nc-icon nc-favourite-28 text-primary"></i>
-                          </div>
-                        </div>
-                        <div class="col-7 col-md-8">
-                          <div class="numbers">
-                            <p class="card-category">Pending Events</p>
-                            <p class="card-title">45
-                              <p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-footer ">
-                      <hr>
-                      <div class="stats">
-                        <i class="fa fa-refresh"></i> <a href="" class="alink">Show Details</a>
-                      </div>
+                  <div class="card-footer ">
+                    <hr>
+                    <div class="stats">
+                      <i class="fa fa-refresh"></i> 
+             
+                      <br>
+          
                     </div>
                   </div>
                 </div>
               </div>
-  
-  
-        </div>
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                  <div class="card-body ">
+                    <div class="row">
+                      <div class="col-5 col-md-4">
+                        <div class="icon-big text-center icon-warning">
+                          <i class="nc-icon nc-money-coins text-success"></i>
+                        </div>
+                      </div>
+                      <div class="col-7 col-md-8">
+                        <div class="numbers">
+                          <p class="card-category">Pending Events </p>
+                          <p class="card-title" id="demo2">
+                            <p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer ">
+                    <hr>
+                    <div class="stats">
+                      <i class="fa fa-calendar-o"></i>
+                    
+                         <br>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                  <div class="card-body ">
+                    <div class="row">
+                      <div class="col-5 col-md-4">
+                        <div class="icon-big text-center icon-warning">
+                          <i class="nc-icon nc-vector text-danger"></i>
+                        </div>
+                      </div>
+                      <div class="col-7 col-md-8">
+                        <div class="numbers">
+                          <p class="card-category" >Confirmed Events</p>
+                          <p class="card-title" id="demo3">
+                            <p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer ">
+                    <hr>
+                    <div class="stats">
+                      <i class="fa fa-clock-o"></i> 
+           
+                      <br>
+               
+                    </div>
+                  </div>
+                </div>
+              </div>
+             
+            </div></div>
 
         <!--table-->
       	<c:choose>
@@ -550,7 +530,9 @@
   
   <script>
 
-	function myFunction(){
+	function myFunctionE(){
+
+		myFunctionS();
 		console.log("HIIIIII R");
 	 	var tes="test";
   	 	jQuery.ajax({
@@ -583,6 +565,114 @@
         token: "ee6fab19c5a04ac1a32a645abde4613a",
         application: "black-dashboard-free"
       });
+  </script>
+  
+  <script>
+
+
+
+
+  
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  function myFunctionS(){
+	
+   	
+   	 var tes="test1";
+   	 jQuery.ajax({
+   	        type: "GET",
+   	        url: "http://localhost:8080/selectCountRequestEvents",
+   	        data: { "id": "getStatus" }
+   	    }).done(function(msg) {
+   	    	document.getElementById("demo1").innerHTML = msg;
+   	    });
+   	function showUsers(msg) {    	   
+			var trHTML = '';
+			$.each(msg, function (i, item) {
+			    document.getElementById("demo").innerHTML = "Paragraph changed!";
+			});$("#reqtbl tr").detach();
+			$('#reqtbl').append(trHTML);
+			$( ".card" ).show();
+			
+			
+    }
+   	
+   	 var tes="test2";
+   	 jQuery.ajax({
+   	        type: "GET",
+   	        url: "http://localhost:8080/countPendCusEvent",
+   	        data: { "id": "getStatus" }
+   	    }).done(function(msg) {
+   	    	document.getElementById("demo2").innerHTML = msg;
+   	    });
+   	function showUsers(msg) {    	   
+			var trHTML = '';
+			$.each(msg, function (i, item) {
+			    document.getElementById("demo").innerHTML = "Paragraph changed!";
+			});$("#reqtbl tr").detach();
+			$('#reqtbl').append(trHTML);
+			$( ".card" ).show();
+			
+			
+    }
+   	
+   	var tes="test3";
+  	 jQuery.ajax({
+  		 
+  		 //total customers
+  	        type: "GET",
+  	        url: "http://localhost:8080/selectAllCustomer",
+  	        data: { "id": "getStatus" }
+  	    }).done(function(msg) {
+  	    	document.getElementById("demo3").innerHTML = msg;
+  	    });
+  	function showUsers(msg) {    	   
+			var trHTML = '';
+			$.each(msg, function (i, item) {
+			    document.getElementById("demo").innerHTML = "Paragraph changed!";
+			});$("#reqtbl tr").detach();
+			$('#reqtbl').append(trHTML);
+			$( ".card" ).show();
+			
+			
+   }
+   		
+   	  
+   	
+	}
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
   </script>
 </body>
 
