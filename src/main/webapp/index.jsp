@@ -723,47 +723,35 @@ $("#booknow3").click(function() {
 </script>
 <script type="text/javascript">
 function checkDate(){
-    var idate = document.getElementById("date"),
-        //resultDiv = document.getElementById("datewarn"),
-        dateReg = /(0[1-9]|[12][0-9]|3[01])[\/](0[1-9]|1[012])[\/]201[4-9]|20[2-9][0-9]/;
-
-    /*if(!dateReg.test(idate.value)){
-       // resultDiv.innerHTML = "Invalid date!";
-        //resultDiv.style.color = "red";
-        //return; 
-    	 window.alert("Enter a Future Date");
-    } */
-
-    if(isFutureDate(idate.value)==true){
-    	window.alert("Correct");
-       
-    } else {
-    	window.alert("Enter a Future Date");
-    }
-    
-    
-    
-    function isFutureDate(idate){
-    	//var today = new Date().getTime(),
-        idate = idate.split("/");
-    	
+    var idate = $('#date').val();
     	var today = new Date();
-    	var date = today.getFullYear()+'/'+(today.getMonth()+1)+'/'+today.getDate();
-    	
+    	var date = today.get+'.'+(today.getMonth()+1)+'.'+today.getDate();
 
-   // idate = new Date(idate[2], idate[1] - 1, idate[0]).getTime();
-            console.log(date);
-            console.log(idate);
-            var x = Math.floor((date - idate));
-            console.log(x);
+    	var today = new Date();
+    	var dd = String(today.getDate()).padStart(2, '0');
+    	var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    	var yyyy = today.getFullYear();
 
-        if(date-idate<0){
-        	return true;
-        }else{
+    	today = mm + '-' + dd + '-' + yyyy;
+    	today =dd+'/'+mm+'/'+yyyy;
+    	//alert(today);
+    	var date = new Date(idate);
+    	//alert(date);
+		var month = date.getMonth();
+		var day = date.getDate();
+		var year = date.getFullYear();
+
+		idate=day+'/'+month+'/'+year;
+		
+    	var d2   = new Date(today).getTime();
+        var d3   = new Date(idate).getTime();
+        
+        if(d2>=d3){
+            alert('Please enter valid date');
+            $("#date").val('');
         	return false;
         }
         	
-    }
     
 }
 
