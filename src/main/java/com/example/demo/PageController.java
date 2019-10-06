@@ -218,7 +218,7 @@ public class PageController {
 		System.out.println("Hiii");
 		
 		evq.createInquiry(inq);
-		return "Customer Profile.jsp";
+		return "index.jsp";
 		
 	}
 	
