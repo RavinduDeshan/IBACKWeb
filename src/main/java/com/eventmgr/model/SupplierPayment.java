@@ -9,6 +9,7 @@ public class SupplierPayment {
 	private String supplierService;
 	private Double supplierPrice;
 	private String supplierDate;
+	private Double supplierDiscount;
 	private String states;
 	private String type;
 	
@@ -53,6 +54,12 @@ public class SupplierPayment {
 	}
 	public void setSupplierDate(String supplierDate) {
 		this.supplierDate = supplierDate;
+	}
+	public Double getSupplierDiscount() {
+		return supplierDiscount;
+	}
+	public void setSupplierDiscount(Double supplierDiscount) {
+		this.supplierDiscount = supplierDiscount;
 	}
 	
 	

@@ -35,6 +35,7 @@ public class SupplierPaymentController {
 	     Document document = new Document("supplierName", supplierPayment.getSupplierName()) 
 	     .append("supplierService", supplierPayment.getSupplierService())
 	     .append("supplierPrice",supplierPayment.getSupplierPrice())
+	     .append("supplierDiscount",supplierPayment.getSupplierDiscount())
 	     .append("states","Pending")
 	     .append("type","Customer")
 	     .append("supplierDate",supplierPayment.getSupplierDate()) ;
@@ -76,6 +77,27 @@ public class SupplierPaymentController {
 		   }
 		return evlst;
 		 }
+	 public void deleteSupplierPayment(String sname) {
+			MongoClient mongo = new MongoClient( "localhost" , 27017 );
+	     	
+			MongoCredential credential; 
+			   credential = MongoCredential.createCredential("EventManagement",    "eventManagementDb", 
+					   "password".toCharArray()); 
+			System.out.println("Connected to the database successfully");
+	    
+			MongoDatabase database = mongo.getDatabase("eventManagementDb");
+	    	
+			MongoCollection<Document> collection =       database.getCollection("supplierPaymentCollection");
+			System.out.println("Collection examplesCollection selected successfully");
+				 
+			System.out.println(sname);
+		
+			String abc=sname;
+			collection.deleteOne(Filters.eq("supplierPaymentCollection",sname)); 
+			System.out.println("Document deleted successfully..."); 
+			
+		}
+		
 
 	public List<SupplierPayment> getPendingSupplierPayment() {
 		 String str="";
@@ -105,37 +127,17 @@ public class SupplierPaymentController {
 		   }
 		return evlst;
 		 }
-	  public void deleteSupplierrPayment(String sname) {
-		MongoClient mongo = new MongoClient( "localhost" , 27017 );
-     	
-		MongoCredential credential; 
-		   credential = MongoCredential.createCredential("EventManagement",    "eventManagementDb", 
-				   "password".toCharArray()); 
-		System.out.println("Connected to the database successfully");
-    
-		MongoDatabase database = mongo.getDatabase("eventManagementDb");
-    	
-		MongoCollection<Document> collection =       database.getCollection("supplierPaymentCollection");
-		System.out.println("Collection examplesCollection selected successfully");
-			 
-		System.out.println(sname);
-	
-		String abc=sname;
-		collection.deleteOne(Filters.eq("supplierPaymentCollection",sname)); 
-		System.out.println("Document deleted successfully..."); 
-		
-	}
+	 
 	
 	
 	
 	
+	  
 	
 	
 	
 	
-	
-	
-	/*public void updateSupplierPayment(SupplierPayment supplierPayment) {
+	public void updateSupplierPayment(SupplierPayment supplierPayment) {
 		MongoClient mongo = new MongoClient( "localhost" , 27017 );
 		   MongoCredential credential;
 		   credential = MongoCredential.createCredential("EventManagement",    "eventManagementDb", 
@@ -145,13 +147,36 @@ public class SupplierPaymentController {
 		   MongoCollection<Document> collection =    database.getCollection("supplierPaymentCollection");
 		   System.out.println("Collection examplesCollection selected successfully");
 		   
-		   collection.updateOne(Filters.eq("supplierName", supplierName), Updates.set("supplierName", supplierPayment.getSupplierName()));
-		   collection.updateOne(Filters.eq("supplierName", supplierName), Updates.set(" supplierPayment", supplierPayment.getSupplierService()));
-		   collection.updateOne(Filters.eq("supplierName", supplierName), Updates.set("supplierPrice",supplierPayment.getSupplierPrice()));
-		   collection.updateOne(Filters.eq("supplierName", supplierName), Updates.set("supplierDate",supplierPayment.getSupplierDate()));
+		   //collection.updateOne(Filters.eq("supplierName", supplierName), Updates.set("supplierName", supplierPayment.getSupplierName()));
+		   //collection.updateOne(Filters.eq("supplierName", supplierName), Updates.set(" supplierPayment", supplierPayment.getSupplierService()));
+		   //collection.updateOne(Filters.eq("supplierName", supplierName), Updates.set("supplierPrice",supplierPayment.getSupplierPrice()));
+		   //collection.updateOne(Filters.eq("supplierName", supplierName), Updates.set("supplierDate",supplierPayment.getSupplierDate()));
+		   //collection.updateOne(Filters.eq("supplierName", supplierName), Updates.set("supplierDiscount",supplierPayment.getSupplierDiscount()));
 		  
 			 
 			System.out.println("Collection examplesCollection updated successfully");
 	
-}*/
+}
+	
+	public void viewSupplierPayment(SupplierPayment supplierPayment) {
+		MongoClient mongo = new MongoClient( "localhost" , 27017 );
+		   MongoCredential credential;
+		   credential = MongoCredential.createCredential("EventManagement",    "eventManagementDb", 
+		   "password".toCharArray()); 
+		   System.out.println("Connected to the database successfully");  
+		   MongoDatabase database = mongo.getDatabase("eventManagementDb");  
+		   MongoCollection<Document> collection =    database.getCollection("supplierPaymentCollection");
+		   System.out.println("Collection examplesCollection selected successfully");
+		   
+		   //collection.viewOne(Filters.eq("supplierName", supplierName), Views.set("supplierName", supplierPayment.getSupplierName()));
+		   //collection.viewOne(Filters.eq("supplierName", supplierName), Views.set(" supplierPayment", supplierPayment.getSupplierService()));
+		   //collection.viewOne(Filters.eq("supplierName", supplierName), Views.set("supplierPrice",supplierPayment.getSupplierPrice()));
+		   //collection.viewOne(Filters.eq("supplierName", supplierName), Views.set("supplierDate",supplierPayment.getSupplierDate()));
+		   //collection.viewOne(Filters.eq("supplierName", supplierName), Views.set("supplierDiscount",supplierPayment.getSupplierDiscount()));
+		  
+			 
+			System.out.println("Collection examplesCollection view successfully");
+	
+}
+	
 }

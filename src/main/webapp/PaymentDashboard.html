@@ -1038,7 +1038,7 @@ $("#pend ").removeClass("btn btn-primary ");
 
     	      $("#pend").removeClass("btn btn-danger");
     	      $("#pend").addClass("btn btn-primary");
-    	      $("h4.card-title").text("Idle Accounts");
+    	      $("h4.card-title").text("Paid Payment Account");
       	  var tes="test";
       	 jQuery.ajax({
       	        type: "GET",
@@ -1053,16 +1053,21 @@ $("#pend ").removeClass("btn btn-primary ");
        function showUsers(msg) {    	   
 			var trHTML = '';
 			$.each(msg, function (i, item) {
-			    trHTML += '<tr><td>' + item.eventName + '</td><td>' + item.paymentType + '</td><td>'  + item.customerDiscount +'</td><td>' + item.customerPrice +'</td><td><a class="btn btn-primary" href = "/updateCustomerPayment/'+item.eventName+'">Paid </a><a class="btn btn-danger" href = "/deleteCustomerPayment/'+item.eventName+'">Remove</a></td></tr>';
+			    trHTML += '<tr><td>' + item.eventName + '</td><td>' + item.customerName + '</td><td>'  + item.customerDiscount +'</td><td>' + item.customerPrice +'</td><td><a class="btn btn-primary" href = "/updateCustomerPayment/'+item.eventName+'">Paid</a></td><td><a class="btn btn-danger" href = "/deleteCustomerPayment/'+item.eventName+'">Remove</a></td><td><a class="btn btn-danger" href = "/viewCustomerPayment/'+item.eventName+'">View</a></td></tr>';
 			});
 			$("#reqtbl tr").detach();
 			$('#reqtbl').append(trHTML);
 			$( ".card" ).show();
        }
+       
+       
+         
+
        /*function showUsers1(msg) {    	   
 			var trHTML = '';
 			$.each(msg, function (i, item) {
-			    trHTML += '<tr><td>' + item.supplierName + '</td><td>' + item.supplierPrice + '</td><td>'  + item.type +'</td><td>'<a class="btn btn-primary" href = "/Customer Details.html">View Customer</a><a class="btn btn-danger" href = "/Admin Event Details.html">Remove</a></td></tr>';
+				 trHTML += '<tr><td>' + item.supplierName + '</td><td>' + item.supplierPayment + '</td><td>'  + item.supplierDiscount +'</td><td>' + item.customerPrice +'</td><td><a class="btn btn-primary" href = "/updateSupplierPayment/'+item.eventName+'">Paid</a><a> class="btn btn-danger" href = "/ViewSupplierPayment/'+item.eventName+'">Paid </a><a class="btn btn-danger" href = "/deleteCustomerPayment/'+item.eventName+'">Remove</a></td></tr>';
+			 
 			});
 			$("#reqtbl tr").detach();
 			$('#reqtbl').append(trHTML);

@@ -95,7 +95,7 @@ public class CustomerPaymentController {
 		System.out.println(cname);
 	
 		String abc=cname;
-		collection.deleteOne(Filters.eq("eventName",cname)); 
+		collection.deleteOne(Filters.eq("eventName",abc)); 
 		System.out.println("Document deleted successfully..."); 
 		
 	}
@@ -153,6 +153,58 @@ public class CustomerPaymentController {
 				 
 				System.out.println("Collection examplesCollection updated successfully");
 		}
+		
+		
+		public void viewCustomerPayment(CustomerPayment customerPayment,String ename) {
+			MongoClient mongo = new MongoClient( "localhost" , 27017 );
+			   MongoCredential credential;
+			   credential = MongoCredential.createCredential("EventManagement",    "eventManagementDb", 
+			   "password".toCharArray()); 
+			   System.out.println("Connected to the database successfully");  
+			   MongoDatabase database = mongo.getDatabase("eventManagementDb");  
+			   MongoCollection<Document> collection =    database.getCollection("customerPaymentCollection");
+			   System.out.println("Collection examplesCollection selected successfully");
+			   
+			  //collection.viewOne(Filters.eq("eventName", ename), Views.set("states", "Paid"));
+			  // collection.viewOne(Filters.eq("eventName", ename), Views.set("paymentType",customerPayment.getPaymentType()));
+			  // collection.viewOne(Filters.eq("eventName", ename), Views.set("customerPrice",customerPayment.getCustomerPrice()));
+			  //collection.viewOne(Filters.eq("eventName", ename), Views.set("customerDiscount",customerPayment.getCustomerDiscount()));
+			  //collection.viewOne(Filters.eq("eventName", ename), Views.set("customerPayment",customerPayment.getCustomerTotalPrice()));
+				
+				 
+				System.out.println("Collection examplesCollection updated successfully");
+		}
+		
+		public CustomerPayment getCustomerPayment(String ename) {
+			 String str="";
+			 MongoClient mongo = new MongoClient( "localhost" , 27017 );
+			   MongoCredential credential;
+			   credential = MongoCredential.createCredential("EventManagement",    "eventManagementDb", 
+			   "password".toCharArray()); 
+			   System.out.println("Connected to the database successfully");  
+			   MongoDatabase database = mongo.getDatabase("eventManagementDb");  
+			   MongoCollection<Document> collection =    database.getCollection("customerPaymentCollection");
+			   System.out.println("Collection examplesCollection selected successfully");
+			   
+			   FindIterable<Document> iterDoc = collection.find(Filters.eq("eventName", ename)); 
+			   int i = 1;
+			   CustomerPayment p=new CustomerPayment();
+			   Iterator it = iterDoc.iterator(); 
+			   while (it.hasNext()) { 
+				   String txt=((it.next().toString().replace("{{", "{\"")).replace("}}", "\"}")).replace("Document", "");
+				   txt=((txt.replace("=", "\":\"")).replace(",", "\",\""));
+				   txt=txt.replace(",\" ", ",\"");
+				   txt= txt.replace("_id", "id");
+			   Gson g = new Gson();
+			  
+			    p = g.fromJson(txt, CustomerPayment.class);
+			  
+			   }
+			    System.out.println(p.getCustomerName());
+			   return p;
+			 
+			 }
+		
 		 }
 	
 

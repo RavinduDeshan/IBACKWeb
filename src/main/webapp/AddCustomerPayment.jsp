@@ -43,20 +43,20 @@
 
 					<div class="wrap-input100 validate-input" data-validate="customer Name is required">
 						<span class="label-input100">Customer Name</span>
-						<input class="input100" type="text" name="customerName" placeholder=" Customer Name...">
+						<input class="input100" type="text" name="customerName" value=${event.customerName }>
 						<span class="focus-input100"></span>
 					</div>
 					<div class="wrap-input100 validate-input" data-validate="event Name is required">
 						<span class="label-input100">Event Name</span>
-						<input class="input100" type="text" name="eventName" placeholder="Event Name...">
+						<input class="input100" type="text" name="eventName" value=${event.eventName }>
 						<span class="focus-input100"></span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate = " Price is required">
+					<!-- <div class="wrap-input100 validate-input" data-validate = " Price is required">
 						<span class="label-input100"> Price</span>
-						<input class="input100" type="text" name="customerPrice" placeholder=" Price...">
+						<input class="input100" type="text" name="customerPrice" value=${event.customerPrice }>
 						<span class="focus-input100"></span>
-					</div>
+					</div> -->
 
 					<!--  <div class="wrap-input100 validate-input" data-validate="payment Type is required">
 					    <span class="label-input100"> Payment Type</span>
@@ -91,13 +91,13 @@
 
 					<div class="wrap-input100 validate-input" data-validate = " Discount is required">
 						<span class="label-input100">Discount</span>
-						<input class="input100" type="text" id="custerDiscount" name="customerDiscount" placeholder=" Discount">
+						<input class="input100" type="text" id="custerDiscount" name="customerDiscount" value=${event.customerDiscount }>
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = " Total Price is required">
 						<span class="label-input100">Total Price</span>
-						<input class="input100" type="text" id="custerTotalPrice" name="customerTotalPrice" placeholder="Total Price">
+						<input class="input100" type="text" id="custerTotalPrice" name="customerTotalPrice" value=${event.customerPrice }>
 						<span class="focus-input100"></span>
 					</div>
 
@@ -105,11 +105,15 @@
 					
 
 
+
+
+
+
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn">
-								Submit
+							<button class="login100-form-btn"><a href="paymentDashboard">Back to dashboard</a>
+								
 							</button>
 						</div>
 
@@ -119,8 +123,8 @@
 			</div>
 			
 			
-						<div class="login100-more" style="background-image: url('images/-1.jpg');">
-			<div class="logoIBACK" style="background-image: url('images/1.jpg');">
+							<div class="login100-more" style="background-image: url('images/payment.png11111111111111111111111111111.png');">
+			<div class="logoIBACK" style="background-image: url('images/payment.png11111111111111111111111111111ibackeventslogopngwhite.png');">
 			
 			
 			
@@ -130,7 +134,7 @@
 			
 		</div>
 	</div>
-	
+<!-- yyy -->	
 <!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
@@ -165,3 +169,6 @@
 
 </body>
 </html>
+
+
+
