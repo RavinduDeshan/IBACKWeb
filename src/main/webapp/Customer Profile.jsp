@@ -595,7 +595,7 @@
    	 var tes="test1";
    	 jQuery.ajax({
    	        type: "GET",
-   	        url: "http://localhost:8080/selectCountRequestEvents",
+   	        url: "http://localhost:8080/countTotCusEvent",
    	        data: { "id": "getStatus" }
    	    }).done(function(msg) {
    	    	document.getElementById("demo1").innerHTML = msg;
@@ -635,7 +635,7 @@
   		 
   		 //total customers
   	        type: "GET",
-  	        url: "http://localhost:8080/selectAllCustomer",
+  	        url: "http://localhost:8080/countConCusEvent",
   	        data: { "id": "getStatus" }
   	    }).done(function(msg) {
   	    	document.getElementById("demo3").innerHTML = msg;

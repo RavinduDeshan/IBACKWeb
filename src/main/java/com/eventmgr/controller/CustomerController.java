@@ -11,7 +11,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.bson.Document;
-
+import org.bson.conversions.Bson;
 import org.springframework.stereotype.Controller;
 
 
@@ -26,6 +26,8 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.CountOptions;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
+
+import ch.qos.logback.core.filter.Filter;
 
 @Controller
 public class CustomerController {
@@ -68,13 +70,71 @@ public class CustomerController {
 		   String nic =(String)request.getSession().getAttribute("nic");
 		   
 		   
+		   Bson filter1 = Filters.eq("estatus","pending");
+		   Bson filter2 = Filters.eq("cusId",nic);
+		   Bson filter3 = Filters.and(filter1,filter2);
 		   
-		    float a=collection.count(Filters.eq("estatus", "pending"));
+		   
+
+		   float a=collection.count(Filters.eq(filter3));
+		   
+			System.out.println("Collection examplesCollection Request Collections Number successfully");
+			return a;
+	}
+	
+	public float countTotCusEvent(HttpServletRequest request) {
+		MongoClient mongo = new MongoClient( "localhost" , 27017 );
+		   MongoCredential credential;
+		   credential = MongoCredential.createCredential("EventManagement",    "eventManagementDb", 
+		   "password".toCharArray()); 
+		   System.out.println("Connected to the database successfully");  
+		   MongoDatabase database = mongo.getDatabase("eventManagementDb");  
+		   MongoCollection<Document> collection =    database.getCollection("eventCollection");
+		   System.out.println("Collection examplesCollection selected successfully");
+		   
+		   String nic =(String)request.getSession().getAttribute("nic");
+		   
+		   System.out.println("-----------------------------------------------------------------------------NIC Of Tot Cus Events : "+nic);
+
+		    float a=collection.count(Filters.eq("cusId", nic));
 		    System.out.println("pending cus Count is"+a);
 		   
 			System.out.println("Collection examplesCollection Request Collections Number successfully");
 			return a;
 	}
+	
+	
+	
+	public float countConCusEvent(HttpServletRequest request) {
+		MongoClient mongo = new MongoClient( "localhost" , 27017 );
+		   MongoCredential credential;
+		   credential = MongoCredential.createCredential("EventManagement",    "eventManagementDb", 
+		   "password".toCharArray()); 
+		   System.out.println("Connected to the database successfully");  
+		   MongoDatabase database = mongo.getDatabase("eventManagementDb");  
+		   MongoCollection<Document> collection =    database.getCollection("eventCollection");
+		   System.out.println("Collection examplesCollection selected successfully");
+		   
+		   String nic =(String)request.getSession().getAttribute("nic");
+		   
+		   Bson filter1 = Filters.eq("estatus","confirm");
+		   Bson filter2 = Filters.eq("cusId",nic);
+		   Bson filter3 = Filters.and(filter1,filter2);
+		   
+		   
+
+		   float a=collection.count(Filters.eq(filter3));
+		   
+		   
+		   System.out.println("-----------------------------------------------------------------------------NIC Of Tot Cus Con Events : "+nic);
+
+		    System.out.println("pending cus Con Count is"+a);
+		   
+			System.out.println("Collection examplesCollection Request Collections Number successfully");
+			return a;
+	}
+	
+	
 	
 	public void updateCustomer(Customer cust,String nic) {
 		MongoClient mongo = new MongoClient( "localhost" , 27017 );

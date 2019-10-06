@@ -466,6 +466,23 @@ public class EventController {
 		return res;
 	}
 	
+	
+
+	@GetMapping("/countTotCusEvent")
+	public float countTotCusEvent(HttpServletRequest request) {
+		CustomerController e=new CustomerController();
+		float res=e.countTotCusEvent(request);
+		System.out.println("Count is"+res);
+		return res;
+	}
+	@GetMapping("/countConCusEvent")
+	public float countConCusEvent(HttpServletRequest request) {
+		CustomerController e=new CustomerController();
+		float res=e.countConCusEvent(request);
+		System.out.println("Count is"+res);
+		return res;
+	}
+	
 	@GetMapping("/selectPendRequestEvents")
 	public float selctPendRequestEvent(HttpServletRequest request) {
 		EveeentController e=new EveeentController();
