@@ -246,6 +246,17 @@ public class EventController {
 		
 	}
 	
+	@RequestMapping("/selectSupplierPayment")
+	public List<SupplierPayment> getAllSupplierPayments() {
+		System.out.println("Calll");
+		SupplierPaymentController ev= new SupplierPaymentController();
+		List<SupplierPayment> evlst = new ArrayList<SupplierPayment>();
+		evlst=ev.getAllSupplierPayments();
+		System.out.println("Calll11111111111111111111");
+		return evlst;
+		
+	}
+	
 	@RequestMapping("/selectCustomerPendingPayment")
 	public List<CustomerPayment> getPendingCustomerPayments() {
 		System.out.println("Calll");
@@ -291,6 +302,74 @@ public class EventController {
 		CustomerPaymentController ev= new CustomerPaymentController();
 		System.out.println(ename);
 		ev.updateCustomerPayment(cs,ename);
-		return new RedirectView("/PaymentDashboard");
+		return new RedirectView("/paymentDashboard");
 	}
+	
+	
+	
+	
+	
+	@RequestMapping("/viewCustomerPayment/{ename}")
+	public  RedirectView viewCustomerPayment(@PathVariable String ename,@Valid CustomerPayment customer, BindingResult result,Model model,RedirectAttributes redirectAttributes) {
+        model.addAttribute("customer",customer);
+        //Do the Registration logic and then redirect to home page without using action for home page
+       System.out.println(customer.getEventName());
+       redirectAttributes.addFlashAttribute("customerEmail", ename);
+       System.out.println("hp"+ename);
+		System.out.println("Hiii admin");
+		System.out.println(ename);
+		String name=ename;
+		CustomerPaymentController ev= new CustomerPaymentController();
+		List<CustomerPayment> evlst = new ArrayList<CustomerPayment>();
+		
+	//name=(ename.replaceAll("\\p{P}",""));
+	//vlst=ev.geteventDetails(ename);		
+		//odel.put("message", evlst);
+		//edirectAttributes.addFlashAttribute("message", evlst);
+		return new RedirectView("/viewPayment");
+		//return evlst;
+		
+		
+	}
+	
+	
+	@RequestMapping("/deleteSupplierPayment/{ename}")
+	public RedirectView  deleteSupplierPayment(@PathVariable String ename) {
+		
+		SupplierPaymentController ev= new SupplierPaymentController();
+		System.out.println(ename);
+		
+		System.out.println("yyyyyyyyyyyyyyyyyyioit");
+		ename=(ename.replaceAll("\\p{P}",""));
+		ev.deleteSupplierPayment(ename);
+		return new RedirectView("/paymentDashboard");
+		
+	}
+	@RequestMapping("/updateSupplierPayment/{ename}")
+	public RedirectView updateSupplierrPayment(SupplierPayment cs,@PathVariable String ename) {
+		
+		System.out.println("Hiii Update");
+		System.out.println(cs.getSupplierName());
+		
+		SupplierPaymentController ev= new SupplierPaymentController();
+		System.out.println(ename);
+		ev.updateSupplierPayment(cs);
+		return new RedirectView("/paymentDashboard");
+	
+	}
+	
+	@RequestMapping("/viewSupplierPayment/{ename}")
+	public RedirectView deleteSupplierrPayment(SupplierPayment cs,@PathVariable String ename) {
+		
+		System.out.println("Hiii Update");
+		System.out.println(cs.getSupplierName());
+		
+		SupplierPaymentController ev= new SupplierPaymentController();
+		System.out.println(ename);
+		ev.viewSupplierPayment(cs);
+		return new RedirectView("/paymentDashboard");
+	
+	}
+	
+	
 }

@@ -15,7 +15,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.RequestContextUtils;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.eventmgr.controller.CustomerPaymentController;
 import com.eventmgr.controller.EveeentController;
+import com.eventmgr.model.CustomerPayment;
 import com.eventmgr.model.Event;
 
 
@@ -61,11 +63,38 @@ public class PageController {
 		return "Admin Event Details.jsp";
 	}
 	
-	@RequestMapping("//paymentDashboard")
+	@RequestMapping("/paymentDashboard")
 	public String home22() {
 		System.out.println("Home Called");
 		
 		return "PaymentDashboard.html";
+	}
+	
+	@RequestMapping("/viewPayment")
+	public String viewPayment( HttpServletRequest request,Model model,ModelAndView testModel) {
+		System.out.println("test");
+        String emailId1 = (String)model.asMap().get("customerEmail");
+        System.out.println("testmeeeeeeeeee"+emailId1);
+        CustomerPaymentController ev = new CustomerPaymentController();
+        CustomerPayment evlst=new CustomerPayment();
+        //name=(ename.replaceAll("\\p{P}",""));
+        evlst=ev.getCustomerPayment(emailId1);		
+	
+        System.out.println(evlst.getCustomerName());
+		//evlst.setEname("aaaaaaaaaaaaa");
+		//evlst.setElocation("eeee");
+		//edirectAttributes.addFlashAttribute("message", evlst);
+       // Map<String, ?> flashMap = RequestContextUtils.getInputFlashMap(request);
+       // String emailId2 =  (String) flashMap.get("customerEmail");
+       // model2.put("message",emailId2 );
+        model.addAttribute("event", evlst);
+        //Map<String, Object> modeil = new HashMap<String, Object>();
+		
+        //modeil.put("numberOfMovies", "1234");
+
+       
+        
+		return "AddCustomerPayment.jsp";
 	}
 	
 }
